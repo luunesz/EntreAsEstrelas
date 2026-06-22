@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gionna — A Fada Soberba</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=IM+Fell+English:ital@0;1&family=Cinzel:wght@400;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg:         #0e1a2b;
+      --bg2:        #131f30;
+      --bg3:        #1c2d42;
+      --navy:       #2a335e;
+      --teal:       #3d7068;
+      --teal-light: #59767c;
+      --star:       #c8c87e;
+      --star-dim:   #7a7a45;
+      --shimmer:    #d1c89f;
+      --text:       #ccd9e8;
+      --text-dim:   #6e8ba8;
+      --border:     rgba(89,118,124,0.22);
+      --glow:       rgba(193,192,125,0.10);
+
+      /* acento roxo-borboleta para Gionna */
+      --accent:     #9b7bb5;
+      --accent-dim: #5a3d7a;
+      --accent-glow:rgba(155,123,181,0.12);
+
+      --ff-title:   'Cinzel', serif;
+      --ff-display: 'IM Fell English', serif;
+      --ff-body:    'Cormorant Garamond', serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--ff-body);
+      font-size: 1.15rem;
+      line-height: 1.75;
+      overflow-x: hidden;
+    }
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 3px; }
+    ::selection { background: var(--accent-dim); color: var(--shimmer); }
+
+    /* ══ NAV ══ */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 2.5rem;
+      background: linear-gradient(to bottom, rgba(14,26,43,.97) 70%, transparent);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(4px);
+    }
+    .nav-home {
+      font-family: var(--ff-title);
+      font-size: .8rem;
+      letter-spacing: .3em;
+      color: var(--teal-light);
+      text-decoration: none;
+      transition: color .25s;
+    }
+    .nav-home:hover { color: var(--star); }
+    .nav-char {
+      font-family: var(--ff-title);
+      font-size: .75rem;
+      letter-spacing: .2em;
+      color: var(--accent);
+    }
+
+    /* ══ HERO ══ */
+    #hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 0;
+      padding-top: 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* fundo gradiente com brilho roxo-borboleta */
+    #hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 70% at 30% 50%, var(--accent-glow) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 60% at 75% 40%, var(--glow) 0%, transparent 60%),
+        linear-gradient(135deg, #080f1a 0%, #0e1a2b 50%, #111626 100%);
+      pointer-events: none;
+    }
+
+    /* partículas flutuantes (asas de borboleta) */
+    .particles {
+      position: absolute; inset: 0; pointer-events: none; overflow: hidden;
+    }
+    .particle {
+      position: absolute;
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: var(--accent);
+      opacity: 0;
+      animation: float-up var(--dur, 8s) var(--delay, 0s) infinite ease-in-out;
+    }
+    @keyframes float-up {
+      0%   { opacity: 0; transform: translateY(0) scale(.6); }
+      20%  { opacity: .6; }
+      80%  { opacity: .3; }
+      100% { opacity: 0; transform: translateY(-120px) translateX(var(--drift, 20px)) scale(1); }
+    }
+
+    /* coluna esquerda — arte */
+    .hero-art {
+      position: relative; z-index: 1;
+      display: flex; align-items: center; justify-content: center;
+      padding: 3rem 2rem 3rem 4rem;
+      height: 100%;
+    }
+    .art-frame {
+      width: 100%;
+      max-width: 420px;
+      aspect-ratio: 3/4;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+    .art-frame img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      opacity: .85;
+      transition: opacity .4s;
+    }
+    .art-frame:hover img { opacity: 1; }
+    /* placeholder quando não há imagem */
+    .art-placeholder {
+      width: 100%; height: 100%;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 1rem;
+      color: var(--accent);
+    }
+    .art-placeholder-icon { font-size: 4rem; opacity: .3; }
+    .art-placeholder-text {
+      font-family: var(--ff-title);
+      font-size: .65rem;
+      letter-spacing: .3em;
+      color: var(--text-dim);
+    }
+    /* cantos decorativos do frame */
+    .art-frame::before, .art-frame::after {
+      content: '';
+      position: absolute;
+      width: 20px; height: 20px;
+      border-color: var(--accent-dim);
+      border-style: solid;
+      z-index: 2;
+    }
+    .art-frame::before { top: 10px; left: 10px; border-width: 1px 0 0 1px; }
+    .art-frame::after  { bottom: 10px; right: 10px; border-width: 0 1px 1px 0; }
+
+    /* status badge */
+    .status-badge {
+      position: absolute; bottom: -1px; left: 0; right: 0;
+      padding: .6rem 1rem;
+      background: linear-gradient(transparent, rgba(14,26,43,.92));
+      display: flex; align-items: center; gap: .5rem;
+      z-index: 3;
+    }
+    .status-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: #9b7bb5;
+      box-shadow: 0 0 6px rgba(155,123,181,.7);
+      animation: pulse-dot 2.5s ease-in-out infinite;
+    }
+    @keyframes pulse-dot {
+      0%,100% { box-shadow: 0 0 4px rgba(155,123,181,.5); }
+      50%      { box-shadow: 0 0 12px rgba(155,123,181,.9); }
+    }
+    .status-text {
+      font-family: var(--ff-title);
+      font-size: .6rem;
+      letter-spacing: .2em;
+      color: var(--accent);
+    }
+
+    /* coluna direita — info */
+    .hero-info {
+      position: relative; z-index: 1;
+      padding: 3rem 4rem 3rem 2rem;
+      display: flex; flex-direction: column;
+      justify-content: center;
+    }
+    .char-eyebrow {
+      font-family: var(--ff-title);
+      font-size: .65rem;
+      letter-spacing: .45em;
+      color: var(--teal-light);
+      margin-bottom: 1rem;
+    }
+    .char-name {
+      font-family: var(--ff-display);
+      font-size: clamp(3rem, 5vw, 5rem);
+      color: var(--shimmer);
+      line-height: 1.05;
+      margin-bottom: .5rem;
+    }
+    .char-epithet {
+      font-family: var(--ff-display);
+      font-size: 1.3rem;
+      font-style: italic;
+      color: var(--accent);
+      margin-bottom: 2rem;
+      display: flex; align-items: center; gap: .75rem;
+    }
+    .char-epithet::before {
+      content: ''; width: 30px; height: 1px;
+      background: var(--accent-dim);
+    }
+
+    /* ficha rápida */
+    .quick-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .75rem 2rem;
+      margin-bottom: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .stat-item {}
+    .stat-label {
+      font-family: var(--ff-title);
+      font-size: .6rem;
+      letter-spacing: .3em;
+      color: var(--teal-light);
+      margin-bottom: .15rem;
+    }
+    .stat-value {
+      font-size: 1rem;
+      color: var(--text);
+    }
+    .stat-value em { color: var(--accent); font-style: italic; }
+
+    .char-intro {
+      font-size: 1.1rem;
+      color: var(--text-dim);
+      line-height: 1.8;
+      max-width: 480px;
+      margin-bottom: 2rem;
+    }
+    .char-intro strong { color: var(--text); }
+    .char-intro em { color: var(--accent); font-style: italic; }
+
+    .scroll-hint {
+      display: flex; align-items: center; gap: .75rem;
+      font-family: var(--ff-title);
+      font-size: .62rem;
+      letter-spacing: .25em;
+      color: var(--text-dim);
+    }
+    .scroll-hint::after {
+      content: '↓';
+      color: var(--accent);
+      animation: bounce 2s ease-in-out infinite;
+    }
+    @keyframes bounce {
+      0%,100% { transform: translateY(0); }
+      50%      { transform: translateY(4px); }
+    }
+
+    /* ══ SECTIONS SHARED ══ */
+    .page-section {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 5rem 2rem;
+      border-top: 1px solid var(--border);
+    }
+    .section-label {
+      font-family: var(--ff-title);
+      font-size: .65rem;
+      letter-spacing: .45em;
+      color: var(--teal-light);
+      margin-bottom: .6rem;
+    }
+    .section-title {
+      font-family: var(--ff-display);
+      font-size: clamp(1.6rem, 3.5vw, 2.5rem);
+      color: var(--shimmer);
+      margin-bottom: .5rem;
+    }
+    .section-title em { color: var(--accent); font-style: italic; }
+    .divider {
+      display: flex; align-items: center; gap: .75rem;
+      color: var(--accent-dim); font-size: .85rem;
+      margin: 1.25rem 0 2.5rem;
+    }
+    .divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+    /* ══ HISTÓRIA ══ */
+    .story-block {
+      display: grid;
+      grid-template-columns: 1fr 240px;
+      gap: 3rem;
+      align-items: start;
+    }
+    .story-text { color: var(--text-dim); font-size: 1.1rem; line-height: 1.85; }
+    .story-text p { margin-bottom: 1.25rem; }
+    .story-text strong { color: var(--text); }
+    .story-text em { color: var(--accent); font-style: italic; }
+
+    .story-aside {
+      display: flex; flex-direction: column; gap: 1px;
+      border: 1px solid var(--border);
+      position: sticky; top: 5rem;
+    }
+    .aside-item {
+      background: var(--bg2);
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .aside-item:last-child { border-bottom: none; }
+    .aside-label {
+      font-family: var(--ff-title);
+      font-size: .58rem;
+      letter-spacing: .25em;
+      color: var(--teal-light);
+      margin-bottom: .35rem;
+    }
+    .aside-value { font-size: .95rem; color: var(--text-dim); }
+    .aside-value em { color: var(--accent); font-style: italic; }
+
+    /* linha do tempo */
+    .timeline {
+      margin-top: 2rem;
+      position: relative;
+      padding-left: 2rem;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute; left: 7px; top: 8px; bottom: 8px;
+      width: 1px; background: var(--border);
+    }
+    .timeline-event {
+      position: relative;
+      margin-bottom: 2rem;
+    }
+    .timeline-event:last-child { margin-bottom: 0; }
+    .timeline-event::before {
+      content: '';
+      position: absolute; left: -1.75rem; top: .55rem;
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--accent-dim);
+      border: 1px solid var(--accent);
+    }
+    .timeline-event.highlight::before {
+      background: var(--accent);
+      box-shadow: 0 0 8px rgba(155,123,181,.6);
+    }
+    .event-label {
+      font-family: var(--ff-title);
+      font-size: .62rem;
+      letter-spacing: .2em;
+      color: var(--accent);
+      margin-bottom: .25rem;
+    }
+    .event-title {
+      font-size: 1.05rem;
+      color: var(--text);
+      margin-bottom: .25rem;
+    }
+    .event-desc { font-size: .95rem; color: var(--text-dim); line-height: 1.6; }
+
+    /* ══ GALERIA ══ */
+    .gallery-masonry {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: .75rem;
+    }
+    .gallery-cell {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+      transition: border-color .3s;
+    }
+    .gallery-cell:hover { border-color: var(--accent-dim); }
+    .gallery-cell:nth-child(1) { grid-row: span 2; }
+    .gallery-cell img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      opacity: .75;
+      transition: opacity .35s, transform .4s;
+      display: block;
+      min-height: 160px;
+    }
+    .gallery-cell:hover img { opacity: 1; transform: scale(1.03); }
+    .gallery-cell-placeholder {
+      min-height: 180px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: .5rem;
+      color: var(--accent);
+      opacity: .3;
+      font-size: 2rem;
+    }
+    .gallery-cell-placeholder span {
+      font-family: var(--ff-title);
+      font-size: .6rem;
+      letter-spacing: .2em;
+      color: var(--text-dim);
+      opacity: 1;
+    }
+
+    /* lightbox */
+    #lightbox {
+      display: none;
+      position: fixed; inset: 0; z-index: 200;
+      background: rgba(8,14,22,.92);
+      align-items: center; justify-content: center;
+      backdrop-filter: blur(6px);
+    }
+    #lightbox.open { display: flex; }
+    #lightbox img { max-width: 80vw; max-height: 85vh; border: 1px solid var(--border); }
+    #lightbox-close {
+      position: absolute; top: 1.5rem; right: 2rem;
+      background: none; border: none; cursor: pointer;
+      font-size: 1.5rem; color: var(--text-dim);
+      font-family: var(--ff-title); letter-spacing: .1em;
+      transition: color .25s;
+    }
+    #lightbox-close:hover { color: var(--accent); }
+
+    /* ══ RELAÇÕES ══ */
+    .relations-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.25rem;
+    }
+    .relation-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 1rem;
+      align-items: start;
+      text-decoration: none;
+      transition: border-color .3s, box-shadow .3s;
+      cursor: pointer;
+    }
+    .relation-card:hover {
+      border-color: var(--accent-dim);
+      box-shadow: 0 4px 20px rgba(155,123,181,.08);
+    }
+    .relation-avatar {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem; color: var(--teal-light);
+      flex-shrink: 0;
+    }
+    .relation-name {
+      font-family: var(--ff-title);
+      font-size: .75rem;
+      letter-spacing: .15em;
+      color: var(--shimmer);
+      margin-bottom: .2rem;
+    }
+    .relation-type {
+      font-size: .85rem;
+      color: var(--accent);
+      font-style: italic;
+      margin-bottom: .4rem;
+    }
+    .relation-desc { font-size: .95rem; color: var(--text-dim); line-height: 1.55; }
+    .relation-link {
+      display: inline-block;
+      margin-top: .6rem;
+      font-family: var(--ff-title);
+      font-size: .58rem;
+      letter-spacing: .2em;
+      color: var(--teal-light);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1px;
+      text-decoration: none;
+      transition: color .25s, border-color .25s;
+    }
+    .relation-link:hover { color: var(--accent); border-color: var(--accent-dim); }
+
+    /* ══ FOOTER ══ */
+    footer {
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 3rem 2rem;
+      color: var(--text-dim);
+      font-size: .9rem;
+    }
+    .footer-back {
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      font-family: var(--ff-title);
+      font-size: .65rem;
+      letter-spacing: .25em;
+      color: var(--teal-light);
+      text-decoration: none;
+      border: 1px solid var(--border);
+      padding: .5rem 1.25rem;
+      transition: border-color .25s, color .25s;
+    }
+    .footer-back:hover { border-color: var(--teal); color: var(--star); }
+    .footer-name {
+      font-family: var(--ff-title);
+      font-size: .7rem;
+      letter-spacing: .35em;
+      color: var(--accent);
+      display: block;
+      margin-bottom: .3rem;
+    }
+
+    /* ══ RESPONSIVE ══ */
+    @media (max-width: 800px) {
+      #hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-art { padding: 5rem 2rem 1rem; }
+      .art-frame { max-width: 300px; margin: 0 auto; }
+      .hero-info { padding: 1.5rem 2rem 3rem; }
+      .story-block { grid-template-columns: 1fr; }
+      .story-aside { position: static; }
+      .gallery-masonry { grid-template-columns: repeat(2, 1fr); }
+      .gallery-cell:nth-child(1) { grid-row: span 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-home" href="meu-mundo.html">← NOME DO MUNDO</a>
+    <span class="nav-char">✦ GIONNA</span>
+  </nav>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox">
+    <button id="lightbox-close" onclick="closeLightbox()">✕ fechar</button>
+    <img id="lightbox-img" src="" alt="">
+  </div>
+
+  <!-- ══ HERO ══ -->
+  <section id="hero">
+    <!-- partículas flutuantes -->
+    <div class="particles" id="particles"></div>
+
+    <!-- ARTE -->
+    <div class="hero-art">
+      <div class="art-frame">
+        <!-- Substitua pelo retrato da Gionna: <img src="gionna-retrato.jpg" alt="Gionna"> -->
+        <div class="art-placeholder">
+          <div class="art-placeholder-icon">🦋</div>
+          <span class="art-placeholder-text">RETRATO DE GIONNA</span>
+        </div>
+        <div class="status-badge">
+          <div class="status-dot"></div>
+          <span class="status-text">MORTA-VIVA · ATIVA</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- INFO -->
+    <div class="hero-info">
+      <p class="char-eyebrow">✦ &nbsp; personagem &nbsp; ✦</p>
+      <h1 class="char-name">Gionna</h1>
+      <p class="char-epithet">A Fada Soberba</p>
+
+      <div class="quick-stats">
+        <div class="stat-item">
+          <p class="stat-label">IDADE</p>
+          <p class="stat-value">~23 anos</p>
+        </div>
+        <div class="stat-item">
+          <p class="stat-label">GÊNERO</p>
+          <p class="stat-value">Feminino</p>
+        </div>
+        <div class="stat-item">
+          <p class="stat-label">RAÇA ORIGINAL</p>
+          <p class="stat-value"><em>Fada Borboleta</em></p>
+        </div>
+        <div class="stat-item">
+          <p class="stat-label">FORMA ATUAL</p>
+          <p class="stat-value"><em>Morta-viva</em></p>
+        </div>
+        <div class="stat-item">
+          <p class="stat-label">ORIGEM</p>
+          <p class="stat-value">Fronteira da Floresta Protegida</p>
+        </div>
+        <div class="stat-item">
+          <p class="stat-label">ALINHAMENTO</p>
+          <p class="stat-value">Neutro · Caótico</p>
+        </div>
+      </div>
+
+      <p class="char-intro">
+        Uma <em>fada borboleta</em> que desejou demais. Que quis ser humana, quis ser amada, quis pertencer a um mundo que não era o seu — e pagou um preço que nenhuma magia consegue desfazer. <strong>Hoje ela é osso e saudade.</strong>
+      </p>
+
+      <span class="scroll-hint">CONTINUAR LENDO &nbsp;</span>
+    </div>
+  </section>
+
+  <!-- ══ HISTÓRIA ══ -->
+  <article class="page-section" id="historia">
+    <p class="section-label">✦ biografia</p>
+    <h2 class="section-title">A <em>História</em> de Gionna</h2>
+    <div class="divider">🦋</div>
+
+    <div class="story-block">
+      <div class="story-text">
+        <p>
+          Gionna viveu por anos na fronteira da <em>Floresta Protegida</em> — um lugar entre o mundo das fadas e o dos mortais, onde a luz filtrava entre as árvores de um jeito diferente dependendo de qual lado você estava. Ela habitava esse meio-termo com a leveza natural de sua espécie, observando os humanos de longe com curiosidade, mas sem interesse real.
+        </p>
+        <p>
+          Até que <strong>Julian</strong> apareceu.
+        </p>
+        <p>
+          Ele chegou com um grupo de amigos em uma excursão de caça, atrás de um javali para um jantar. Não havia nada de extraordinário na missão — mas havia algo no riso de Julian, no jeito que ele olhava para o céu como se esperasse ver algo além das nuvens, que prendeu o olhar de Gionna como uma chama prende uma mariposa.
+        </p>
+        <p>
+          O que começou como <em>fascinação</em> se tornou encontros às escondidas nas colinas — deitados na grama, olhando para as estrelas, conversando sobre mundos que nenhum dos dois conhecia completamente. Vieram as cartas dobradas ao meio e escondidas na raiz de uma árvore específica que só eles sabiam qual era. Vieram as promessas. Vieram os planos.
+        </p>
+        <p>
+          E veio o desejo impossível: <em>ela queria ser humana</em>.
+        </p>
+        <p>
+          Não por vaidade, ao menos não inteiramente. Queria envelhecer com ele. Queria sentar à mesa de um jantar comum, dormir em uma cama de verdade, ser apresentada como alguém real — não como um segredo entre árvores. Quando soube de um <strong>mago</strong> que se estabelecia nas redondezas, foi até ele com a certeza soberba de quem acredita que o amor é razão suficiente para qualquer transformação.
+        </p>
+        <p>
+          A poção funcionou — por um momento. Ela sentiu os ossos mudando, a pele se endurecendo, assumindo a forma que tanto desejava. E então <em>tudo derreteu</em>.
+        </p>
+        <p>
+          O que sobrou foi um esqueleto humano com a memória intacta de tudo que havia sido. Osso onde havia asa. Silêncio onde havia o zumbido suave das fadas. Gionna não morreu — o que seria, talvez, mais misericordioso. Ela continua existindo, <em>soberba o suficiente para recusar o fim</em>, carregando o peso de uma decisão que não pode ser desfeita.
+        </p>
+      </div>
+
+      <!-- aside: ficha lateral -->
+      <aside class="story-aside">
+        <div class="aside-item">
+          <p class="aside-label">MOTIVAÇÃO</p>
+          <p class="aside-value">Amor por Julian; desejo de pertencer ao mundo humano</p>
+        </div>
+        <div class="aside-item">
+          <p class="aside-label">MAIOR ERRO</p>
+          <p class="aside-value"><em>Confiar em um mago desconhecido por impaciência</em></p>
+        </div>
+        <div class="aside-item">
+          <p class="aside-label">CONDIÇÃO ATUAL</p>
+          <p class="aside-value">Esqueleto humano — morta-viva consciente</p>
+        </div>
+        <div class="aside-item">
+          <p class="aside-label">CARACTERÍSTICA</p>
+          <p class="aside-value">Soberba, apaixonada, teimosa em existir</p>
+        </div>
+        <div class="aside-item">
+          <p class="aside-label">HABITAT ORIGINAL</p>
+          <p class="aside-value">Fronteira da Floresta Protegida</p>
+        </div>
+      </aside>
+    </div>
+
+    <!-- Linha do tempo -->
+    <div style="margin-top: 4rem;">
+      <p class="section-label">✦ linha do tempo</p>
+      <h3 style="font-family:var(--ff-display);font-size:1.4rem;color:var(--shimmer);margin-bottom:1rem;">Momentos que a <em>definiram</em></h3>
+      <div class="timeline">
+        <div class="timeline-event">
+          <p class="event-label">O INÍCIO</p>
+          <p class="event-title">Vida na fronteira</p>
+          <p class="event-desc">Gionna habita a borda da Floresta Protegida, observando o mundo humano com curiosidade distante — sem saber que esse mundo logo a consumiria.</p>
+        </div>
+        <div class="timeline-event highlight">
+          <p class="event-label">O ENCONTRO</p>
+          <p class="event-title">Julian chega na floresta</p>
+          <p class="event-desc">Uma excursão de caça traz Julian até suas fronteiras. O brilho dele — o riso, o olhar — prende Gionna de um jeito que ela não sabia ser possível.</p>
+        </div>
+        <div class="timeline-event">
+          <p class="event-label">O AMOR</p>
+          <p class="event-title">Encontros nas colinas</p>
+          <p class="event-desc">Cartas escondidas em árvores, tardes olhando para o céu, promessas sussurradas. Ela aprende o que é querer pertencer a alguém.</p>
+        </div>
+        <div class="timeline-event highlight">
+          <p class="event-label">A DECISÃO</p>
+          <p class="event-title">O mago e a poção</p>
+          <p class="event-desc">Certa de que amor é razão suficiente para qualquer transformação, Gionna procura um mago das redondezas e exige ser tornada humana.</p>
+        </div>
+        <div class="timeline-event highlight">
+          <p class="event-label">A MALDIÇÃO</p>
+          <p class="event-title">A pele que derreteu</p>
+          <p class="event-desc">A poção transforma — mas não da forma certa. Sua pele derrete, suas asas somem, e o que resta é um esqueleto humano com memória intacta de tudo que foi.</p>
+        </div>
+        <div class="timeline-event">
+          <p class="event-label">AGORA</p>
+          <p class="event-title">Osso e saudade</p>
+          <p class="event-desc">Gionna existe. Soberba o suficiente para não aceitar o fim. A história do que aconteceu depois ainda está sendo escrita.</p>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- ══ GALERIA ══ -->
+  <article class="page-section" id="galeria">
+    <p class="section-label">✦ arte</p>
+    <h2 class="section-title">Galeria de <em>Gionna</em></h2>
+    <div class="divider">🦋</div>
+    <div class="gallery-masonry">
+      <!-- Substitua os placeholders por <img> quando tiver arte:
+           <img src="gionna-1.jpg" alt="Gionna na floresta" onclick="openLightbox(this.src)"> -->
+      <div class="gallery-cell">
+        <div class="gallery-cell-placeholder">🦋<span>ARTE PRINCIPAL</span></div>
+      </div>
+      <div class="gallery-cell">
+        <div class="gallery-cell-placeholder">🌿<span>NA FLORESTA</span></div>
+      </div>
+      <div class="gallery-cell">
+        <div class="gallery-cell-placeholder">💌<span>CARTA DE AMOR</span></div>
+      </div>
+      <div class="gallery-cell">
+        <div class="gallery-cell-placeholder">💀<span>FORMA ATUAL</span></div>
+      </div>
+      <div class="gallery-cell">
+        <div class="gallery-cell-placeholder">🌙<span>NAS COLINAS</span></div>
+      </div>
+    </div>
+    <p style="margin-top:1.25rem;font-size:.9rem;color:var(--text-dim);font-style:italic;">
+      Para adicionar imagens, substitua cada <code style="color:var(--teal-light);font-size:.85rem;">.gallery-cell-placeholder</code> por uma tag <code style="color:var(--teal-light);font-size:.85rem;">&lt;img&gt;</code> apontando para o arquivo da arte.
+    </p>
+  </article>
+
+  <!-- ══ RELAÇÕES ══ -->
+  <article class="page-section" id="relacoes">
+    <p class="section-label">✦ vínculos</p>
+    <h2 class="section-title">Relações <em>importantes</em></h2>
+    <div class="divider">🦋</div>
+    <div class="relations-grid">
+
+      <div class="relation-card">
+        <div class="relation-avatar">♡</div>
+        <div>
+          <p class="relation-name">JULIAN</p>
+          <p class="relation-type">O amor da vida</p>
+          <p class="relation-desc">A razão de tudo. Foi por ele — pelo desejo impossível de ser real ao lado dele — que Gionna abriu mão do que era. Se ele sabe o que aconteceu, e o que sente sobre isso, é uma outra história.</p>
+          <a class="relation-link" href="julian.html">VER PÁGINA DE JULIAN →</a>
+        </div>
+      </div>
+
+      <div class="relation-card">
+        <div class="relation-avatar">⚗</div>
+        <div>
+          <p class="relation-name">O MAGO</p>
+          <p class="relation-type">O responsável pela maldição</p>
+          <p class="relation-desc">Ela foi até ele com certeza. Ele lhe deu o que pediu — ou algo parecido o suficiente para enganar. Se houve negligência, má-fé ou simplesmente incompetência, Gionna ainda não tem a resposta.</p>
+          <a class="relation-link" href="mago.html">VER PÁGINA DO MAGO →</a>
+        </div>
+      </div>
+
+    </div>
+  </article>
+
+  <!-- FOOTER -->
+  <footer>
+    <a class="footer-back" href="meu-mundo.html">← VOLTAR AO MUNDO</a>
+    <span class="footer-name">GIONNA · A FADA SOBERBA</span>
+    <p>um personagem de <em>Nome do Mundo</em></p>
+  </footer>
+
+  <script>
+    // Partículas flutuantes
+    const container = document.getElementById('particles');
+    for (let i = 0; i < 18; i++) {
+      const p = document.createElement('div');
+      p.className = 'particle';
+      p.style.cssText = `
+        left: ${Math.random() * 100}%;
+        bottom: ${Math.random() * 40}%;
+        --dur: ${6 + Math.random() * 8}s;
+        --delay: ${Math.random() * 6}s;
+        --drift: ${(Math.random() - .5) * 60}px;
+        width: ${2 + Math.random() * 3}px;
+        height: ${2 + Math.random() * 3}px;
+        opacity: 0;
+      `;
+      container.appendChild(p);
+    }
+
+    // Lightbox
+    function openLightbox(src) {
+      document.getElementById('lightbox-img').src = src;
+      document.getElementById('lightbox').classList.add('open');
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('open');
+    }
+    document.getElementById('lightbox').addEventListener('click', e => {
+      if (e.target === e.currentTarget) closeLightbox();
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+
+    // Ativa lightbox nas imagens da galeria
+    document.querySelectorAll('.gallery-cell img').forEach(img => {
+      img.addEventListener('click', () => openLightbox(img.src));
+    });
+  </script>
+</body>
+</html>
