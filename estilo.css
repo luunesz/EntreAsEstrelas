@@ -509,7 +509,7 @@
     width: 100%;
     height: 50%;
     /* border: 1px solid var(--border); */
-    padding: 6rem 2rem 5rem;
+    padding: 6rem;
     overflow-y: hidden;          /* rolagem vertical automática */
     overflow-x: auto;        /* sem rolagem horizontal */
     background-color: var(--bg);
