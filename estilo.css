@@ -419,10 +419,11 @@
       white-space: nowrap;
       align-self: start;
     }
-    .danger-low   { color: #7fb899; border-color: #7fb899; }
+    /*.danger-low   { color: #7fb899; border-color: #7fb899; }
     .danger-med   { color: var(--star); border-color: var(--star-dim); }
     .danger-high  { color: #b07a9e; border-color: #7a4a7a; }
-    .danger-fatal { color: #c97070; border-color: #6e2020; }
+    .danger-fatal { color: #c97070; border-color: #6e2020; }*/
+
 
     /* ════════════════════════════
        FAQ
