@@ -506,10 +506,10 @@
        ROLAGEM
     ════════════════════════════ */
      .scroll-box {
-    width: 3000px;              /* largura fixa */
-    height: 500px;             /* altura fixa */
-    border: 100px solid var(--bg);    /* borda para visualização */
-    padding: 100px;
+    width: 30000000px;              /* largura fixa */
+    height: 5000px;             /* altura fixa */
+    border: 1px solid var(--bg);    /* borda para visualização */
+    padding: 1px;
     overflow-y: auto;          /* rolagem vertical automática */
     overflow-x: hidden;        /* sem rolagem horizontal */
     background-color: var(--bg);
