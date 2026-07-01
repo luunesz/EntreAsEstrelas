@@ -507,9 +507,24 @@
     ════════════════════════════ */
      .scroll-box {
     width: 100%;
-    height: 50%;
-    padding: 6rem;
+    max-height: 32rem;         /* altura fixa para acionar a rolagem */
+    padding: 0;
     overflow-y: auto;          /* rolagem vertical automática */
     overflow-x: hidden;        /* sem rolagem horizontal */
     background-color: var(--bg);
+  }
+
+  /* barra de rolagem estilizada (Chrome, Edge, Safari) */
+  .scroll-box::-webkit-scrollbar { width: 8px; }
+  .scroll-box::-webkit-scrollbar-track { background: var(--bg2); }
+  .scroll-box::-webkit-scrollbar-thumb {
+    background: var(--teal);
+    border-radius: 4px;
+  }
+  .scroll-box::-webkit-scrollbar-thumb:hover { background: var(--teal-light); }
+
+  /* barra de rolagem estilizada (Firefox) */
+  .scroll-box {
+    scrollbar-width: thin;
+    scrollbar-color: var(--teal) var(--bg2);
   }
