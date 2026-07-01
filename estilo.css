@@ -298,11 +298,28 @@
        PERSONAGENS
     ════════════════════════════ */
     #personagens { border-top: 1px solid var(--border); }
-    .char-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 1.25rem;
+    .char-scroll-box {
       margin-top: 2rem;
+      overflow-x: auto;
+      overflow-y: hidden;
+      padding-bottom: 1.25rem;   /* espaço para a barra de rolagem não colar nos cards */
+    }
+    .char-grid {
+      display: flex;
+      gap: 1.25rem;
+      width: max-content;        /* impede que os cards encolham/quebrem linha */
+    }
+    /* barra de rolagem horizontal estilizada */
+    .char-scroll-box::-webkit-scrollbar { height: 8px; }
+    .char-scroll-box::-webkit-scrollbar-track { background: var(--bg2); }
+    .char-scroll-box::-webkit-scrollbar-thumb {
+      background: var(--teal);
+      border-radius: 4px;
+    }
+    .char-scroll-box::-webkit-scrollbar-thumb:hover { background: var(--teal-light); }
+    .char-scroll-box {
+      scrollbar-width: thin;
+      scrollbar-color: var(--teal) var(--bg2);
     }
     .char-card {
       background: var(--bg2);
@@ -314,6 +331,11 @@
       text-decoration: none;
       display: block;
       color: inherit;
+    }
+    /* largura fixa só para os cards dentro do carrossel de personagens
+       (não afeta os botões "char-card" usados em outras seções) */
+    #personagens .char-grid .char-card {
+      flex: 0 0 200px;
     }
     .char-card:hover {
       border-color: var(--teal);
@@ -497,7 +519,6 @@
       .nav-links a { font-size: .8rem; }
       .gallery-grid { grid-template-columns: repeat(2, 1fr); }
       .gallery-item:first-child { grid-row: span 1; aspect-ratio: 3/4; }
-      .char-grid { grid-template-columns: repeat(2, 1fr); }
       .creature-item { grid-template-columns: 2rem 1fr; }
       .creature-danger { display: none; }
     }
