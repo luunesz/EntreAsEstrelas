@@ -11,6 +11,21 @@
 </head>
 <body>
 
+  <!-- LIGHTBOX DO MAPA -->
+  <div id="lightbox-mapa" style="
+    display:none; position:fixed; inset:0; z-index:200;
+    background:rgba(8,14,22,.93); align-items:center; justify-content:center;
+    backdrop-filter:blur(6px);">
+    <button onclick="document.getElementById('lightbox-mapa').style.display='none'" style="
+      position:absolute; top:1.5rem; right:2rem;
+      background:none; border:none; cursor:pointer;
+      font-size:1.3rem; color:#6e8ba8; font-family:'Cinzel',serif;
+      letter-spacing:.1em; transition:color .25s;">✕ fechar</button>
+    <img id="lightbox-mapa-img" src="" alt="Mapa ampliado" style="
+      max-width:90vw; max-height:88vh;
+      border:1px solid rgba(89,118,124,.22); display:block;">
+  </div>
+
   <!-- NAV -->
   <nav>
     <a class="nav-title" href="#home">✦ Casa</a>
@@ -167,10 +182,10 @@
     <div class="prose">
       <a class="char-card" href="ReinoPolarisMapa.html"><p>VER PÁGINA DA GEOGRAFIA DO REINO →</p></a>
     </div>
-    <div class="map-container">
+    <div class="map-container" onclick="openMapa('mapa.jpeg')" style="cursor:zoom-in;" title="Clique para ampliar">
       <img src="mapa.jpeg" alt="Mapa do mundo">
       <div class="map-placeholder">🗺</div>
-      <p class="map-label">MAPA</p>
+      <p class="map-label">MAPA · clique para ampliar</p>
     </div>
   </section>
 
@@ -310,6 +325,19 @@
   </footer>
 
   <script>
+    // Lightbox do mapa
+    function openMapa(src) {
+      const lb = document.getElementById('lightbox-mapa');
+      document.getElementById('lightbox-mapa-img').src = src;
+      lb.style.display = 'flex';
+    }
+    document.getElementById('lightbox-mapa').addEventListener('click', e => {
+      if (e.target === e.currentTarget) e.currentTarget.style.display = 'none';
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') document.getElementById('lightbox-mapa').style.display = 'none';
+    });
+
     document.querySelectorAll('.faq-q').forEach(btn => {
       btn.addEventListener('click', () => {
         const item = btn.parentElement;
