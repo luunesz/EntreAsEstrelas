@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Entre As Estrelas — Reino Polaris</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=IM+Fell+English:ital@0;1&family=Cinzel:wght@400;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="estiloPersonagens.css">
+  <link rel="icon" type="image/x-icon" href="iconSOL.jpeg">
+
+</head>
+<body>
+  <!-- ══ HISTÓRIA ══ -->
+  <article class="page-section" id="historia">
+    <p class="section-label">✦ História</p>
+    <h2 class="section-title">A <em>Lenda</em> dos Kelpies</h2>
+    <div class="divider">🐎</div>
+
+    <div class="story-block">
+      <div class="story-text">
+        <p>Textos...</p>
+      </div>
+
+
+  <!-- ══ GALERIA ══ -->
+  <article class="page-section" id="galeria">
+    <p class="section-label">✦ arte</p>
+    <h2 class="section-title">Galeria de <em>Kelpies</em></h2>
+    <div class="divider">🐎</div>
+    <div class="gallery-masonry">
+      <div class="gallery-cell">
+        <div class="gallery-cell-placeholder">🫧<span>AS MARGENS DO RIO</span></div>
+        <img src="Kelpie1.jpg">
+      </div>
+      <div class="gallery-cell">
+        <div class="gallery-cell-placeholder">🌊<span>ADENTRE A ÁGUA</span></div>
+         <img src="Kelpie2.jpg">
+      </div>
+      <div class="gallery-cell">
+        <div class="gallery-cell-placeholder">🌕<span>A LUZ DO LUAR</span></div>
+        <img src="Kelpie3.jpg">
+      </div>
+      <div class="gallery-cell">
+        <div class="gallery-cell-placeholder">🪦<span>GESTOS VAZIOS</span></div>
+        <img src="Kelpie4.jpg">
+      </div>
+    </div>
+  </article>
+
+  <!-- FOOTER -->
+  <footer>
+    <a class="footer-back" href="index.html">← VOLTAR A CASA</a>
+    <span class="footer-name">KELPIE · O CAVALO BRANCO</span>
+    <p>Uma criatura de <em>Entre as Estrelas</em></p>
+  </footer>
+
+  <script>
+    // Partículas flutuantes
+    const container = document.getElementById('particles');
+    for (let i = 0; i < 18; i++) {
+      const p = document.createElement('div');
+      p.className = 'particle';
+      p.style.cssText = `
+        left: ${Math.random() * 100}%;
+        bottom: ${Math.random() * 40}%;
+        --dur: ${6 + Math.random() * 8}s;
+        --delay: ${Math.random() * 6}s;
+        --drift: ${(Math.random() - .5) * 60}px;
+        width: ${2 + Math.random() * 3}px;
+        height: ${2 + Math.random() * 3}px;
+        opacity: 0;
+      `;
+      container.appendChild(p);
+    }
+
+    // Lightbox
+    function openLightbox(src) {
+      document.getElementById('lightbox-img').src = src;
+      document.getElementById('lightbox').classList.add('open');
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('open');
+    }
+    document.getElementById('lightbox').addEventListener('click', e => {
+      if (e.target === e.currentTarget) closeLightbox();
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+
+    // Ativa lightbox nas imagens da galeria
+    document.querySelectorAll('.gallery-cell img').forEach(img => {
+      img.addEventListener('click', () => openLightbox(img.src));
+    });
+  </script>
+</body>
+</html>
