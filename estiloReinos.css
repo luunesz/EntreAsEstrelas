@@ -1,0 +1,352 @@
+/*
+    ══════════════════════════════════════════
+      GUIA DE CORES POR REINO
+      (troque as variáveis --accent e --accent-dim
+       ao duplicar esse arquivo para outro reino)
+
+      Reino Polaris       → #c9a030 / #7a5c10  (dourado)
+      Reino Flutuante     → #3a9e6e / #1f5c3e  (verde-esmeralda)
+      Reino Chama Eterna  → #c47a2a / #7a4510  (âmbar/cobre)
+      Reino de Aucrib     → #6a9ec4 / #2a4f6e  (azul-gelo)
+      Reino de Leskie     → #3a6ea8 / #1a3a60  (azul-oceano)
+    ══════════════════════════════════════════
+    */
+    :root {
+      --accent:      #c9a030;
+      --accent-dim:  #7a5c10;
+      --accent-glow: rgba(201,160,48,0.12);
+    }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-rows: 1fr auto;
+      align-items: end;
+      position: relative;
+      overflow: hidden;
+      padding-top: 4rem;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 50% 40%, var(--accent-glow) 0%, transparent 65%),
+        linear-gradient(to bottom, #060d18 0%, #0a1525 50%, #0e1a2b 100%);
+    }
+    /* estrelas */
+    .hero-bg::before {
+      content: '';
+      position: absolute; inset: 0; pointer-events: none;
+      background-image:
+        radial-gradient(1.5px 1.5px at 10% 15%, rgba(201,160,48,.8) 0%, transparent 100%),
+        radial-gradient(1px 1px   at 75% 8%,  rgba(201,160,48,.5) 0%, transparent 100%),
+        radial-gradient(1px 1px   at 50% 25%, rgba(201,160,48,.7) 0%, transparent 100%),
+        radial-gradient(1px 1px   at 30% 50%, rgba(201,160,48,.3) 0%, transparent 100%),
+        radial-gradient(1px 1px   at 88% 35%, rgba(201,160,48,.6) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 60% 12%, rgba(201,160,48,.9) 0%, transparent 100%),
+        radial-gradient(1px 1px   at 5%  65%, rgba(201,160,48,.4) 0%, transparent 100%),
+        radial-gradient(1px 1px   at 42% 78%, rgba(201,160,48,.3) 0%, transparent 100%),
+        radial-gradient(1px 1px   at 92% 70%, rgba(201,160,48,.5) 0%, transparent 100%);
+      animation: twinkle 7s ease-in-out infinite alternate;
+    }
+    @keyframes twinkle { from { opacity:.5; } to { opacity:1; } }
+
+    /* imagem de fundo do hero */
+    .hero-img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      opacity: .15;
+      filter: saturate(1.2);
+    }
+
+    /* conteúdo central do hero */
+    .hero-center {
+      position: relative; z-index: 1;
+      text-align: center;
+      padding: 0 2rem;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      min-height: 80vh;
+    }
+    .hero-eyebrow {
+      font-family: var(--ff-title);
+      font-size: .65rem; letter-spacing: .5em;
+      color: var(--teal-light); margin-bottom: 1rem;
+    }
+    .hero-symbol {
+      font-size: 2.5rem; color: var(--accent);
+      display: block; margin-bottom: .75rem;
+      filter: drop-shadow(0 0 18px rgba(201,160,48,.7));
+      animation: pulse-glow 3.5s ease-in-out infinite alternate;
+    }
+    @keyframes pulse-glow {
+      from { filter: drop-shadow(0 0 10px rgba(201,160,48,.4)); }
+      to   { filter: drop-shadow(0 0 30px rgba(201,160,48,.95)); }
+    }
+    .hero-name {
+      font-family: var(--ff-display);
+      font-size: clamp(3.5rem, 9vw, 7rem);
+      color: var(--shimmer);
+      line-height: 1; margin-bottom: .5rem; font-weight: 400;
+    }
+    .hero-name em { color: var(--accent); font-style: italic; }
+    .hero-subtitle {
+      font-family: var(--ff-display);
+      font-size: 1.2rem; font-style: italic;
+      color: var(--text-dim); margin-bottom: 2rem;
+      display: flex; align-items: center; gap: .75rem; justify-content: center;
+    }
+    .hero-subtitle::before, .hero-subtitle::after {
+      content: ''; width: 40px; height: 1px; background: var(--accent-dim);
+    }
+    .hero-tags {
+      display: flex; flex-wrap: wrap; gap: .5rem; justify-content: center;
+      margin-bottom: 2.5rem;
+    }
+    .hero-tag {
+      font-family: var(--ff-title);
+      font-size: .6rem; letter-spacing: .2em;
+      color: var(--accent);
+      border: 1px solid var(--accent-dim);
+      padding: .25rem .75rem;
+    }
+    .hero-intro {
+      font-size: 1.1rem; color: var(--text-dim);
+      font-style: italic; max-width: 560px;
+      line-height: 1.8; margin-bottom: 2.5rem;
+    }
+    .hero-intro strong { color: var(--text); font-style: normal; }
+
+    /* barra de navegação interna no rodapé do hero */
+    .hero-nav {
+      position: relative; z-index: 1;
+      display: flex; justify-content: center;
+      border-top: 1px solid var(--border);
+      background: linear-gradient(transparent, rgba(10,20,37,.8));
+    }
+    .hero-nav a {
+      font-family: var(--ff-title);
+      font-size: .62rem; letter-spacing: .25em;
+      color: var(--text-dim);
+      text-decoration: none;
+      padding: 1.1rem 2rem;
+      border-right: 1px solid var(--border);
+      transition: color .25s, background .25s;
+    }
+    .hero-nav a:first-child { border-left: 1px solid var(--border); }
+    .hero-nav a:hover { color: var(--accent); background: rgba(201,160,48,.04); }
+
+    /* ── SEÇÕES ── */
+    .reino-section {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 5.5rem 2rem;
+      border-top: 1px solid var(--border);
+      scroll-margin-top: 5rem;
+    }
+    .section-label {
+      font-family: var(--ff-title);
+      font-size: .65rem; letter-spacing: .45em;
+      color: var(--accent); margin-bottom: .6rem;
+      opacity: .8;
+    }
+    .section-title {
+      font-family: var(--ff-display);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      color: var(--shimmer); line-height: 1.1;
+      margin-bottom: .5rem;
+    }
+    .section-title em { color: var(--accent); font-style: italic; }
+    .divider-line {
+      display: flex; align-items: center; gap: .75rem;
+      color: var(--accent-dim); font-size: .85rem;
+      margin: 1.25rem 0 2.5rem;
+    }
+    .divider-line::after { content:''; flex:1; height:1px; background:var(--border); }
+
+    /* texto corrido */
+    .prose-block {
+      color: var(--text-dim);
+      font-size: 1.1rem; line-height: 1.85;
+      max-width: 680px;
+    }
+    .prose-block p { margin-bottom: 1.1rem; }
+    .prose-block strong { color: var(--text); }
+    .prose-block em { color: var(--accent); font-style: italic; }
+
+    /* layout com aside */
+    .section-with-aside {
+      display: grid;
+      grid-template-columns: 1fr 230px;
+      gap: 3rem;
+      align-items: start;
+    }
+    .section-aside {
+      border: 1px solid var(--border);
+      position: sticky; top: 5.5rem;
+    }
+    .aside-row {
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg2);
+    }
+    .aside-row:last-child { border-bottom: none; }
+    .aside-label {
+      font-family: var(--ff-title);
+      font-size: .55rem; letter-spacing: .25em;
+      color: var(--accent); opacity:.8;
+      margin-bottom: .25rem;
+    }
+    .aside-value {
+      font-size: .95rem; color: var(--text-dim); line-height: 1.5;
+    }
+    .aside-value em { color: var(--accent); font-style: italic; }
+
+    /* mapa / imagem geográfica */
+    .geo-image {
+      width: 100%; aspect-ratio: 16/9;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      overflow: hidden; position: relative;
+      margin-bottom: 2rem; cursor: zoom-in;
+    }
+    .geo-image img {
+      width: 100%; height: 100%;
+      object-fit: cover; opacity: .8;
+      transition: opacity .35s, transform .4s;
+    }
+    .geo-image:hover img { opacity: 1; transform: scale(1.02); }
+    .geo-placeholder {
+      width: 100%; height: 100%;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: .75rem; color: var(--accent); opacity: .25;
+      font-size: 3rem;
+    }
+    .geo-placeholder span {
+      font-family: var(--ff-title);
+      font-size: .65rem; letter-spacing: .3em;
+      color: var(--text-dim); opacity: 1;
+    }
+
+    /* cards de figuras importantes */
+    .figures-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: .5rem;
+    }
+    .figure-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      padding: 1.5rem 1.25rem;
+      text-align: center;
+      transition: border-color .3s, transform .3s;
+      text-decoration: none; display: block; color: inherit;
+    }
+    .figure-card:hover {
+      border-color: var(--accent-dim);
+      transform: translateY(-3px);
+    }
+    .figure-avatar {
+      width: 70px; height: 70px;
+      border-radius: 50%;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      margin: 0 auto .9rem;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.8rem; color: var(--accent);
+      overflow: hidden;
+    }
+    .figure-avatar img {
+      width: 100%; height: 100%; object-fit: cover; opacity: .85;
+    }
+    .figure-name {
+      font-family: var(--ff-title);
+      font-size: .72rem; letter-spacing: .15em;
+      color: var(--shimmer); margin-bottom: .2rem;
+    }
+    .figure-title {
+      font-size: .9rem; color: var(--text-dim); font-style: italic;
+      margin-bottom: .6rem;
+    }
+    .figure-tag {
+      font-family: var(--ff-title);
+      font-size: .58rem; letter-spacing: .12em;
+      color: var(--accent);
+      border: 1px solid var(--accent-dim);
+      padding: .15rem .5rem;
+      display: inline-block;
+    }
+    .figure-link {
+      display: block; margin-top: .75rem;
+      font-family: var(--ff-title);
+      font-size: .58rem; letter-spacing: .18em;
+      color: var(--text-dim);
+      border-top: 1px solid var(--border);
+      padding-top: .6rem;
+      transition: color .25s;
+      text-decoration: none;
+    }
+    .figure-card:hover .figure-link { color: var(--accent); }
+
+    /* cards de folclore */
+    .folklore-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.25rem; margin-top: .5rem;
+    }
+    .folklore-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      padding: 1.75rem 1.5rem;
+      position: relative;
+      transition: border-color .3s;
+    }
+    .folklore-card:hover { border-color: var(--accent-dim); }
+    .folklore-card::before {
+      content: attr(data-symbol);
+      position: absolute; top: 1rem; right: 1.25rem;
+      font-size: 1.4rem; color: var(--accent); opacity: .25;
+    }
+    .folklore-card-label {
+      font-family: var(--ff-title);
+      font-size: .6rem; letter-spacing: .25em;
+      color: var(--accent); margin-bottom: .5rem; opacity: .8;
+    }
+    .folklore-card-title {
+      font-family: var(--ff-display);
+      font-size: 1.2rem; color: var(--shimmer);
+      margin-bottom: .6rem;
+    }
+    .folklore-card-desc {
+      font-size: 1rem; color: var(--text-dim); line-height: 1.65;
+    }
+    .folklore-card-desc em { color: var(--accent); font-style: italic; }
+
+    /* lightbox */
+    #lightbox-reino {
+      display: none; position: fixed; inset: 0; z-index: 200;
+      background: rgba(6,13,24,.94);
+      align-items: center; justify-content: center;
+      backdrop-filter: blur(6px);
+    }
+    #lightbox-reino.open { display: flex; }
+    #lightbox-reino img { max-width: 90vw; max-height: 88vh; border: 1px solid var(--border); }
+    #lightbox-reino button {
+      position: absolute; top: 1.5rem; right: 2rem;
+      background: none; border: none; cursor: pointer;
+      font-size: 1.2rem; color: var(--text-dim);
+      font-family: var(--ff-title); letter-spacing: .1em;
+      transition: color .25s;
+    }
+    #lightbox-reino button:hover { color: var(--accent); }
+
+    /* responsive */
+    @media (max-width: 760px) {
+      .section-with-aside { grid-template-columns: 1fr; }
+      .section-aside { position: static; }
+      .hero-nav a { padding: .9rem 1rem; font-size: .55rem; }
+      .figures-grid { grid-template-columns: repeat(2, 1fr); }
+    }

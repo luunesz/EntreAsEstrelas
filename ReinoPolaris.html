@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Entre as Estrelas — Reino Polaris</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=IM+Fell+English:ital@0;1&family=Cinzel:wght@400;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="estiloPersonagens.css">
+  <link rel="icon" type="image/x-icon" href="iconSOL.jpeg">
+  <link rel="stylesheet" href="estiloReinos.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-home" href="index.html">← Casa</a>
+    <span class="nav-char">✦ REINO POLARIS</span>
+  </nav>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox-reino">
+    <button onclick="closeLightbox()">✕ fechar</button>
+    <img id="lightbox-reino-img" src="" alt="">
+  </div>
+
+  <!-- ══ HERO ══ -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <!-- <img class="hero-img" src="ReinoPolarisHero.jpg" alt=""> -->
+
+    <div class="hero-center">
+      <p class="hero-eyebrow">✦ &nbsp; os reinos &nbsp; ✦</p>
+      <span class="hero-symbol">🎇</span>
+      <h1 class="hero-name">Reino <em>Polaris</em></h1>
+      <p class="hero-subtitle">Onde tudo nasce e morre</p>
+      <div class="hero-tags">
+        <span class="hero-tag">INSERIR TAG</span>
+        <span class="hero-tag">INSERIR TAG</span>
+        <span class="hero-tag">INSERIR TAG</span>
+      </div>
+      <p class="hero-intro">
+        Inserir texto...
+      </p>
+    </div>
+
+    <!-- nav interna -->
+    <div class="hero-nav">
+      <a href="#origem">ORIGEM</a>
+      <a href="#geografia">GEOGRAFIA</a>
+      <a href="#figuras">FIGURAS</a>
+      <a href="#folclore">FOLCLORE</a>
+    </div>
+  </section>
+
+  <!-- ══ ORIGEM ══ -->
+  <section class="reino-section" id="origem">
+    <p class="section-label">✦ história</p>
+    <h2 class="section-title">Origem & <em>Fundação</em></h2>
+    <div class="divider-line">🎇</div>
+
+    <div class="section-with-aside">
+      <div class="prose-block">
+        <p>Inserir texto...</p>
+        <p>Inserir texto...</p>
+        <p>Inserir texto...</p>
+      </div>
+
+      <aside class="section-aside">
+        <div class="aside-row">
+          <p class="aside-label">FUNDADO POR</p>
+          <p class="aside-value"><em>Inserir texto...</em></p>
+        </div>
+        <div class="aside-row">
+          <p class="aside-label">ERA</p>
+          <p class="aside-value">Inserir texto...</p>
+        </div>
+        <div class="aside-row">
+          <p class="aside-label">CAPITAL</p>
+          <p class="aside-value">Inserir texto...</p>
+        </div>
+        <div class="aside-row">
+          <p class="aside-label">GOVERNO</p>
+          <p class="aside-value"><em>Inserir texto...</em></p>
+        </div>
+        <div class="aside-row">
+          <p class="aside-label">DIVINDADE</p>
+          <p class="aside-value">Inserir texto...</p>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ══ GEOGRAFIA ══ -->
+  <section class="reino-section" id="geografia">
+    <p class="section-label">✦ cartografia</p>
+    <h2 class="section-title">Geografia & <em>Territórios</em></h2>
+    <div class="divider-line">🗺</div>
+
+    <!-- imagem do mapa/território -->
+    <div class="geo-image" onclick="openLightbox('ReinoPolarisMapaDetalhe.jpg')">
+      <!-- <img src="ReinoPolarisMapaDetalhe.jpg" alt="Mapa do Reino Polaris"> -->
+      <div class="geo-placeholder">
+        🗺 <span>MAPA DO REINO · clique para ampliar</span>
+      </div>
+    </div>
+
+    <div class="section-with-aside">
+      <div class="prose-block">
+        <p>Inserir texto...</p>
+
+        <!-- ── CIDADES ── -->
+        <div style="margin-top:2rem;">
+
+          <div style="margin-bottom:2rem; padding-bottom:2rem; border-bottom:1px solid var(--border);">
+            <p style="font-family:var(--ff-title);font-size:.65rem;letter-spacing:.3em;color:var(--accent);margin-bottom:.3rem;">ANWAR</p>
+            <p style="font-family:var(--ff-display);font-size:1.2rem;color:var(--shimmer);margin-bottom:.5rem;"><em>Cidade de Hélios</em></p>
+            <p>Sede da <strong>Família Real Polar</strong> e base militar do reino. Anwar é o coração pulsante do poder — refinada, serena, perfumada de jasmim. Paz e calmaria permeiam cada rua pavimentada, como se a própria cidade soubesse que carrega o peso de uma coroa.</p>
+          </div>
+
+          <div style="margin-bottom:2rem; padding-bottom:2rem; border-bottom:1px solid var(--border);">
+            <p style="font-family:var(--ff-title);font-size:.65rem;letter-spacing:.3em;color:var(--accent);margin-bottom:.3rem;">ALIFA</p>
+            <p style="font-family:var(--ff-display);font-size:1.2rem;color:var(--shimmer);margin-bottom:.5rem;"><em>Rancho Magnos</em></p>
+            <p>Administrada pela <strong>Família Magnos</strong>, é onde se forja a força do reino. O treinamento da guarda real, o adestramento dos animais e — mais notavelmente — a criação de <em>dragões</em> acontecem em seus vastos campos. O ar cheira a metal, suor e terra batida; os dragões caminham livres pelo terreno como se fossem cavalos domesticados.</p>
+          </div>
+
+          <div style="margin-bottom:2rem; padding-bottom:2rem; border-bottom:1px solid var(--border);">
+            <p style="font-family:var(--ff-title);font-size:.65rem;letter-spacing:.3em;color:var(--accent);margin-bottom:.3rem;">YILDUN</p>
+            <p style="font-family:var(--ff-display);font-size:1.2rem;color:var(--shimmer);margin-bottom:.5rem;"><em>Cidade Dourada</em></p>
+            <p>Administrada pela <strong>Família Midas</strong>, Yildun é o centro econômico do reino — barulhenta, perfumada de especiarias, tecidos novos e comidas quentes. Aqui acontecem as maiores feiras comerciais do Reino Polaris, e é aqui também que se produz o <em>Ouro</em>, a moeda oficial do reino.</p>
+          </div>
+
+          <div style="margin-bottom:2rem; padding-bottom:2rem; border-bottom:1px solid var(--border);">
+            <p style="font-family:var(--ff-title);font-size:.65rem;letter-spacing:.3em;color:var(--accent);margin-bottom:.3rem;">URUDELOS</p>
+            <p style="font-family:var(--ff-display);font-size:1.2rem;color:var(--shimmer);margin-bottom:.5rem;"><em>Salandrine</em></p>
+            <p>Administrada pela <strong>Família Willoen</strong>, Urudelos é a fonte principal de alimento do reino. Vilas costeiras aconchegantes, abastecidas pela abundância da <em>Ilha da Baleia</em> — o cheiro de peixe e água salgada é constante, mas ao cair da noite, a orla se torna estranhamente pacífica. O prato principal da região é a carne de salamandras gigantes.</p>
+          </div>
+
+          <div style="margin-bottom:2rem; padding-bottom:2rem; border-bottom:1px solid var(--border);">
+            <p style="font-family:var(--ff-title);font-size:.65rem;letter-spacing:.3em;color:var(--accent);margin-bottom:.3rem;">KORCHAB</p>
+            <p style="font-family:var(--ff-display);font-size:1.2rem;color:var(--shimmer);margin-bottom:.5rem;"><em>Cidade Celeste</em></p>
+            <p>Administrada pela <strong>Família Cecília</strong>, Korchab é o portal do reino para o mundo exterior. Desenvolvida, tumultuada, repleta de lojas e visitantes de outras terras — o cheiro de fumaça que paira no ar é quase arrepiante, como se a cidade nunca descansasse.</p>
+          </div>
+
+          <div>
+            <p style="font-family:var(--ff-title);font-size:.65rem;letter-spacing:.3em;color:var(--accent);margin-bottom:.3rem;">PERKAD</p>
+            <p style="font-family:var(--ff-display);font-size:1.2rem;color:var(--shimmer);margin-bottom:.5rem;"><em>Pastorinho</em></p>
+            <p>Administrada pela <strong>Família Strix</strong>, Perkad é a cidade mais nova do Reino Polaris — ainda estabelecendo seu lugar. Vilas distantes entre si, campos abertos, ar fresco. Sua base é a <em>agricultura e a pecuária</em>, e há algo de promissor em sua vastidão ainda não inteiramente mapeada.</p>
+          </div>
+
+        </div>
+      </div>
+
+      <aside class="section-aside">
+        <div class="aside-row">
+          <p class="aside-label">CLIMA</p>
+          <p class="aside-value">Inserir texto...</p>
+        </div>
+        <div class="aside-row">
+          <p class="aside-label">BIOMA</p>
+          <p class="aside-value"><em>Inserir texto...</em></p>
+        </div>
+        <div class="aside-row">
+          <p class="aside-label">FRONTEIRAS</p>
+          <p class="aside-value">Inserir texto...</p>
+        </div>
+        <div class="aside-row">
+          <p class="aside-label">CIDADES</p>
+          <p class="aside-value">Anwar · Alifa · Yildun · Urudelos · Korchab · <em>Perkad</em></p>
+        </div>
+        <div class="aside-row">
+          <p class="aside-label">MOEDA</p>
+          <p class="aside-value"><em>Ouro (produzido em Yildun)</em></p>
+        </div>
+        <div class="aside-row">
+          <p class="aside-label">ALIMENTO BASE</p>
+          <p class="aside-value">Salamandras gigantes · pesca da Ilha da Baleia</p>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ══ FIGURAS IMPORTANTES ══ -->
+  <section class="reino-section" id="figuras">
+    <p class="section-label">✦ elenco do reino</p>
+    <h2 class="section-title">Figuras <em>Importantes</em></h2>
+    <div class="divider-line">♔</div>
+
+    <div class="prose-block" style="margin-bottom:2rem;">
+      <p>Inserir texto...</p>
+    </div>
+
+    <div class="figures-grid">
+
+      <a class="figure-card" href="#">
+        <div class="figure-avatar">♔</div>
+        <p class="figure-name">INSERIR NOME</p>
+        <p class="figure-title">Inserir título</p>
+        <span class="figure-tag">INSERIR TAG</span>
+        <span class="figure-link">VER PÁGINA →</span>
+      </a>
+
+      <a class="figure-card" href="#">
+        <div class="figure-avatar">⚔</div>
+        <p class="figure-name">INSERIR NOME</p>
+        <p class="figure-title">Inserir título</p>
+        <span class="figure-tag">INSERIR TAG</span>
+        <span class="figure-link">VER PÁGINA →</span>
+      </a>
+
+      <a class="figure-card" href="#">
+        <div class="figure-avatar">✦</div>
+        <p class="figure-name">INSERIR NOME</p>
+        <p class="figure-title">Inserir título</p>
+        <span class="figure-tag">INSERIR TAG</span>
+        <span class="figure-link">VER PÁGINA →</span>
+      </a>
+
+      <a class="figure-card" href="#">
+        <div class="figure-avatar">🜁</div>
+        <p class="figure-name">INSERIR NOME</p>
+        <p class="figure-title">Inserir título</p>
+        <span class="figure-tag">INSERIR TAG</span>
+        <span class="figure-link">VER PÁGINA →</span>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ══ FOLCLORE & CULTURA ══ -->
+  <section class="reino-section" id="folclore">
+    <p class="section-label">✦ tradições</p>
+    <h2 class="section-title">Folclore & <em>Cultura</em></h2>
+    <div class="divider-line">🌟</div>
+
+    <div class="prose-block" style="margin-bottom:2rem;">
+      <p>Inserir texto...</p>
+    </div>
+
+    <div class="folklore-grid">
+
+      <div class="folklore-card" data-symbol="📖">
+        <p class="folklore-card-label">LENDA</p>
+        <h3 class="folklore-card-title">Inserir título</h3>
+        <p class="folklore-card-desc">Inserir texto...</p>
+      </div>
+
+      <div class="folklore-card" data-symbol="🎶">
+        <p class="folklore-card-label">TRADIÇÃO</p>
+        <h3 class="folklore-card-title">Inserir título</h3>
+        <p class="folklore-card-desc">Inserir texto...</p>
+      </div>
+
+      <div class="folklore-card" data-symbol="⚱">
+        <p class="folklore-card-label">COSTUME</p>
+        <h3 class="folklore-card-title">Inserir título</h3>
+        <p class="folklore-card-desc">Inserir texto...</p>
+      </div>
+
+      <div class="folklore-card" data-symbol="🌿">
+        <p class="folklore-card-label">CRENÇA</p>
+        <h3 class="folklore-card-title">Inserir título</h3>
+        <p class="folklore-card-desc">Inserir texto...</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <a class="footer-back" href="index.html">← VOLTAR A CASA</a>
+    <span class="footer-name">✦ REINO POLARIS ✦</span>
+    <p>um reino de <em>Entre as Estrelas</em></p>
+  </footer>
+
+  <script>
+    // Lightbox do mapa
+    function openLightbox(src) {
+      document.getElementById('lightbox-reino-img').src = src;
+      document.getElementById('lightbox-reino').classList.add('open');
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox-reino').classList.remove('open');
+    }
+    document.getElementById('lightbox-reino').addEventListener('click', e => {
+      if (e.target === e.currentTarget) closeLightbox();
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+
+    // Highlight nav interna ao rolar
+    const navLinks = document.querySelectorAll('.hero-nav a');
+    const sections = document.querySelectorAll('.reino-section[id]');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(l => l.style.color = '');
+          const active = document.querySelector(`.hero-nav a[href="#${entry.target.id}"]`);
+          if (active) active.style.color = 'var(--accent)';
+        }
+      });
+    }, { rootMargin: '-30% 0px -60% 0px' });
+    sections.forEach(s => observer.observe(s));
+  </script>
+
+</body>
+</html>
