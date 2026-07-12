@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Entre as Estrelas — Dinastia Polar</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=IM+Fell+English:ital@0;1&family=Cinzel:wght@400;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="estiloPersonagens.css">
+  <link rel="stylesheet" href="estiloReinos.css">
+  <link rel="icon" type="image/x-icon" href="iconSOL.jpeg">
+  <style>
+    :root {
+      --accent:      #c9a030;
+      --accent-dim:  #7a5c10;
+      --accent-glow: rgba(201,160,48,0.12);
+    }
+
+    /* hero compacto */
+    #hero-dinastia {
+      min-height: 55vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      padding: 7rem 2rem 4rem;
+      position: relative; overflow: hidden;
+      background:
+        radial-gradient(ellipse 55% 55% at 50% 40%, var(--accent-glow) 0%, transparent 65%),
+        linear-gradient(to bottom, #060d18 0%, #0e1a2b 100%);
+    }
+    #hero-dinastia::before {
+      content: '';
+      position: absolute; inset: 0; pointer-events: none;
+      background-image:
+        radial-gradient(1.5px 1.5px at 15% 20%, rgba(201,160,48,.8) 0%, transparent 100%),
+        radial-gradient(1px 1px   at 80% 10%, rgba(201,160,48,.5) 0%, transparent 100%),
+        radial-gradient(1px 1px   at 50% 30%, rgba(201,160,48,.7) 0%, transparent 100%),
+        radial-gradient(1px 1px   at 30% 55%, rgba(201,160,48,.3) 0%, transparent 100%),
+        radial-gradient(1px 1px   at 90% 45%, rgba(201,160,48,.6) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 65% 15%, rgba(201,160,48,.9) 0%, transparent 100%),
+        radial-gradient(1px 1px   at 5%  70%, rgba(201,160,48,.4) 0%, transparent 100%),
+        radial-gradient(1px 1px   at 45% 80%, rgba(201,160,48,.3) 0%, transparent 100%);
+      animation: twinkle 6s ease-in-out infinite alternate;
+    }
+    @keyframes twinkle { from { opacity:.5; } to { opacity:1; } }
+
+    .hero-content { position: relative; z-index: 1; }
+
+    /* brasão / separador ornamental */
+    .dynasty-crest {
+      font-size: 2rem; color: var(--accent);
+      display: block; margin-bottom: .75rem;
+      filter: drop-shadow(0 0 16px rgba(201,160,48,.7));
+      animation: pulse-glow 3.5s ease-in-out infinite alternate;
+    }
+    @keyframes pulse-glow {
+      from { filter: drop-shadow(0 0 10px rgba(201,160,48,.4)); }
+      to   { filter: drop-shadow(0 0 28px rgba(201,160,48,.95)); }
+    }
+    .dynasty-eyebrow {
+      font-family: var(--ff-title);
+      font-size: .65rem; letter-spacing: .5em;
+      color: var(--teal-light); margin-bottom: .75rem;
+    }
+    .dynasty-title {
+      font-family: var(--ff-display);
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      color: var(--shimmer); line-height: 1.05;
+      margin-bottom: .5rem; font-weight: 400;
+    }
+    .dynasty-title em { color: var(--accent); font-style: italic; }
+    .dynasty-subtitle {
+      font-size: 1rem; color: var(--text-dim);
+      font-style: italic; max-width: 480px;
+      margin: 0 auto 0;
+    }
+
+    /* ── LAYOUT igual ao personagens.html ── */
+    .pantheon-layout {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 0;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem 5rem;
+      align-items: start;
+    }
+    .pantheon-sidebar {
+      position: sticky; top: 5rem;
+      padding: 2rem 0;
+      border-right: 1px solid var(--border);
+    }
+    .sidebar-label {
+      font-family: var(--ff-title);
+      font-size: .6rem; letter-spacing: .4em;
+      color: var(--teal-light);
+      padding: 0 1.25rem; margin-bottom: 1.25rem;
+      display: block;
+    }
+    .sidebar-group { margin-bottom: 1.5rem; }
+    .sidebar-group-label {
+      font-family: var(--ff-title);
+      font-size: .58rem; letter-spacing: .3em;
+      color: var(--accent);
+      padding: 0 1.25rem .5rem;
+      display: block;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: .5rem;
+      opacity: .8;
+    }
+    .sidebar-link {
+      display: flex; align-items: center; gap: .6rem;
+      padding: .45rem 1.25rem;
+      font-family: var(--ff-body);
+      font-size: .95rem;
+      color: var(--text-dim);
+      text-decoration: none;
+      transition: color .2s, background .2s;
+      border-left: 2px solid transparent;
+      margin-left: -1px;
+    }
+    .sidebar-link:hover, .sidebar-link.active {
+      color: var(--accent);
+      background: rgba(201,160,48,.04);
+      border-left-color: var(--accent-dim);
+    }
+    .sidebar-link .god-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: currentColor;
+      flex-shrink: 0; opacity: .6;
+    }
+    .back-top {
+      display: block; text-align: center;
+      margin-top: 2rem;
+      font-family: var(--ff-title);
+      font-size: .62rem; letter-spacing: .3em;
+      color: var(--text-dim); text-decoration: none;
+      transition: color .25s;
+    }
+    .back-top:hover { color: var(--accent); }
+
+    /* ── CONTEÚDO ── */
+    .pantheon-content { padding: 3rem 0 0 3rem; }
+
+    .pantheon-intro {
+      color: var(--text-dim);
+      font-size: 1.1rem; line-height: 1.8;
+      max-width: 640px;
+      margin-bottom: 3rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .pantheon-intro strong { color: var(--text); }
+    .pantheon-intro em { color: var(--accent); font-style: italic; }
+
+    /* grupo (Estrelas Entardecidas / Filhos) */
+    .dynasty-group { margin-bottom: 4rem; }
+    .dynasty-group-title {
+      font-family: var(--ff-title);
+      font-size: .68rem; letter-spacing: .45em;
+      color: var(--teal-light);
+      margin-bottom: 1.75rem;
+      display: flex; align-items: center; gap: .75rem;
+    }
+    .dynasty-group-title::after {
+      content: ''; flex: 1; height: 1px; background: var(--border);
+    }
+
+    /* card de membro — igual ao char-main-card do personagens.html */
+    .member-card {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 0;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      margin-bottom: 1.5rem;
+      transition: border-color .3s;
+      scroll-margin-top: 6rem;
+    }
+    .member-card:hover { border-color: var(--accent-dim); }
+
+    /* foto */
+    .member-portrait {
+      position: relative;
+      background: var(--bg3);
+      min-height: 280px;
+      overflow: hidden;
+    }
+    .member-portrait img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: top;
+      opacity: .88;
+      transition: opacity .35s, transform .4s;
+      display: block;
+    }
+    .member-card:hover .member-portrait img { opacity: 1; transform: scale(1.02); }
+    .member-portrait-placeholder {
+      width: 100%; height: 100%; min-height: 280px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: .5rem; color: var(--accent); opacity: .25;
+      font-size: 2.5rem;
+    }
+
+    /* badge de título heráldico sobre a foto */
+    .member-badge {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: .5rem .75rem;
+      background: linear-gradient(transparent, rgba(6,13,24,.92));
+      font-family: var(--ff-title);
+      font-size: .56rem; letter-spacing: .2em;
+      color: var(--accent); text-align: center;
+    }
+
+    /* corpo */
+    .member-body {
+      padding: 1.5rem 1.75rem;
+      display: flex; flex-direction: column;
+      justify-content: space-between;
+    }
+    .member-eyebrow {
+      font-family: var(--ff-title);
+      font-size: .58rem; letter-spacing: .35em;
+      color: var(--teal-light); margin-bottom: .35rem;
+    }
+    .member-name {
+      font-family: var(--ff-display);
+      font-size: 2rem; color: var(--shimmer);
+      line-height: 1.05; margin-bottom: .2rem;
+    }
+    .member-name em { color: var(--accent); font-style: italic; }
+
+    /* ficha: idade · hierarquia · estado */
+    .member-stats {
+      display: flex; flex-wrap: wrap;
+      gap: .3rem .75rem;
+      margin-bottom: 1rem;
+      padding-bottom: .75rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .member-stat { display: flex; align-items: baseline; gap: .3rem; }
+    .member-stat-label {
+      font-family: var(--ff-title);
+      font-size: .55rem; letter-spacing: .2em;
+      color: var(--teal-light);
+    }
+    .member-stat-value { font-size: .95rem; color: var(--text-dim); }
+    .member-stat-value em { color: var(--accent); font-style: italic; }
+
+    /* estado ativo / falecido / desconhecido */
+    .estado-ativo   { color: #7fb899; }
+    .estado-morto   { color: #c97070; }
+    .estado-incerto { color: var(--accent); }
+
+    /* descrição */
+    .member-desc {
+      font-size: 1.05rem; color: var(--text-dim);
+      line-height: 1.75; flex: 1;
+    }
+    .member-desc strong { color: var(--text); }
+    .member-desc em { color: var(--accent); font-style: italic; }
+
+    /* footer */
+    footer {
+      border-top: 1px solid var(--border);
+      text-align: center; padding: 3rem 2rem;
+      color: var(--text-dim); font-size: .9rem;
+    }
+    .footer-back {
+      display: inline-block; margin-bottom: 1.5rem;
+      font-family: var(--ff-title);
+      font-size: .65rem; letter-spacing: .25em;
+      color: var(--teal-light); text-decoration: none;
+      border: 1px solid var(--border); padding: .5rem 1.25rem;
+      transition: border-color .25s, color .25s;
+    }
+    .footer-back:hover { border-color: var(--teal); color: var(--accent); }
+    .footer-name {
+      font-family: var(--ff-title);
+      font-size: .7rem; letter-spacing: .35em;
+      color: var(--accent); display: block; margin-bottom: .3rem;
+    }
+
+
+    /* ── NOMENCLATURAS ── */
+    .nomen-block {
+      margin-bottom: 3rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .nomen-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 1px;
+      border: 1px solid var(--border);
+      margin-top: .5rem;
+    }
+    .nomen-card {
+      background: var(--bg2);
+      padding: 1.5rem 1.25rem;
+      border-right: 1px solid var(--border);
+      transition: background .25s;
+    }
+    .nomen-card:last-child { border-right: none; }
+    .nomen-card:hover { background: var(--bg3); }
+    .nomen-highlight { background: rgba(201,160,48,.05); }
+    .nomen-highlight:hover { background: rgba(201,160,48,.08); }
+    .nomen-en {
+      font-family: var(--ff-title);
+      font-size: .7rem; letter-spacing: .25em;
+      color: var(--accent); margin-bottom: .25rem;
+    }
+    .nomen-pt {
+      font-family: var(--ff-display);
+      font-size: 1.15rem; color: var(--shimmer);
+      margin-bottom: .6rem; font-style: italic;
+    }
+    .nomen-desc {
+      font-size: .9rem; color: var(--text-dim); line-height: 1.6;
+    }
+    /* responsive */
+    @media (max-width: 820px) {
+      .pantheon-layout { grid-template-columns: 1fr; padding: 0 1.25rem 4rem; }
+      .pantheon-sidebar { position: static; border-right: none; border-bottom: 1px solid var(--border); padding-bottom: 1.5rem; }
+      .pantheon-content { padding: 2rem 0 0; }
+      .member-card { grid-template-columns: 140px 1fr; }
+      .member-portrait { min-height: 200px; }
+    }
+    @media (max-width: 560px) {
+      .member-card { grid-template-columns: 1fr; }
+      .member-portrait { min-height: 240px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-home" href="ReinoPolaris.html">← Reino Polaris</a>
+    <span class="nav-char">✦ DINASTIA POLAR</span>
+  </nav>
+
+  <!-- HERO -->
+  <header id="hero-dinastia">
+    <div class="hero-content">
+      <p class="dynasty-eyebrow">✦ &nbsp; família real &nbsp; ✦</p>
+      <span class="dynasty-crest">🎇</span>
+      <h1 class="dynasty-title">Dinastia <em>Polar</em></h1>
+      <p class="dynasty-subtitle">A linhagem que carrega o nome da estrela que fundou tudo.</p>
+    </div>
+  </header>
+
+  <!-- LAYOUT -->
+  <div class="pantheon-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="pantheon-sidebar">
+      <span class="sidebar-label">✦ MEMBROS</span>
+
+      <div class="sidebar-group">
+        <span class="sidebar-group-label">ESTRELAS ENTARDECIDAS</span>
+        <a class="sidebar-link" href="#nandic">
+          <span class="god-dot"></span> Nandic Polar
+        </a>
+        <a class="sidebar-link" href="#margarida">
+          <span class="god-dot"></span> Margarida Polar
+        </a>
+      </div>
+
+      <div class="sidebar-group">
+        <span class="sidebar-group-label">FILHOS</span>
+        <a class="sidebar-link" href="#layla">
+          <span class="god-dot"></span> Layla Polar
+        </a>
+        <a class="sidebar-link" href="#prometeus">
+          <span class="god-dot"></span> Prometeus Polar
+        </a>
+      </div>
+
+      <a class="back-top" href="#hero-dinastia">↑ topo</a>
+    </aside>
+
+    <!-- CONTEÚDO -->
+    <main class="pantheon-content">
+
+      <p class="pantheon-intro">
+        O <strong>Reino Polaris</strong> não é governado por uma vontade só — é sustentado por uma <em>teia de famílias e alianças</em> tecida ao longo de gerações, cada fio amarrado com o mesmo propósito: manter a paz e a harmonia entre seu povo. No centro dessa teia está a <strong>Dinastia Polar</strong>, a linhagem real que carrega o nome da estrela que deu origem a tudo. Seus membros não escolhem seus títulos — <em>os títulos os encontram</em>, herdados com o peso de tudo que veio antes.
+      </p>
+
+      <!-- ══ NOMENCLATURAS ══ -->
+      <div class="nomen-block">
+        <p class="section-label" style="margin-bottom:1rem;">✦ títulos heráldicos</p>
+        <div class="nomen-grid">
+
+          <div class="nomen-card">
+            <p class="nomen-en">FALLINGSTAR</p>
+            <p class="nomen-pt">Estrela Cadente</p>
+            <p class="nomen-desc">Antigo Monarca — aquele que já reinou e cedeu o trono. Carrega o título como memória viva de um reinado encerrado.</p>
+          </div>
+
+          <div class="nomen-card nomen-highlight">
+            <p class="nomen-en">EVENINGSTAR</p>
+            <p class="nomen-pt">Estrela Entardecida</p>
+            <p class="nomen-desc">Monarca Atual — o soberano em exercício. O título evoca o entardecer: o momento em que a estrela é mais visível e mais poderosa no céu.</p>
+          </div>
+
+          <div class="nomen-card">
+            <p class="nomen-en">DAWNSTAR</p>
+            <p class="nomen-pt">Estrela da Aurora</p>
+            <p class="nomen-desc">Futuro Monarca — o herdeiro designado ao trono. A aurora que precede o dia: ainda não chegou, mas sua chegada é certa.</p>
+          </div>
+
+          <div class="nomen-card">
+            <p class="nomen-en">STARLIGHT</p>
+            <p class="nomen-pt">Luz das Estrelas</p>
+            <p class="nomen-desc">Título genérico para os demais membros da família real. Não são o centro do céu — mas sem eles, a noite seria apenas escuridão.</p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ══ NOMENCLATURAS ══ -->
+      <div style="margin-bottom:3.5rem;">
+        <p class="dynasty-eyebrow" style="font-family:var(--ff-title);font-size:.65rem;letter-spacing:.45em;color:var(--teal-light);margin-bottom:.6rem;">✦ nomenclaturas reais</p>
+        <h3 style="font-family:var(--ff-display);font-size:1.6rem;color:var(--shimmer);margin-bottom:.5rem;">Os <em>Títulos</em> da Linhagem</h3>
+        <div style="display:flex;align-items:center;gap:.75rem;color:var(--accent-dim);font-size:.85rem;margin-bottom:2rem;">
+          🎇 <span style="flex:1;height:1px;background:var(--border);display:block;"></span>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1px;border:1px solid var(--border);">
+
+          <div style="background:var(--bg2);padding:1.5rem 1.25rem;">
+            <p style="font-family:var(--ff-title);font-size:.58rem;letter-spacing:.25em;color:var(--accent);margin-bottom:.3rem;opacity:.8;">FALLINGSTAR</p>
+            <p style="font-family:var(--ff-display);font-size:1.15rem;color:var(--shimmer);margin-bottom:.4rem;"><em>Estrela Cadente</em></p>
+            <p style="font-size:.95rem;color:var(--text-dim);line-height:1.6;">Título concedido ao <strong style="color:var(--text);">Antigo Monarca</strong> — aquele que já governou e cedeu o trono. Uma estrela que cruzou o céu e deixou sua marca antes de se apagar.</p>
+          </div>
+
+          <div style="background:var(--bg2);padding:1.5rem 1.25rem;border-left:1px solid var(--border);">
+            <p style="font-family:var(--ff-title);font-size:.58rem;letter-spacing:.25em;color:var(--accent);margin-bottom:.3rem;opacity:.8;">EVENINGSTAR</p>
+            <p style="font-family:var(--ff-display);font-size:1.15rem;color:var(--shimmer);margin-bottom:.4rem;"><em>Estrela Entardecida</em></p>
+            <p style="font-size:.95rem;color:var(--text-dim);line-height:1.6;">Título do <strong style="color:var(--text);">Monarca Atual</strong> — a estrela que brilha no entardecer, entre a luz do dia e a escuridão da noite. Governa no ápice do poder.</p>
+          </div>
+
+          <div style="background:var(--bg2);padding:1.5rem 1.25rem;border-left:1px solid var(--border);">
+            <p style="font-family:var(--ff-title);font-size:.58rem;letter-spacing:.25em;color:var(--accent);margin-bottom:.3rem;opacity:.8;">DAWNSTAR</p>
+            <p style="font-family:var(--ff-display);font-size:1.15rem;color:var(--shimmer);margin-bottom:.4rem;"><em>Estrela da Aurora</em></p>
+            <p style="font-size:.95rem;color:var(--text-dim);line-height:1.6;">Título do <strong style="color:var(--text);">Futuro Monarca</strong> — a estrela que anuncia o amanhecer. Carrega o peso de uma coroa que ainda não é sua, mas que inevitavelmente virá.</p>
+          </div>
+
+          <div style="background:var(--bg2);padding:1.5rem 1.25rem;border-left:1px solid var(--border);">
+            <p style="font-family:var(--ff-title);font-size:.58rem;letter-spacing:.25em;color:var(--accent);margin-bottom:.3rem;opacity:.8;">STARLIGHT</p>
+            <p style="font-family:var(--ff-display);font-size:1.15rem;color:var(--shimmer);margin-bottom:.4rem;"><em>Luz das Estrelas</em></p>
+            <p style="font-size:.95rem;color:var(--text-dim);line-height:1.6;">Título <strong style="color:var(--text);">genérico para membros reais</strong> que não ocupam posição de sucessão direta. Parte da constelação, mas não seu centro.</p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ══ ESTRELAS ENTARDECIDAS ══ -->
+      <div class="dynasty-group">
+        <p class="dynasty-group-title">✦ &nbsp; ESTRELAS ENTARDECIDAS</p>
+
+        <!-- NANDIC POLAR -->
+        <div class="member-card" id="nandic">
+          <div class="member-portrait">
+            <img src="NandicPolar.jpg" alt="Nandic Polar">
+            <div class="member-badge">✦ estrela entardecida · rei</div>
+          </div>
+          <div class="member-body">
+            <div>
+              <p class="member-eyebrow">✦ família real polar</p>
+              <h2 class="member-name">Nandic <em>Polar</em></h2>
+              <div class="member-stats">
+                <div class="member-stat">
+                  <span class="member-stat-label">IDADE</span>
+                  <span class="member-stat-value">Inserir texto...</span>
+                </div>
+                <div class="member-stat">
+                  <span class="member-stat-label">NÍVEL HIERÁRQUICO</span>
+                  <span class="member-stat-value"><em>Rei · Estrela Entardecida</em></span>
+                </div>
+                <div class="member-stat">
+                  <span class="member-stat-label">ESTADO ATUAL</span>
+                  <span class="member-stat-value estado-ativo">Inserir texto...</span>
+                </div>
+              </div>
+              <p class="member-desc">Inserir texto...</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- MARGARIDA POLAR -->
+        <div class="member-card" id="margarida">
+          <div class="member-portrait">
+            <img src="MargaridaPolar.jpg" alt="Margarida Polar">
+            <div class="member-badge">✦ estrela entardecida · rainha</div>
+          </div>
+          <div class="member-body">
+            <div>
+              <p class="member-eyebrow">✦ família real polar</p>
+              <h2 class="member-name">Margarida <em>Polar</em></h2>
+              <div class="member-stats">
+                <div class="member-stat">
+                  <span class="member-stat-label">IDADE</span>
+                  <span class="member-stat-value">Inserir texto...</span>
+                </div>
+                <div class="member-stat">
+                  <span class="member-stat-label">NÍVEL HIERÁRQUICO</span>
+                  <span class="member-stat-value"><em>Rainha · Estrela Entardecida</em></span>
+                </div>
+                <div class="member-stat">
+                  <span class="member-stat-label">ESTADO ATUAL</span>
+                  <span class="member-stat-value estado-ativo">Inserir texto...</span>
+                </div>
+              </div>
+              <p class="member-desc">Inserir texto...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ FILHOS ══ -->
+      <div class="dynasty-group">
+        <p class="dynasty-group-title">✦ &nbsp; FILHOS</p>
+
+        <!-- LAYLA POLAR -->
+        <div class="member-card" id="layla">
+          <div class="member-portrait">
+            <img src="LaylaPolar.jpg" alt="Layla Polar">
+            <div class="member-badge">✦ estrela aurora · princesa</div>
+          </div>
+          <div class="member-body">
+            <div>
+              <p class="member-eyebrow">✦ família real polar</p>
+              <h2 class="member-name">Layla <em>Polar</em></h2>
+              <div class="member-stats">
+                <div class="member-stat">
+                  <span class="member-stat-label">IDADE</span>
+                  <span class="member-stat-value">Inserir texto...</span>
+                </div>
+                <div class="member-stat">
+                  <span class="member-stat-label">NÍVEL HIERÁRQUICO</span>
+                  <span class="member-stat-value"><em>Princesa · Estrela Aurora</em></span>
+                </div>
+                <div class="member-stat">
+                  <span class="member-stat-label">ESTADO ATUAL</span>
+                  <span class="member-stat-value estado-ativo">Inserir texto...</span>
+                </div>
+              </div>
+              <p class="member-desc">Inserir texto...</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- PROMETEUS POLAR -->
+        <div class="member-card" id="prometeus">
+          <div class="member-portrait">
+            <img src="PrometeusPolar.jpg" alt="Prometeus Polar">
+            <div class="member-badge">✦ luz das estrelas · príncipe</div>
+          </div>
+          <div class="member-body">
+            <div>
+              <p class="member-eyebrow">✦ família real polar</p>
+              <h2 class="member-name">Prometeus <em>Polar</em></h2>
+              <div class="member-stats">
+                <div class="member-stat">
+                  <span class="member-stat-label">IDADE</span>
+                  <span class="member-stat-value">Inserir texto...</span>
+                </div>
+                <div class="member-stat">
+                  <span class="member-stat-label">NÍVEL HIERÁRQUICO</span>
+                  <span class="member-stat-value"><em>Príncipe · Luz das Estrelas</em></span>
+                </div>
+                <div class="member-stat">
+                  <span class="member-stat-label">ESTADO ATUAL</span>
+                  <span class="member-stat-value estado-ativo">Inserir texto...</span>
+                </div>
+              </div>
+              <p class="member-desc">Inserir texto...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <a class="back-top" href="#hero-dinastia">↑ voltar ao topo</a>
+    </main>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <a class="footer-back" href="ReinoPolaris.html">← VOLTAR AO REINO POLARIS</a>
+    <span class="footer-name">✦ DINASTIA POLAR ✦</span>
+    <p>a família real de <em>Entre as Estrelas</em></p>
+  </footer>
+
+  <script>
+    const links = document.querySelectorAll('.sidebar-link');
+    const cards = document.querySelectorAll('.member-card[id]');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          links.forEach(l => l.classList.remove('active'));
+          const active = document.querySelector(`.sidebar-link[href="#${entry.target.id}"]`);
+          if (active) active.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-30% 0px -60% 0px' });
+    cards.forEach(c => observer.observe(c));
+  </script>
+</body>
+</html>
