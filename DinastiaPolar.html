@@ -10,31 +10,10 @@
   <link rel="icon" type="image/x-icon" href="iconSOL.jpeg">
   <link rel="stylesheet" href="estiloDinastia.css">
   <style>
-    /* força o layout a não extrapolar a largura */
-    .pantheon-layout {
-      max-width: 1100px !important;
-      margin: 0 auto !important;
-      padding: 0 2rem 5rem !important;
-      overflow: hidden !important;
-    }
-    .pantheon-content {
-      min-width: 0 !important;
-      overflow: hidden !important;
-    }
-    .dynasty-group {
-      min-width: 0 !important;
-      overflow: hidden !important;
-    }
-    .dynasty-group-title {
-      min-width: 0 !important;
-    }
-    .dynasty-group-title::after {
-      min-width: 0 !important;
-      max-width: 100% !important;
-    }
-    .member-card {
-      min-width: 0 !important;
-    }
+    /* contenção do grid — sem overflow:hidden que quebra sticky */
+    .pantheon-content,
+    .dynasty-group,
+    .member-card { min-width: 0; }
   </style>
 </head>
 <body>
