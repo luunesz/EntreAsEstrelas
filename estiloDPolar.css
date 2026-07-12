@@ -72,6 +72,7 @@
       margin: 0 auto;
       padding: 0 2rem 5rem;
       align-items: start;
+      overflow: hidden;
     }
     .pantheon-sidebar {
       position: sticky; top: 5rem;
@@ -143,7 +144,7 @@
     .pantheon-intro em { color: var(--accent); font-style: italic; }
 
     /* grupo (Estrelas Entardecidas / Filhos) */
-    .dynasty-group { margin-bottom: 4rem; }
+    .dynasty-group { margin-bottom: 4rem; overflow: hidden; }
     .dynasty-group-title {
       font-family: var(--ff-title);
       font-size: .68rem; letter-spacing: .45em;
