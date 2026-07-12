@@ -5,16 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Entre as Estrelas — Dinastia Polar</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=IM+Fell+English:ital@0;1&family=Cinzel:wght@400;600&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="estiloPersonagens.css">
-  <link rel="stylesheet" href="estiloReinos.css">
   <link rel="icon" type="image/x-icon" href="iconSOL.jpeg">
-  <link rel="stylesheet" href="estiloDinastia.css">
-  <style>
-    /* contenção do grid — sem overflow:hidden que quebra sticky */
-    .pantheon-content,
-    .dynasty-group,
-    .member-card { min-width: 0; }
-  </style>
+  <link rel="stylesheet" href="estiloDPolar.css">
 </head>
 <body>
 
@@ -35,29 +27,29 @@
   </header>
 
   <!-- LAYOUT -->
-  <div class="pantheon-layout">
+  <div class="page-layout">
 
     <!-- SIDEBAR -->
-    <aside class="pantheon-sidebar">
+    <aside class="page-sidebar">
       <span class="sidebar-label">✦ MEMBROS</span>
 
       <div class="sidebar-group">
         <span class="sidebar-group-label">ESTRELAS ENTARDECIDAS</span>
         <a class="sidebar-link" href="#margarida">
-          <span class="god-dot"></span> Margarida Polar
+          <span class="sidebar-dot"></span> Margarida Polar
         </a>
         <a class="sidebar-link" href="#nandic">
-          <span class="god-dot"></span> Nandic Polar
+          <span class="sidebar-dot"></span> Nandic Polar
         </a>
       </div>
 
       <div class="sidebar-group">
         <span class="sidebar-group-label">FILHOS</span>
         <a class="sidebar-link" href="#layla">
-          <span class="god-dot"></span> Layla Polar
+          <span class="sidebar-dot"></span> Layla Polar
         </a>
         <a class="sidebar-link" href="#prometeus">
-          <span class="god-dot"></span> Prometeus Polar
+          <span class="sidebar-dot"></span> Prometeus Polar
         </a>
       </div>
 
@@ -65,194 +57,156 @@
     </aside>
 
     <!-- CONTEÚDO -->
-    <main class="pantheon-content">
+    <main class="page-content">
 
-      <p class="pantheon-intro">
-        O <strong>Reino Polaris</strong> não é governado por uma vontade só — é sustentado por uma <em>teia de famílias e alianças</em> tecida ao longo de gerações, cada fio amarrado com o mesmo propósito: manter a paz e a harmonia entre seu povo. No centro dessa teia está a <strong>Dinastia Polar</strong>, a linhagem real que carrega o nome da estrela que deu origem a tudo. Seus membros não escolhem seus títulos — <em>os títulos os encontram</em>, herdados com o peso de tudo que veio antes.
+      <p class="page-intro">
+        A <strong>Dinastia Polar</strong> é a família real que governa o Reino Polaris desde sua fundação. Seus membros carregam títulos heráldicos ligados às estrelas — <em>Estrelas Entardecidas</em> para os soberanos, e títulos próprios para cada herdeiro. O sangue Polar é o sangue do reino.
       </p>
 
-      <!-- ══ NOMENCLATURAS ══ -->
-      <div class="nomen-block">
-        <p class="section-label" style="margin-bottom:1rem;">✦ títulos heráldicos</p>
-        <div class="nomen-grid">
-
-          <div class="nomen-card">
-            <p class="nomen-en">FALLINGSTAR</p>
-            <p class="nomen-pt">Estrela Cadente</p>
-            <p class="nomen-desc">Antigo Monarca — aquele que já reinou e cedeu o trono. Carrega o título como memória viva de um reinado encerrado.</p>
-          </div>
-
-          <div class="nomen-card">
-            <p class="nomen-en">EVENINGSTAR</p>
-            <p class="nomen-pt">Estrela Entardecida</p>
-            <p class="nomen-desc">Monarca Atual — o soberano em exercício. O título evoca o entardecer: o momento em que a estrela é mais visível e mais poderosa no céu.</p>
-          </div>
-
-          <div class="nomen-card">
-            <p class="nomen-en">DAWNSTAR</p>
-            <p class="nomen-pt">Estrela da Aurora</p>
-            <p class="nomen-desc">Futuro Monarca — o herdeiro designado ao trono. A aurora que precede o dia: ainda não chegou, mas sua chegada é certa.</p>
-          </div>
-
-          <div class="nomen-card">
-            <p class="nomen-en">STARLIGHT</p>
-            <p class="nomen-pt">Luz das Estrelas</p>
-            <p class="nomen-desc">Título genérico para os demais membros da família real. Não são o centro do céu — mas sem eles, a noite seria apenas escuridão.</p>
-          </div>
-
-        </div>
+      <!-- NOMENCLATURAS -->
+      <div class="nomen-header">
+        <p class="nomen-label">✦ nomenclaturas reais</p>
+        <h3 class="nomen-title">Os <em>Títulos</em> da Linhagem</h3>
+        <div class="nomen-divider">🎇</div>
       </div>
-        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1px;border:1px solid var(--border);">
 
-          <div style="background:var(--bg2);padding:1.5rem 1.25rem;">
-            <p style="font-family:var(--ff-title);font-size:.58rem;letter-spacing:.25em;color:var(--accent);margin-bottom:.3rem;opacity:.8;">FALLINGSTAR</p>
-            <p style="font-family:var(--ff-display);font-size:1.15rem;color:var(--shimmer);margin-bottom:.4rem;"><em>Estrela Cadente</em></p>
-            <p style="font-size:.95rem;color:var(--text-dim);line-height:1.6;">Título concedido ao <strong style="color:var(--text);">Antigo Monarca</strong> — aquele que já governou e cedeu o trono. Uma estrela que cruzou o céu e deixou sua marca antes de se apagar.</p>
-          </div>
-
-          <div style="background:var(--bg2);padding:1.5rem 1.25rem;">
-            <p style="font-family:var(--ff-title);font-size:.58rem;letter-spacing:.25em;color:var(--accent);margin-bottom:.3rem;opacity:.8;">EVENINGSTAR</p>
-            <p style="font-family:var(--ff-display);font-size:1.15rem;color:var(--shimmer);margin-bottom:.4rem;"><em>Estrela Entardecida</em></p>
-            <p style="font-size:.95rem;color:var(--text-dim);line-height:1.6;">Título do <strong style="color:var(--text);">Monarca Atual</strong> — a estrela que brilha no entardecer, entre a luz do dia e a escuridão da noite. Governa no ápice do poder.</p>
-          </div>
-
-          <div style="background:var(--bg2);padding:1.5rem 1.25rem;border-left:1px solid var(--border);">
-            <p style="font-family:var(--ff-title);font-size:.58rem;letter-spacing:.25em;color:var(--accent);margin-bottom:.3rem;opacity:.8;">DAWNSTAR</p>
-            <p style="font-family:var(--ff-display);font-size:1.15rem;color:var(--shimmer);margin-bottom:.4rem;"><em>Estrela da Aurora</em></p>
-            <p style="font-size:.95rem;color:var(--text-dim);line-height:1.6;">Título do <strong style="color:var(--text);">Futuro Monarca</strong> — a estrela que anuncia o amanhecer. Carrega o peso de uma coroa que ainda não é sua, mas que inevitavelmente virá.</p>
-          </div>
-
-          <div style="background:var(--bg2);padding:1.5rem 1.25rem;border-left:1px solid var(--border);">
-            <p style="font-family:var(--ff-title);font-size:.58rem;letter-spacing:.25em;color:var(--accent);margin-bottom:.3rem;opacity:.8;">STARLIGHT</p>
-            <p style="font-family:var(--ff-display);font-size:1.15rem;color:var(--shimmer);margin-bottom:.4rem;"><em>Luz das Estrelas</em></p>
-            <p style="font-size:.95rem;color:var(--text-dim);line-height:1.6;">Título <strong style="color:var(--text);">genérico para membros reais</strong> que não ocupam posição de sucessão direta. Parte da constelação, mas não seu centro.</p>
-          </div>
-
+      <div class="nomen-grid">
+        <div class="nomen-card">
+          <p class="nomen-en">FALLINGSTAR</p>
+          <p class="nomen-pt"><em>Estrela Cadente</em></p>
+          <p class="nomen-desc">Título concedido ao <strong>Antigo Monarca</strong> — aquele que já governou e cedeu o trono. Uma estrela que cruzou o céu e deixou sua marca antes de se apagar.</p>
+        </div>
+        <div class="nomen-card">
+          <p class="nomen-en">EVENINGSTAR</p>
+          <p class="nomen-pt"><em>Estrela Entardecida</em></p>
+          <p class="nomen-desc">Título do <strong>Monarca Atual</strong> — a estrela que brilha no entardecer, entre a luz do dia e a escuridão da noite. Governa no ápice do poder.</p>
+        </div>
+        <div class="nomen-card">
+          <p class="nomen-en">DAWNSTAR</p>
+          <p class="nomen-pt"><em>Estrela da Aurora</em></p>
+          <p class="nomen-desc">Título do <strong>Futuro Monarca</strong> — a estrela que anuncia o amanhecer. Carrega o peso de uma coroa que ainda não é sua, mas que inevitavelmente virá.</p>
+        </div>
+        <div class="nomen-card">
+          <p class="nomen-en">STARLIGHT</p>
+          <p class="nomen-pt"><em>Luz das Estrelas</em></p>
+          <p class="nomen-desc">Título <strong>genérico para membros reais</strong> que não ocupam posição de sucessão direta. Parte da constelação, mas não seu centro.</p>
         </div>
       </div>
 
-      <!-- ══ ESTRELAS ENTARDECIDAS ══ -->
+      <!-- ESTRELAS ENTARDECIDAS -->
       <div class="dynasty-group">
-        <p class="dynasty-group-title">✦ &nbsp; ESTRELAS ENTARDECIDAS</p>      
+        <p class="dynasty-group-title">✦ &nbsp; ESTRELAS ENTARDECIDAS</p>
 
-        <!-- MARGARIDA POLAR -->
+        <!-- MARGARIDA -->
         <div class="member-card" id="margarida">
           <div class="member-portrait">
             <img src="MargaridaPolar.jpg" alt="Margarida Polar">
-            <div class="member-badge">✦ estrela entardecida · rainha</div>
+            <div class="member-badge">✦ eveningstar · rainha</div>
           </div>
           <div class="member-body">
-            <div>
-              <p class="member-eyebrow">✦ família real polar</p>
-              <h2 class="member-name">Margarida <em>Polar</em></h2>
-              <div class="member-stats">
-                <div class="member-stat">
-                  <span class="member-stat-label">IDADE</span>
-                  <span class="member-stat-value">Inserir texto...</span>
-                </div>
-                <div class="member-stat">
-                  <span class="member-stat-label">NÍVEL HIERÁRQUICO</span>
-                  <span class="member-stat-value"><em>Rainha · Estrela Entardecida</em></span>
-                </div>
-                <div class="member-stat">
-                  <span class="member-stat-label">ESTADO ATUAL</span>
-                  <span class="member-stat-value estado-ativo">Inserir texto...</span>
-                </div>
+            <p class="member-eyebrow">✦ família real polar</p>
+            <h2 class="member-name">Margarida <em>Polar</em></h2>
+            <div class="member-stats">
+              <div class="member-stat">
+                <span class="member-stat-label">IDADE</span>
+                <span class="member-stat-value">Inserir texto...</span>
               </div>
-              <p class="member-desc">Inserir texto...</p>
+              <div class="member-stat">
+                <span class="member-stat-label">NÍVEL HIERÁRQUICO</span>
+                <span class="member-stat-value"><em>Rainha · Estrela Entardecida</em></span>
+              </div>
+              <div class="member-stat">
+                <span class="member-stat-label">ESTADO ATUAL</span>
+                <span class="member-stat-value estado-ativo">Inserir texto...</span>
+              </div>
             </div>
+            <p class="member-desc">Inserir texto...</p>
           </div>
         </div>
 
-        <!-- NANDIC POLAR -->
+        <!-- NANDIC -->
         <div class="member-card" id="nandic">
           <div class="member-portrait">
             <img src="NandicPolar.jpg" alt="Nandic Polar">
-            <div class="member-badge">✦ estrela entardecida · rei</div>
+            <div class="member-badge">✦ eveningstar · rei</div>
           </div>
           <div class="member-body">
-            <div>
-              <p class="member-eyebrow">✦ família real polar</p>
-              <h2 class="member-name">Nandic <em>Polar</em></h2>
-              <div class="member-stats">
-                <div class="member-stat">
-                  <span class="member-stat-label">IDADE</span>
-                  <span class="member-stat-value">Inserir texto...</span>
-                </div>
-                <div class="member-stat">
-                  <span class="member-stat-label">NÍVEL HIERÁRQUICO</span>
-                  <span class="member-stat-value"><em>Rei · Estrela Entardecida</em></span>
-                </div>
-                <div class="member-stat">
-                  <span class="member-stat-label">ESTADO ATUAL</span>
-                  <span class="member-stat-value estado-ativo">Inserir texto...</span>
-                </div>
+            <p class="member-eyebrow">✦ família real polar</p>
+            <h2 class="member-name">Nandic <em>Polar</em></h2>
+            <div class="member-stats">
+              <div class="member-stat">
+                <span class="member-stat-label">IDADE</span>
+                <span class="member-stat-value">Inserir texto...</span>
               </div>
-              <p class="member-desc">Inserir texto...</p>
+              <div class="member-stat">
+                <span class="member-stat-label">NÍVEL HIERÁRQUICO</span>
+                <span class="member-stat-value"><em>Rei · Estrela Entardecida</em></span>
+              </div>
+              <div class="member-stat">
+                <span class="member-stat-label">ESTADO ATUAL</span>
+                <span class="member-stat-value estado-ativo">Inserir texto...</span>
+              </div>
             </div>
+            <p class="member-desc">Inserir texto...</p>
           </div>
         </div>
       </div>
 
-      <!-- ══ FILHOS ══ -->
+      <!-- FILHOS -->
       <div class="dynasty-group">
         <p class="dynasty-group-title">✦ &nbsp; FILHOS</p>
 
-        <!-- LAYLA POLAR -->
+        <!-- LAYLA -->
         <div class="member-card" id="layla">
           <div class="member-portrait">
             <img src="LaylaPolar.jpg" alt="Layla Polar">
-            <div class="member-badge">✦ estrela aurora · princesa</div>
+            <div class="member-badge">✦ dawnstar · princesa</div>
           </div>
           <div class="member-body">
-            <div>
-              <p class="member-eyebrow">✦ família real polar</p>
-              <h2 class="member-name">Layla <em>Polar</em></h2>
-              <div class="member-stats">
-                <div class="member-stat">
-                  <span class="member-stat-label">IDADE</span>
-                  <span class="member-stat-value">Inserir texto...</span>
-                </div>
-                <div class="member-stat">
-                  <span class="member-stat-label">NÍVEL HIERÁRQUICO</span>
-                  <span class="member-stat-value"><em>Princesa · Estrela Aurora</em></span>
-                </div>
-                <div class="member-stat">
-                  <span class="member-stat-label">ESTADO ATUAL</span>
-                  <span class="member-stat-value estado-ativo">Inserir texto...</span>
-                </div>
+            <p class="member-eyebrow">✦ família real polar</p>
+            <h2 class="member-name">Layla <em>Polar</em></h2>
+            <div class="member-stats">
+              <div class="member-stat">
+                <span class="member-stat-label">IDADE</span>
+                <span class="member-stat-value">Inserir texto...</span>
               </div>
-              <p class="member-desc">Inserir texto...</p>
+              <div class="member-stat">
+                <span class="member-stat-label">NÍVEL HIERÁRQUICO</span>
+                <span class="member-stat-value"><em>Princesa · Estrela da Aurora</em></span>
+              </div>
+              <div class="member-stat">
+                <span class="member-stat-label">ESTADO ATUAL</span>
+                <span class="member-stat-value estado-ativo">Inserir texto...</span>
+              </div>
             </div>
+            <p class="member-desc">Inserir texto...</p>
           </div>
         </div>
 
-        <!-- PROMETEUS POLAR -->
+        <!-- PROMETEUS -->
         <div class="member-card" id="prometeus">
           <div class="member-portrait">
             <img src="PrometeusPolar.jpg" alt="Prometeus Polar">
-            <div class="member-badge">✦ luz das estrelas · príncipe</div>
+            <div class="member-badge">✦ starlight · príncipe</div>
           </div>
           <div class="member-body">
-            <div>
-              <p class="member-eyebrow">✦ família real polar</p>
-              <h2 class="member-name">Prometeus <em>Polar</em></h2>
-              <div class="member-stats">
-                <div class="member-stat">
-                  <span class="member-stat-label">IDADE</span>
-                  <span class="member-stat-value">Inserir texto...</span>
-                </div>
-                <div class="member-stat">
-                  <span class="member-stat-label">NÍVEL HIERÁRQUICO</span>
-                  <span class="member-stat-value"><em>Príncipe · Luz das Estrelas</em></span>
-                </div>
-                <div class="member-stat">
-                  <span class="member-stat-label">ESTADO ATUAL</span>
-                  <span class="member-stat-value estado-ativo">Inserir texto...</span>
-                </div>
+            <p class="member-eyebrow">✦ família real polar</p>
+            <h2 class="member-name">Prometeus <em>Polar</em></h2>
+            <div class="member-stats">
+              <div class="member-stat">
+                <span class="member-stat-label">IDADE</span>
+                <span class="member-stat-value">Inserir texto...</span>
               </div>
-              <p class="member-desc">Inserir texto...</p>
+              <div class="member-stat">
+                <span class="member-stat-label">NÍVEL HIERÁRQUICO</span>
+                <span class="member-stat-value"><em>Príncipe · Luz das Estrelas</em></span>
+              </div>
+              <div class="member-stat">
+                <span class="member-stat-label">ESTADO ATUAL</span>
+                <span class="member-stat-value estado-ativo">Inserir texto...</span>
+              </div>
             </div>
+            <p class="member-desc">Inserir texto...</p>
           </div>
         </div>
       </div>
