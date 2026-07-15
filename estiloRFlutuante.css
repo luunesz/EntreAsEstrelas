@@ -1,9 +1,9 @@
 /*
   ══════════════════════════════════════════
-    Reino Flutuante — Verde-esmeralda / natural e misterioso
-    --accent:      #3a9e6e  (verde-esmeralda)
-    --accent-dim:  #1f5c3e  (verde escuro)
-    --accent-glow: rgba(58,158,110,0.12)
+    Reino Flutuante — Azul-celeste / etéreo e luminoso
+    --accent:      #4ab8d4  (azul-céu)
+    --accent-dim:  #1f5c72  (azul profundo)
+    --accent-glow: rgba(74,184,212,0.14)
   ══════════════════════════════════════════
 */
 
@@ -13,20 +13,20 @@ html { scroll-behavior: smooth; }
 
 /* ══ VARIÁVEIS ══ */
 :root {
-  --bg:          #0a1a10;
-  --bg2:         #0f2016;
-  --bg3:         #162a1c;
-  --teal:        #2d7a58;
-  --teal-light:  #4a9970;
-  --star:        #a8d4b0;
-  --star-dim:    #4a7a54;
-  --shimmer:     #c8e8cc;
-  --text:        #c2dcc6;
-  --text-dim:    #6a9878;
-  --border:      rgba(58,158,110,0.20);
-  --accent:      #3a9e6e;
-  --accent-dim:  #1f5c3e;
-  --accent-glow: rgba(58,158,110,0.12);
+  --bg:          #0a1620;
+  --bg2:         #0e1f2c;
+  --bg3:         #142c3d;
+  --teal:        #2d7a94;
+  --teal-light:  #5fb3cf;
+  --star:        #cfe8e6;
+  --star-dim:    #4a7888;
+  --shimmer:     #e6f4f0;
+  --text:        #c5dde2;
+  --text-dim:    #6f95a0;
+  --border:      rgba(74,184,212,0.20);
+  --accent:      #4ab8d4;
+  --accent-dim:  #1f5c72;
+  --accent-glow: rgba(74,184,212,0.14);
   --ff-title:    'Cinzel', serif;
   --ff-display:  'IM Fell English', serif;
   --ff-body:     'Cormorant Garamond', serif;
@@ -51,7 +51,7 @@ nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   display: flex; align-items: center; justify-content: space-between;
   padding: 1rem 2.5rem;
-  background: linear-gradient(to bottom, rgba(10,26,16,.97) 70%, transparent);
+  background: linear-gradient(to bottom, rgba(10,22,32,.97) 70%, transparent);
   border-bottom: 1px solid var(--border);
   backdrop-filter: blur(4px);
 }
@@ -92,24 +92,24 @@ nav {
   position: absolute; inset: 0;
   background:
     radial-gradient(ellipse 70% 60% at 50% 40%, var(--accent-glow) 0%, transparent 65%),
-    linear-gradient(to bottom, #040e08 0%, #081508 50%, #0a1a10 100%);
+    linear-gradient(to bottom, #030a12 0%, #071726 50%, #0a1620 100%);
 }
-/* partículas — vaga-lumes esverdeados */
+/* partículas — névoa e vaga-lumes azul-esverdeados */
 .hero-bg::before {
   content: '';
   position: absolute; inset: 0; pointer-events: none;
   background-image:
-    radial-gradient(1.5px 1.5px at 10% 15%, rgba(58,158,110,.8) 0%, transparent 100%),
-    radial-gradient(1px 1px   at 75% 8%,  rgba(58,158,110,.5) 0%, transparent 100%),
-    radial-gradient(1px 1px   at 50% 25%, rgba(58,158,110,.7) 0%, transparent 100%),
-    radial-gradient(1px 1px   at 30% 50%, rgba(58,158,110,.3) 0%, transparent 100%),
-    radial-gradient(1px 1px   at 88% 35%, rgba(58,158,110,.6) 0%, transparent 100%),
-    radial-gradient(1.5px 1.5px at 60% 12%, rgba(58,158,110,.9) 0%, transparent 100%),
-    radial-gradient(1px 1px   at 5%  65%, rgba(58,158,110,.4) 0%, transparent 100%),
-    radial-gradient(1px 1px   at 42% 78%, rgba(58,158,110,.3) 0%, transparent 100%),
-    radial-gradient(1px 1px   at 92% 70%, rgba(58,158,110,.5) 0%, transparent 100%),
-    radial-gradient(1px 1px   at 20% 88%, rgba(58,158,110,.4) 0%, transparent 100%),
-    radial-gradient(1px 1px   at 68% 60%, rgba(58,158,110,.3) 0%, transparent 100%);
+    radial-gradient(1.5px 1.5px at 10% 15%, rgba(74,184,212,.8) 0%, transparent 100%),
+    radial-gradient(1px 1px   at 75% 8%,  rgba(74,184,212,.5) 0%, transparent 100%),
+    radial-gradient(1px 1px   at 50% 25%, rgba(74,184,212,.7) 0%, transparent 100%),
+    radial-gradient(1px 1px   at 30% 50%, rgba(74,184,212,.3) 0%, transparent 100%),
+    radial-gradient(1px 1px   at 88% 35%, rgba(74,184,212,.6) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 60% 12%, rgba(74,184,212,.9) 0%, transparent 100%),
+    radial-gradient(1px 1px   at 5%  65%, rgba(74,184,212,.4) 0%, transparent 100%),
+    radial-gradient(1px 1px   at 42% 78%, rgba(74,184,212,.3) 0%, transparent 100%),
+    radial-gradient(1px 1px   at 92% 70%, rgba(74,184,212,.5) 0%, transparent 100%),
+    radial-gradient(1px 1px   at 20% 88%, rgba(74,184,212,.4) 0%, transparent 100%),
+    radial-gradient(1px 1px   at 68% 60%, rgba(74,184,212,.3) 0%, transparent 100%);
   animation: twinkle 7s ease-in-out infinite alternate;
 }
 @keyframes twinkle { from { opacity:.4; } to { opacity:1; } }
@@ -117,8 +117,8 @@ nav {
 .hero-img {
   position: absolute; inset: 0;
   width: 100%; height: 100%;
-  object-fit: cover; opacity: .15;
-  filter: saturate(1.3) hue-rotate(10deg);
+  object-fit: cover; opacity: .18;
+  filter: saturate(1.15) hue-rotate(-6deg);
 }
 
 .hero-center {
@@ -136,12 +136,12 @@ nav {
 .hero-symbol {
   font-size: 2.5rem; color: var(--accent);
   display: block; margin-bottom: .75rem;
-  filter: drop-shadow(0 0 18px rgba(58,158,110,.7));
+  filter: drop-shadow(0 0 18px rgba(74,184,212,.7));
   animation: pulse-glow 3.5s ease-in-out infinite alternate;
 }
 @keyframes pulse-glow {
-  from { filter: drop-shadow(0 0 10px rgba(58,158,110,.4)); }
-  to   { filter: drop-shadow(0 0 30px rgba(58,158,110,.95)); }
+  from { filter: drop-shadow(0 0 10px rgba(74,184,212,.4)); }
+  to   { filter: drop-shadow(0 0 30px rgba(74,184,212,.95)); }
 }
 .hero-name {
   font-family: var(--ff-display);
@@ -180,7 +180,7 @@ nav {
   position: relative; z-index: 1;
   display: flex; justify-content: center;
   border-top: 1px solid var(--border);
-  background: linear-gradient(transparent, rgba(4,14,8,.85));
+  background: linear-gradient(transparent, rgba(3,10,18,.85));
 }
 .hero-nav a {
   font-family: var(--ff-title); font-size: .62rem;
@@ -190,7 +190,7 @@ nav {
   transition: color .25s, background .25s;
 }
 .hero-nav a:first-child { border-left: 1px solid var(--border); }
-.hero-nav a:hover { color: var(--accent); background: rgba(58,158,110,.04); }
+.hero-nav a:hover { color: var(--accent); background: rgba(74,184,212,.04); }
 
 /* ══ SEÇÕES ══ */
 .reino-section {
@@ -343,7 +343,7 @@ nav {
 /* lightbox */
 #lightbox-reino {
   display: none; position: fixed; inset: 0; z-index: 200;
-  background: rgba(4,14,8,.95);
+  background: rgba(3,10,18,.95);
   align-items: center; justify-content: center;
   backdrop-filter: blur(6px);
 }
