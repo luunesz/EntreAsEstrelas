@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Entre as Estrelas — Reino da Chama Eterna</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=IM+Fell+English:ital@0;1&family=Cinzel:wght@400;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="estiloChamaEterna.css">
+  <link rel="icon" type="image/x-icon" href="iconSOL.jpeg">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-home" href="index.html">← Casa</a>
+    <span class="nav-char">🐉 REINO DA CHAMA ETERNA</span>
+  </nav>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox-chama">
+    <button onclick="closeLightbox()">✕ fechar</button>
+    <img id="lightbox-chama-img" src="" alt="">
+  </div>
+
+  <!-- ══ HERO ══ -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <img class="hero-img" src="bannerChamaEterna.jpg" alt="">
+
+    <div class="hero-center">
+      <p class="hero-eyebrow">✦ &nbsp; os reinos &nbsp; ✦</p>
+      <span class="hero-symbol">🐉</span>
+      <h1 class="hero-name">Reino da <em>Chama Eterna</em></h1>
+      <p class="hero-subtitle">Onde o fogo nunca aprendeu a se apagar</p>
+      <div class="hero-tags">
+        <span class="hero-tag">FORJA</span>
+        <span class="hero-tag">PODER</span>
+        <span class="hero-tag">ETERNIDADE</span>
+      </div>
+      <p class="hero-intro">
+        Aqui residiram os <strong>Dragões Primordiais</strong> — o maior deles deu forma ao próprio reino, que perdura graças a um fogo etéreo e imortal.
+      </p>
+    </div>
+
+    <!-- nav interna -->
+    <div class="hero-nav">
+      <a href="#origem">ORIGEM</a>
+      <a href="#geografia">GEOGRAFIA</a>
+      <a href="#figuras">FIGURAS</a>
+      <a href="#folclore">FOLCLORE</a>
+    </div>
+  </section>
+
+  <!-- ══ ORIGEM ══ -->
+  <section class="reino-section" id="origem">
+    <p class="section-label">✦ história</p>
+    <h2 class="section-title">Origem & <em>Fundação</em></h2>
+    <div class="divider-line">🐉</div>
+
+    <div class="section-with-aside">
+      <div class="prose-block">
+
+        <p>
+          Aqui residiram os <em>Dragões Primordiais</em>, e foi o maior deles quem deu origem ao próprio formato do reino — uma terra que ainda hoje perdura graças a um fogo etéreo e imortal, que nunca se deixou apagar.
+        </p>
+        <p>Inserir texto...</p>
+
+      </div>
+
+      <aside class="section-aside">
+        <div class="aside-row">
+          <p class="aside-label">FUNDADORES</p>
+          <p class="aside-value"><em>Dragões Primordiais</em></p>
+        </div>
+        <div class="aside-row">
+          <p class="aside-label">ATO FUNDADOR</p>
+          <p class="aside-value">O maior dos dragões deu forma ao território do reino</p>
+        </div>
+        <div class="aside-row">
+          <p class="aside-label">CHAMA CENTRAL</p>
+          <p class="aside-value"><em>Fogo etéreo e imortal</em></p>
+        </div>
+        <div class="aside-row">
+          <p class="aside-label">DINASTIA</p>
+          <p class="aside-value"><em>Inserir texto...</em></p>
+        </div>
+        <div class="aside-row">
+          <p class="aside-label">DIVINDADES</p>
+          <p class="aside-value"><em>Inserir texto...</em></p>
+        </div>
+        <div class="aside-row">
+          <p class="aside-label">REINO VIZINHO</p>
+          <p class="aside-value">Reino de Leskie · sul</p>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ══ GEOGRAFIA ══ -->
+  <section class="reino-section" id="geografia">
+    <p class="section-label">✦ cartografia</p>
+    <h2 class="section-title">Geografia & <em>Territórios</em></h2>
+    <div class="divider-line">🗺</div>
+
+    <div class="geo-image" onclick="openLightbox('ReinoDaChamaEternaMapa.png')" style="cursor:zoom-in;">
+      <img src="ReinoDaChamaEternaMapa.png" alt="Mapa do Reino da Chama Eterna" style="pointer-events:none;">
+      <div class="geo-label">MAPA DO REINO · clique para ampliar</div>
+    </div>
+
+    <div class="section-with-aside">
+      <div class="prose-block">
+        <p>Inserir texto...</p>
+
+        <div style="margin-top:2rem;">
+
+          <div style="margin-bottom:2rem; padding-bottom:2rem; border-bottom:1px solid var(--border);">
+            <p style="font-family:var(--ff-title);font-size:.65rem;letter-spacing:.3em;color:var(--accent);margin-bottom:.3rem;"><em>Floresta Ardente</em></p>
+            <p>Inserir texto...</p>
+          </div>
+
+          <div style="margin-bottom:2rem; padding-bottom:2rem; border-bottom:1px solid var(--border);">
+            <p style="font-family:var(--ff-title);font-size:.65rem;letter-spacing:.3em;color:var(--accent);margin-bottom:.3rem;"><em>Yǎnhuà</em></p>
+            <p>Inserir texto...</p>
+          </div>
+
+          <div style="margin-bottom:2rem; padding-bottom:2rem; border-bottom:1px solid var(--border);">
+            <p style="font-family:var(--ff-title);font-size:.65rem;letter-spacing:.3em;color:var(--accent);margin-bottom:.3rem;"><em>Xuè</em></p>
+            <p>Inserir texto...</p>
+          </div>
+
+          <div style="margin-bottom:2rem; padding-bottom:2rem; border-bottom:1px solid var(--border);">
+            <p style="font-family:var(--ff-title);font-size:.65rem;letter-spacing:.3em;color:var(--accent);margin-bottom:.3rem;"><em>Gémìng</em></p>
+            <p>Inserir texto...</p>
+          </div>
+
+          <div>
+            <p style="font-family:var(--ff-title);font-size:.65rem;letter-spacing:.3em;color:var(--accent);margin-bottom:.3rem;"><em>Ilhas da Asa Perdida</em></p>
+            <p>Inserir texto...</p>
+          </div>
+
+        </div>
+      </div>
+
+      <aside class="section-aside">
+        <div class="aside-row">
+          <p class="aside-label">CLIMA</p>
+          <p class="aside-value">Âmbar · calor de forja</p>
+        </div>
+        <div class="aside-row">
+          <p class="aside-label">BIOMA</p>
+          <p class="aside-value"><em>Inserir texto...</em></p>
+        </div>
+        <div class="aside-row">
+          <p class="aside-label">LOCALIZAÇÃO</p>
+          <p class="aside-value">Leste · fronteira com o Reino de Leskie</p>
+        </div>
+        <div class="aside-row">
+          <p class="aside-label">CIDADES-ESTADO</p>
+          <p class="aside-value"><em>Inserir texto...</em></p>
+        </div>
+        <div class="aside-row">
+          <p class="aside-label">PONTOS NOTÁVEIS</p>
+          <p class="aside-value"><em>Floresta Ardente · Ilhas da Asa Perdida</em></p>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ══ FIGURAS IMPORTANTES ══ -->
+  <section class="reino-section" id="figuras">
+    <p class="section-label">✦ elenco do reino</p>
+    <h2 class="section-title">Figuras <em>Importantes</em></h2>
+    <div class="divider-line">🐉</div>
+
+    <div class="prose-block" style="margin-bottom:2rem;">
+      <p>Inserir texto...</p>
+    </div>
+
+    <div class="figures-grid">
+      <a class="figure-card" href="#">
+        <div class="figure-avatar">🐉</div>
+        <p class="figure-name">INSERIR NOME</p>
+        <p class="figure-title">Inserir título</p>
+        <span class="figure-tag">A MONARQUIA</span>
+        <span class="figure-link">VER PÁGINA →</span>
+      </a>
+      <a class="figure-card" href="#">
+        <div class="figure-avatar">🔥</div>
+        <p class="figure-name">INSERIR NOME</p>
+        <p class="figure-title">Inserir título</p>
+        <span class="figure-tag">INSERIR TAG</span>
+        <span class="figure-link">VER PÁGINA →</span>
+      </a>
+      <a class="figure-card" href="#">
+        <div class="figure-avatar">⚒</div>
+        <p class="figure-name">INSERIR NOME</p>
+        <p class="figure-title">Inserir título</p>
+        <span class="figure-tag">INSERIR TAG</span>
+        <span class="figure-link">VER PÁGINA →</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ══ FOLCLORE & CULTURA ══ -->
+  <section class="reino-section" id="folclore">
+    <p class="section-label">✦ tradições</p>
+    <h2 class="section-title">Folclore & <em>Cultura</em></h2>
+    <div class="divider-line">🐉</div>
+
+    <div class="prose-block" style="margin-bottom:2rem;">
+      <p>Inserir texto...</p>
+    </div>
+
+    <div class="folklore-grid">
+      <div class="folklore-card" data-symbol="🐉">
+        <p class="folklore-card-label">LENDA</p>
+        <h3 class="folklore-card-title">Os Dragões Primordiais</h3>
+        <p class="folklore-card-desc">Seres que residiram nestas terras muito antes de qualquer coroa — <em>o maior deles deu forma ao próprio reino, e seu fogo etéreo jamais se apagou.</em></p>
+      </div>
+      <div class="folklore-card" data-symbol="🔥">
+        <p class="folklore-card-label">TRADIÇÃO</p>
+        <h3 class="folklore-card-title">Inserir título</h3>
+        <p class="folklore-card-desc">Inserir texto...</p>
+      </div>
+      <div class="folklore-card" data-symbol="⚒">
+        <p class="folklore-card-label">DEVOÇÃO</p>
+        <h3 class="folklore-card-title">Inserir título</h3>
+        <p class="folklore-card-desc">Inserir texto...</p>
+      </div>
+      <div class="folklore-card" data-symbol="🏔">
+        <p class="folklore-card-label">CRENÇA</p>
+        <h3 class="folklore-card-title">Inserir título</h3>
+        <p class="folklore-card-desc">Inserir texto...</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-star">🐉</span>
+    <p class="footer-title">REINO DA CHAMA ETERNA</p>
+    <p>um reino de <em>Entre as Estrelas</em></p>
+  </footer>
+
+  <script>
+    function openLightbox(src) {
+      document.getElementById('lightbox-chama-img').src = src;
+      document.getElementById('lightbox-chama').classList.add('open');
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox-chama').classList.remove('open');
+    }
+    document.getElementById('lightbox-chama').addEventListener('click', e => {
+      if (e.target === e.currentTarget) closeLightbox();
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+
+    const navLinks = document.querySelectorAll('.hero-nav a');
+    const sections = document.querySelectorAll('.reino-section[id]');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(l => l.style.color = '');
+          const active = document.querySelector(`.hero-nav a[href="#${entry.target.id}"]`);
+          if (active) active.style.color = 'var(--accent)';
+        }
+      });
+    }, { rootMargin: '-30% 0px -60% 0px' });
+    sections.forEach(s => observer.observe(s));
+  </script>
+</body>
+</html>
