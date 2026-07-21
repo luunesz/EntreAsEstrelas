@@ -1,0 +1,378 @@
+/* =========================================================
+   PontosNotaveis.css
+   Entre as Estrelas — Pontos Geográficos
+   Paleta e tipografia pensadas para casar com o site principal
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap');
+
+:root{
+  --bg-night:      #0b0e1a;
+  --bg-night-2:    #12172a;
+  --bg-panel:      #161b2e;
+  --gold:          #cba135;
+  --gold-soft:     #e4c876;
+  --gold-dim:      #8a7132;
+  --parchment:     #ece0c4;
+  --ink:           #d8d2c2;
+  --ink-dim:       #a7a190;
+  --line:          rgba(203,161,53,0.28);
+
+  --red-fire:      #7a1418;
+  --purple-dragon: #3a2735;
+  --amber-forest:  #c8992f;
+  --blue-isle:     #2b3f8f;
+  --sky-light:     #6fc3d8;
+  --lavender:      #b9bdd8;
+}
+
+*{ box-sizing: border-box; }
+
+html{ scroll-behavior: smooth; }
+
+body{
+  margin: 0;
+  background:
+    radial-gradient(ellipse at 20% 0%, rgba(203,161,53,0.06), transparent 55%),
+    radial-gradient(ellipse at 80% 30%, rgba(111,195,216,0.05), transparent 50%),
+    var(--bg-night);
+  color: var(--ink);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 19px;
+  line-height: 1.65;
+}
+
+/* estrelinhas de fundo, sutis */
+body::before{
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(1px 1px at 10% 15%, rgba(228,200,118,0.5) 0, transparent 100%),
+    radial-gradient(1px 1px at 80% 10%, rgba(228,200,118,0.4) 0, transparent 100%),
+    radial-gradient(1px 1px at 60% 70%, rgba(228,200,118,0.35) 0, transparent 100%),
+    radial-gradient(1px 1px at 30% 85%, rgba(228,200,118,0.4) 0, transparent 100%),
+    radial-gradient(1px 1px at 92% 60%, rgba(228,200,118,0.3) 0, transparent 100%),
+    radial-gradient(1px 1px at 45% 40%, rgba(228,200,118,0.3) 0, transparent 100%);
+  opacity: 0.6;
+  z-index: 0;
+}
+
+h1, h2, h3, h4{
+  font-family: 'Cinzel', serif;
+  color: var(--gold-soft);
+  letter-spacing: 0.03em;
+  margin: 0 0 0.4em;
+  font-weight: 600;
+}
+
+em{ color: var(--gold-soft); font-style: italic; }
+strong{ color: var(--parchment); }
+
+a{
+  color: var(--gold);
+  text-decoration: none;
+  transition: color .25s ease, letter-spacing .25s ease;
+}
+a:hover{ color: var(--gold-soft); }
+
+.star-divider{
+  text-align: center;
+  color: var(--gold-dim);
+  font-size: 1.1rem;
+  letter-spacing: 0.6em;
+  margin: 0 0 1.5rem;
+  opacity: 0.85;
+}
+
+/* ---------- topo / navegação ---------- */
+.topbar{
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 6vw;
+  background: linear-gradient(180deg, rgba(11,14,26,0.96), rgba(11,14,26,0.85));
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(6px);
+}
+
+.topbar .voltar{
+  font-family: 'Cinzel', serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+}
+.topbar .voltar:hover{ color: var(--gold-soft); }
+
+.topbar .marca{
+  font-family: 'Cinzel', serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+}
+
+/* ---------- cabeçalho da página ---------- */
+.hero{
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 5.5rem 6vw 3.5rem;
+}
+
+.hero .kicker{
+  font-family: 'Cinzel', serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  margin-bottom: 1rem;
+}
+
+.hero h1{
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  margin-bottom: 0.6rem;
+}
+
+.hero p.lead{
+  max-width: 640px;
+  margin: 0 auto;
+  color: var(--ink-dim);
+  font-size: 1.15rem;
+  font-style: italic;
+}
+
+/* ---------- seção do mapa ---------- */
+.map-section{
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  margin: 0 auto 4rem;
+  padding: 0 6vw;
+  text-align: center;
+}
+
+.map-frame{
+  position: relative;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 10px;
+  background: var(--bg-panel);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+}
+
+.map-frame img{
+  width: 100%;
+  display: block;
+  border-radius: 2px;
+  cursor: zoom-in;
+  filter: sepia(8%) saturate(105%);
+}
+
+.map-caption{
+  margin-top: 0.9rem;
+  font-family: 'Cinzel', serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+}
+
+/* ---------- índice rápido dos pontos ---------- */
+.indice{
+  position: relative;
+  z-index: 1;
+  max-width: 1000px;
+  margin: 0 auto 3rem;
+  padding: 0 6vw;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.8rem;
+  justify-content: center;
+}
+
+.indice a{
+  font-family: 'Cinzel', serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.5rem 0.9rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--ink-dim);
+}
+.indice a:hover{
+  color: var(--gold-soft);
+  border-color: var(--gold);
+}
+
+/* ---------- lista de pontos notáveis ---------- */
+.pontos{
+  position: relative;
+  z-index: 1;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 6vw 6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.2rem;
+}
+
+.ponto{
+  scroll-margin-top: 90px;
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  gap: 1.6rem;
+  padding: 1.8rem;
+  background: linear-gradient(160deg, var(--bg-panel), var(--bg-night-2));
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent, var(--gold-dim));
+  border-radius: 6px;
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+
+.ponto:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 14px 34px rgba(0,0,0,0.35);
+  border-color: var(--accent, var(--gold));
+}
+
+.ponto .marcador{
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cinzel', serif;
+  font-size: 1.6rem;
+  color: var(--bg-night);
+  background: var(--accent, var(--gold-dim));
+  box-shadow: inset 0 0 0 3px rgba(11,14,26,0.35);
+}
+
+.ponto .conteudo .categoria{
+  font-family: 'Cinzel', serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--accent, var(--gold-dim));
+  margin-bottom: 0.3rem;
+}
+
+.ponto h2{
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.ponto .descricao{
+  color: var(--ink);
+}
+
+.ponto .descricao .placeholder{
+  color: var(--ink-dim);
+  font-style: italic;
+}
+
+.ponto .meta{
+  margin-top: 0.9rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.4rem;
+  font-family: 'Cinzel', serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+}
+
+.ponto .meta span b{
+  display: block;
+  color: var(--gold-dim);
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  margin-bottom: 0.15rem;
+}
+
+/* cores por região, ecoando o mapa */
+.ponto.fogo      { --accent: var(--red-fire); }
+.ponto.dragao    { --accent: var(--purple-dragon); }
+.ponto.floresta  { --accent: var(--amber-forest); }
+.ponto.ilha-azul { --accent: var(--blue-isle); }
+.ponto.ceu       { --accent: var(--sky-light); }
+.ponto.gelo      { --accent: var(--lavender); }
+
+/* ---------- rodapé ---------- */
+footer{
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 3rem 6vw 4rem;
+  border-top: 1px solid var(--line);
+}
+
+footer .estrela{
+  color: var(--gold-dim);
+  letter-spacing: 0.5em;
+  margin-bottom: 0.6rem;
+}
+
+footer p{
+  font-family: 'Cinzel', serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+}
+
+footer a{ color: var(--gold-dim); }
+
+/* ---------- lightbox simples para o mapa ---------- */
+.lightbox{
+  position: fixed;
+  inset: 0;
+  background: rgba(6,7,13,0.92);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  padding: 4vh 4vw;
+}
+.lightbox.aberto{ display: flex; }
+.lightbox img{
+  max-width: 100%;
+  max-height: 92vh;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+}
+.lightbox .fechar{
+  position: absolute;
+  top: 2rem;
+  right: 3rem;
+  font-family: 'Cinzel', serif;
+  color: var(--gold-soft);
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+/* ---------- responsivo ---------- */
+@media (max-width: 640px){
+  .ponto{
+    grid-template-columns: 1fr;
+    text-align: left;
+  }
+  .ponto .marcador{
+    width: 64px;
+    height: 64px;
+    font-size: 1.1rem;
+  }
+  .topbar{ padding: 1rem 5vw; }
+  .hero{ padding: 4rem 5vw 2.5rem; }
+}
