@@ -6,6 +6,7 @@
   <title>Entre as Estrelas — Vilajero de Mifca</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=IM+Fell+English:ital@0;1&family=Cinzel:wght@400;600&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="estiloPostodeVigia.css">
+  <link rel="stylesheet" href="estiloPersonagens.css">
   <link rel="icon" type="image/x-icon" href="iconSOL.jpeg">
 </head>
 <body>
@@ -14,7 +15,7 @@
   <nav>
     <a class="nav-title" href="index.html#personagens">✦ ENTRE AS ESTRELAS</a>
     <ul class="nav-links">
-      <li><a href="index.html">Casa</a></li>
+      <li><a href="#galeria">Galerria</a></li>
       <li><a href="index.html#lore">Reinos</a></li>
       <li><a href="personagens.html">Elenco Principal</a></li>
       <li><a href="#hero-postodevigia" style="color:var(--star)">Vilarejo Mica</a></li>
@@ -448,6 +449,36 @@
     </main>
   </div>
 
+  <!-- ══ GALERIA ══ -->
+  <article class="page-section" id="galeria">
+    <p class="section-label">✦ arte</p>
+    <h2 class="section-title">Galeria do <em>Vilarejo de Mica</em></h2>
+    <div class="divider">🐎</div>
+    <div class="gallery-masonry">
+      <div class="gallery-cell">
+        <div class="gallery-cell-placeholder">🫧<span>AS MARGENS DO RIO</span></div>
+        <img src="Kelpie1.jpg">
+      </div>
+      <div class="gallery-cell">
+        <div class="gallery-cell-placeholder">🌊<span>ADENTRE A ÁGUA</span></div>
+         <img src="Kelpie2.jpg">
+      </div>
+      <div class="gallery-cell">
+        <div class="gallery-cell-placeholder">🌕<span>A LUZ DO LUAR</span></div>
+        <img src="Kelpie3.jpg">
+      </div>
+      <div class="gallery-cell">
+        <div class="gallery-cell-placeholder">🪦<span>GESTOS VAZIOS</span></div>
+        <img src="Kelpie4.jpg">
+      </div>
+      <div class="gallery-cell">
+        <div class="gallery-cell-placeholder">⌛<span>SOBRE DOMÍNIO</span></div>
+        <img src="Kelpie5.jpg">
+      </div>
+    </div> 
+    </div>
+  </article>
+
   <!-- FOOTER -->
   <footer>
     <a class="footer-back" href="index.html">← VOLTAR A CASA</a>
@@ -456,8 +487,33 @@
   </footer>
 
   <script>
+    // Lightbox
+    function openLightbox(src) {
+      document.getElementById('lightbox-img').src = src;
+      document.getElementById('lightbox').classList.add('open');
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('open');
+    }
+    document.getElementById('lightbox').addEventListener('click', e => {
+      if (e.target === e.currentTarget) closeLightbox();
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+
+    // Ativa lightbox nas imagens da galeria
+    document.querySelectorAll('.gallery-cell img').forEach(img => {
+      img.style.cursor = 'zoom-in';
+      img.addEventListener('click', () => openLightbox(img.src));
+    });
+    
     // Highlight sidebar ao rolar
     const links = document.querySelectorAll('.sidebar-link');
     const cards = document.querySelectorAll('.char-main-card[id]');
 
     const observer = new IntersectionObserver(entries
+
+  </script>
+ </body>
+</html>
