@@ -24,7 +24,13 @@
     overlay.textContent = '🔒';
     el.appendChild(overlay);
 
-    overlay.addEventListener('click', async () => {
+    overlay.addEventListener('click', async (e) => {
+      // Impede que o clique "vaze" pro link/elemento por trás
+      // (essencial quando .protegido é um <a href="...">, senão
+      // o navegador segue o link antes mesmo da senha ser conferida)
+      e.preventDefault();
+      e.stopPropagation();
+
       const senha = prompt('Digite a senha:');
       if (!senha) return;
 
@@ -32,6 +38,12 @@
       if (hash === hashEsperado) {
         el.classList.remove('bloqueado');
         overlay.remove();
+
+        // Se o elemento protegido for um link, navega direto
+        // pro destino assim que a senha for confirmada
+        if (el.tagName === 'A' && el.href) {
+          window.location.href = el.href;
+        }
       } else {
         alert('Senha incorreta.');
       }
