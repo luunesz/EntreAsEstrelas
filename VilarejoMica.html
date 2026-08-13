@@ -7,6 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=IM+Fell+English:ital@0;1&family=Cinzel:wght@400;600&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="estiloPostodeVigia.css">
   <link rel="stylesheet" href="estiloPersonagens.css">
+  <link rel="stylesheet" href="protegido.css">
   <link rel="icon" type="image/x-icon" href="iconSOL.jpeg">
 </head>
 <body>
@@ -454,9 +455,9 @@
 
       <!-- OS DE FORA -->
         <p class="divider">✦ &nbsp; OS DE FORA</p>
-        
+
        <!-- ══ AUST ══ -->
-      <div class="char-main-card" id="aust">
+      <div class="char-main-card protegido" id="aust" data-hash="27d86cbcb24fb7c4ed5450a1a51eda91e02647056658dada08644d56e70ff1e4">
         <div class="char-main-portrait">
           <img src="Aust.jpg" alt="Aust">
           <div class="char-main-portrait-placeholder">
@@ -502,7 +503,7 @@
         </div>
       </div>
 
-      
+
       <a class="back-top" href="#hero-postodevigia">↑ voltar ao topo</a>
     </main>
   </div>
@@ -529,7 +530,7 @@
         <div class="gallery-cell-placeholder">🫗<span>Afluente</span></div>
         <img src="rio.jpg">
       </div>
-      </div> 
+      </div>
     </div>
   </article>
 
@@ -540,6 +541,7 @@
     <p>personagens encontrados em <em>Entre as Estrelas</em></p>
   </footer>
 
+  <script src="protegido.js"></script>
   <script>
     // Lightbox
     function openLightbox(src) {
@@ -561,7 +563,7 @@
       img.style.cursor = 'zoom-in';
       img.addEventListener('click', () => openLightbox(img.src));
     });
-    
+
     // Highlight sidebar ao rolar
     const links = document.querySelectorAll('.sidebar-link');
     const cards = document.querySelectorAll('.char-main-card[id]');
