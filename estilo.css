@@ -368,6 +368,7 @@
       font-size: .62rem;
       letter-spacing: .15em;
       color: var(--teal-light);
+      text-decoration: none;
     }
 
     /* ════════════════════════════
