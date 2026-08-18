@@ -9,6 +9,12 @@
   <link rel="stylesheet" href="estiloPersonagens.css">
   <link rel="stylesheet" href="protegido.css">
   <link rel="icon" type="image/x-icon" href="iconSOL.jpeg">
+
+  <style>
+    .gallery-cell img { cursor: zoom-in; }
+    .gallery-cell img:hover { opacity: 1; transform: scale(1.03); }
+  </style>
+  
 </head>
 <body>
 
@@ -16,14 +22,17 @@
   <nav>
     <a class="nav-title" href="index.html#personagens">✦ ENTRE AS ESTRELAS</a>
     <ul class="nav-links">
-      <li><a href="#galeria">Galeria</a></li>
-      <li><a href="index.html#lore">Reinos</a></li>
       <li><a href="personagens.html">Elenco Principal</a></li>
       <li><a href="#hero-postodevigia" style="color:var(--star)">Vilarejo Mica</a></li>
-      <li><a href="divindades.html">Divindades</a></li>
-      <li><a href="index.html#faq">FAQ</a></li>
+      <li><a href="#galeria">Galeria</a></li>
     </ul>
   </nav>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox">
+    <button id="lightbox-close" onclick="closeLightbox()">✕ fechar</button>
+    <img id="lightbox-img" src="" alt="">
+  </div>
 
   <!-- HERO -->
   <header id="hero-postodevigia">
