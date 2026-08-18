@@ -7,21 +7,30 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=IM+Fell+English:ital@0;1&family=Cinzel:wght@400;600&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="estiloPostodeVigia.css">
   <link rel="icon" type="image/x-icon" href="iconSOL.jpeg">
+
+  <style>
+    .gallery-cell img { cursor: zoom-in; }
+    .gallery-cell img:hover { opacity: 1; transform: scale(1.03); }
+  </style>
+  
 </head>
 <body>
 
   <!-- NAV -->
   <nav>
-    <a class="nav-title" href="index.html">✦ ENTRE AS ESTRELAS</a>
+    <a class="nav-title" href="index.html#personagens">✦ ENTRE AS ESTRELAS</a>
     <ul class="nav-links">
-      <li><a href="index.html">Casa</a></li>
-      <li><a href="index.html#lore">Reinos</a></li>
       <li><a href="personagens.html">Elenco Principal</a></li>
-      <li><a href="#hero-postodevigia" style="color:var(--star)">Posto de Vigia</a></li>
-      <li><a href="divindades.html">Divindades</a></li>
-      <li><a href="index.html#faq">FAQ</a></li>
+      <li><a href="#hero-postodevigia" style="color:var(--star)">O Posto de Vigia</a></li>
+      <li><a href="#galeria">Galeria</a></li>
     </ul>
   </nav>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox">
+    <button id="lightbox-close" onclick="closeLightbox()">✕ fechar</button>
+    <img id="lightbox-img" src="" alt="">
+  </div>
 
   <!-- HERO -->
   <header id="hero-postodevigia">
@@ -500,6 +509,19 @@
     </main>
   </div>
 
+  <!-- ══ GALERIA ══ -->
+  <article class="page-section" id="galeria">
+    <p class="section-label">✦ arte</p>
+    <h2 class="section-title">Galeria do <em>O Posto de Vigia</em></h2>
+    <div class="divider"></div>
+    <div class="gallery-masonry">
+      <div class="gallery-cell">
+        <div class="gallery-cell-placeholder">🦉<span>O Brasão Strix</span></div>
+        <img src="BrasaoStrix.jpg">
+      </div>
+    </div>
+  </article>
+
   <!-- FOOTER -->
   <footer>
     <a class="footer-back" href="index.html">← VOLTAR A CASA</a>
@@ -508,8 +530,24 @@
   </footer>
 
   <script>
-    // Highlight sidebar ao rolar
-    const links = document.querySelectorAll('.sidebar-link');
-    const cards = document.querySelectorAll('.char-main-card[id]');
+    // Lightbox
+    function openLightbox(src) {
+      document.getElementById('lightbox-img').src = src;
+      document.getElementById('lightbox').classList.add('open');
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('open');
+    }
+    document.getElementById('lightbox').addEventListener('click', e => {
+      if (e.target === e.currentTarget) closeLightbox();
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeLightbox();
+    });
 
-    const observer = new IntersectionObserver(entries
+    // Ativa lightbox nas imagens da galeria
+    document.querySelectorAll('.gallery-cell img').forEach(img => {
+      img.style.cursor = 'zoom-in';
+      img.addEventListener('click', () => openLightbox(img.src));
+    });
+  </script>
