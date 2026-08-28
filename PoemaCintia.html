@@ -3,30 +3,33 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pista — O Sussurro Esquecido</title>
+<title>Pista — Entalhado no Baú</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=UnifrakturMaguntia&family=EB+Garamond:ital@0;1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
 <style>
   :root{
-    --parchment-1: #e6d5ac;
-    --parchment-2: #d9c48f;
-    --parchment-edge: #3a2413;
-    --ink: #3c2a16;
-    --ink-faint: #6b4f2c;
-    --gold: #a9782f;
-    --wax: #6d1c1c;
-    --wax-dark: #4a1010;
+    --wood-dark:  #2a1810;
+    --wood-mid:   #4a2f1c;
+    --wood-light: #6b4527;
+    --plank-seam: #1c0f08;
+    --carve-shadow: rgba(0,0,0,0.75);
+    --carve-glow: rgba(255,214,150,0.28);
+    --iron: #2b2b2b;
+    --iron-light: #565248;
+    --rivet: #8a7a5a;
+    --gold: #b8894a;
   }
 
   html,body{
-    margin:0;
-    padding:0;
-    background: transparent;
+    margin:0; padding:0;
     min-height:100vh;
     display:flex;
     align-items:center;
     justify-content:center;
-    font-family:'EB Garamond', serif;
+    font-family:'Cormorant Garamond', serif;
+    background:
+      radial-gradient(120% 90% at 50% 0%, rgba(0,0,0,0) 0%, rgba(0,0,0,0.35) 100%),
+      linear-gradient(160deg, #17110c, #0c0906 70%);
   }
 
   .stage{
@@ -37,171 +40,220 @@
     justify-content:center;
   }
 
-  /* ---------- pergaminho ---------- */
-  .scroll{
+  /* ---------- tampa do baú ---------- */
+  .lid{
     position:relative;
-    width:min(560px, 92vw);
-    padding: 64px 56px 52px;
+    width:min(600px, 92vw);
+    padding: 60px 48px 66px;
+    border-radius: 6px;
     background:
-      radial-gradient(120% 140% at 20% 10%, rgba(255,246,222,0.55), transparent 55%),
-      radial-gradient(120% 140% at 85% 90%, rgba(90,60,20,0.35), transparent 55%),
-      linear-gradient(160deg, var(--parchment-1), var(--parchment-2) 55%, #cdb277 100%);
+      repeating-linear-gradient(
+        90deg,
+        var(--wood-mid) 0px,
+        var(--wood-light) 38px,
+        var(--wood-mid) 78px,
+        var(--wood-dark) 82px
+      );
     box-shadow:
-      0 25px 60px -15px rgba(0,0,0,0.6),
-      0 8px 20px -8px rgba(0,0,0,0.5),
-      inset 0 0 40px rgba(90,60,20,0.35),
-      inset 0 0 120px rgba(60,40,15,0.25);
-    transform: rotate(-0.6deg);
-    filter: url(#roughen);
+      0 28px 60px -14px rgba(0,0,0,0.7),
+      0 10px 22px -8px rgba(0,0,0,0.6),
+      inset 0 0 0 6px rgba(20,10,5,0.5);
+    overflow:hidden;
   }
 
-  .scroll::before{
-    /* manchas / veludo do papel */
-    content:"";
+  /* veio da madeira, deslocado pelo filtro SVG */
+  .grain{
     position:absolute;
     inset:0;
-    background-image:
-      radial-gradient(circle at 12% 22%, rgba(90,55,20,0.18) 0, transparent 6%),
-      radial-gradient(circle at 78% 15%, rgba(90,55,20,0.14) 0, transparent 8%),
-      radial-gradient(circle at 88% 70%, rgba(90,55,20,0.20) 0, transparent 10%),
-      radial-gradient(circle at 8% 82%, rgba(90,55,20,0.16) 0, transparent 9%),
-      radial-gradient(circle at 50% 92%, rgba(90,55,20,0.12) 0, transparent 12%);
-    pointer-events:none;
+    background:
+      repeating-linear-gradient(
+        90deg,
+        rgba(0,0,0,0) 0px,
+        rgba(0,0,0,0.16) 2px,
+        rgba(0,0,0,0) 5px,
+        rgba(255,220,170,0.06) 9px,
+        rgba(0,0,0,0) 13px
+      );
+    filter: url(#woodgrain);
     mix-blend-mode: multiply;
-  }
-
-  .burn{
-    position:absolute;
-    border-radius:50%;
-    background: radial-gradient(circle, rgba(40,20,5,0.55), rgba(40,20,5,0.15) 60%, transparent 75%);
-    filter: blur(1px);
     pointer-events:none;
   }
-  .burn.b1{ width:90px; height:70px; top:-18px; left:-22px; }
-  .burn.b2{ width:60px; height:60px; bottom:-16px; right:-14px; }
-  .burn.b3{ width:38px; height:34px; top:38%; right:-16px; }
 
+  /* sombreamento geral / vinheta de uso */
+  .lid::after{
+    content:"";
+    position:absolute; inset:0;
+    background:
+      radial-gradient(120% 90% at 50% 0%, rgba(0,0,0,0) 40%, rgba(0,0,0,0.35) 100%),
+      radial-gradient(90% 70% at 50% 100%, rgba(0,0,0,0) 45%, rgba(0,0,0,0.4) 100%),
+      radial-gradient(70% 60% at 0% 50%, rgba(0,0,0,0.3), transparent 60%),
+      radial-gradient(70% 60% at 100% 50%, rgba(0,0,0,0.3), transparent 60%);
+    pointer-events:none;
+  }
+
+  /* arranhões / marcas de uso */
+  .scratch{
+    position:absolute;
+    background: rgba(0,0,0,0.35);
+    filter: blur(0.4px);
+    pointer-events:none;
+    border-radius: 2px;
+  }
+  .s1{ width:2px; height:120px; top:10%; left:22%; transform: rotate(9deg); opacity:0.5;}
+  .s2{ width:1px; height:70px; bottom:14%; right:18%; transform: rotate(-14deg); opacity:0.4;}
+  .s3{ width:1.5px; height:90px; top:38%; right:8%; transform: rotate(4deg); opacity:0.3;}
+
+  /* ---------- ferragens de canto ---------- */
+  .bracket{
+    position:absolute;
+    width:46px; height:46px;
+    background: linear-gradient(135deg, var(--iron-light), var(--iron) 60%);
+    clip-path: polygon(0 0, 100% 0, 100% 30%, 30% 100%, 0 100%);
+    box-shadow: inset 0 0 4px rgba(0,0,0,0.6), 0 2px 4px rgba(0,0,0,0.5);
+  }
+  .bracket::after{
+    content:"";
+    position:absolute;
+    width:7px; height:7px;
+    border-radius:50%;
+    background: radial-gradient(circle at 35% 30%, #cbbb8f, var(--rivet) 55%, #4a3f26 100%);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.6);
+    top:9px; left:9px;
+  }
+  .bracket.tl{ top:0; left:0; }
+  .bracket.tr{ top:0; right:0; transform: scaleX(-1); }
+  .bracket.bl{ bottom:0; left:0; transform: scaleY(-1); }
+  .bracket.br{ bottom:0; right:0; transform: scale(-1,-1); }
+
+  /* ---------- conteúdo entalhado ---------- */
   .eyebrow{
     text-align:center;
-    font-family:'Cormorant Garamond', serif;
     font-style:italic;
-    letter-spacing: 0.32em;
+    letter-spacing: 0.3em;
     text-transform:uppercase;
-    font-size:12px;
-    color: var(--ink-faint);
-    margin: 0 0 6px;
+    font-size:11px;
+    color: rgba(220,200,160,0.55);
+    margin: 0 0 8px;
+    text-shadow: 1px 1px 0 rgba(255,220,170,0.15), -1px -1px 1px rgba(0,0,0,0.7);
   }
 
   .title{
     text-align:center;
     font-family:'UnifrakturMaguntia', cursive;
-    font-size: 34px;
-    color: var(--ink);
-    margin: 0 0 30px;
-    text-shadow: 0 1px 0 rgba(255,255,255,0.25);
+    font-size: 32px;
+    margin: 0 0 26px;
+    color: var(--wood-light);
+    text-shadow:
+      1px 1px 0 rgba(255,222,170,0.22),
+      -1.5px -1.5px 1.5px rgba(0,0,0,0.8),
+      0 2px 3px rgba(0,0,0,0.5);
     letter-spacing: 0.02em;
   }
 
   .rule{
-    width: 120px;
-    height: 1px;
-    margin: 0 auto 34px;
-    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    width: 130px;
+    height: 2px;
+    margin: 0 auto 32px;
+    background: linear-gradient(90deg, transparent, rgba(0,0,0,0.6), transparent);
     position:relative;
   }
+  .rule::before{
+    content:"";
+    position:absolute; inset:0 0 -1px 0;
+    background: linear-gradient(90deg, transparent, rgba(255,222,170,0.2), transparent);
+  }
   .rule::after{
-    content:"✦";
+    content:"❖";
     position:absolute;
     left:50%; top:50%;
     transform: translate(-50%,-50%);
-    color: var(--gold);
     font-size: 13px;
-    background:
-      radial-gradient(circle, var(--parchment-1) 40%, transparent 70%);
-    padding: 0 8px;
+    color: var(--wood-light);
+    text-shadow: 1px 1px 0 rgba(255,222,170,0.2), -1px -1px 1px rgba(0,0,0,0.8);
   }
 
   .poem{
-    font-family:'Cormorant Garamond', serif;
-    font-size: 21px;
-    line-height: 1.9;
-    color: var(--ink);
+    font-size: 20px;
+    line-height: 2;
     text-align:center;
+    color: var(--wood-light);
   }
-
-  .poem p{ margin: 0 0 18px; }
+  .poem p{ margin: 0 0 16px; }
   .poem p:last-child{ margin-bottom:0; }
+  .poem p{
+    text-shadow:
+      1px 1px 0 rgba(255,222,170,0.20),
+      -1.5px -1.5px 1.5px rgba(0,0,0,0.85),
+      0 2px 2px rgba(0,0,0,0.4);
+  }
 
   .dropcap{
     font-family:'UnifrakturMaguntia', cursive;
-    font-size: 1.7em;
-    color: var(--wax-dark);
+    font-size: 1.6em;
     padding: 0 2px;
-    text-shadow: 0 1px 0 rgba(255,255,255,0.3);
+    color: var(--gold);
+    text-shadow:
+      1px 1px 0 rgba(255,230,190,0.35),
+      -1.5px -1.5px 1.5px rgba(0,0,0,0.9),
+      0 2px 3px rgba(0,0,0,0.5);
   }
 
   .signature{
-    margin-top: 40px;
+    margin-top: 36px;
     text-align:center;
-    font-family:'Cormorant Garamond', serif;
     font-style: italic;
-    font-size: 14px;
-    color: var(--ink-faint);
-    letter-spacing: 0.04em;
+    font-size: 13px;
+    color: rgba(220,200,160,0.5);
+    text-shadow: 1px 1px 0 rgba(255,222,170,0.12), -1px -1px 1px rgba(0,0,0,0.7);
   }
 
-  /* ---------- selo de cera ---------- */
-  .seal{
+  /* ---------- medalhão entalhado ---------- */
+  .medallion{
     position:absolute;
     left:50%;
-    bottom:-30px;
-    transform: translateX(-50%) rotate(-4deg);
-    width: 78px;
-    height: 78px;
-    border-radius: 50%;
-    background:
-      radial-gradient(circle at 32% 28%, #8a2929, var(--wax) 45%, var(--wax-dark) 85%);
-    box-shadow:
-      0 6px 14px rgba(0,0,0,0.55),
-      inset 0 2px 4px rgba(255,255,255,0.25),
-      inset 0 -6px 10px rgba(0,0,0,0.45);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-  }
-  .seal svg{ width: 44px; height:44px; opacity:0.9; }
-  .seal::before{
-    content:"";
-    position:absolute;
-    inset:-6px;
+    bottom:-34px;
+    transform: translateX(-50%);
+    width: 70px; height:70px;
     border-radius:50%;
-    background:
-      radial-gradient(circle, transparent 60%, rgba(0,0,0,0.15) 78%, transparent 82%);
+    background: radial-gradient(circle at 38% 32%, var(--wood-light), var(--wood-mid) 60%, var(--wood-dark) 100%);
+    box-shadow:
+      0 6px 12px rgba(0,0,0,0.55),
+      inset 0 0 0 3px rgba(20,10,5,0.5),
+      inset 2px 2px 4px rgba(255,222,170,0.15),
+      inset -2px -2px 5px rgba(0,0,0,0.6);
+    display:flex; align-items:center; justify-content:center;
   }
+  .medallion svg{ width:38px; height:38px; }
 
   @media (max-width: 480px){
-    .scroll{ padding: 52px 30px 60px; }
-    .poem{ font-size: 18px; }
-    .title{ font-size: 27px; }
+    .lid{ padding: 50px 26px 60px; }
+    .poem{ font-size: 17px; }
+    .title{ font-size: 25px; }
   }
 </style>
 </head>
 <body>
 
 <svg width="0" height="0" style="position:absolute">
-  <filter id="roughen">
-    <feTurbulence type="fractalNoise" baseFrequency="0.012 0.018" numOctaves="2" seed="7" result="noise"/>
-    <feDisplacementMap in="SourceGraphic" in2="noise" scale="6"/>
+  <filter id="woodgrain" x="-20%" y="-20%" width="140%" height="140%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.008 0.35" numOctaves="4" seed="12" result="noise"/>
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="14" xChannelSelector="R" yChannelSelector="G"/>
   </filter>
 </svg>
 
 <div class="stage">
-  <div class="scroll">
-    <div class="burn b1"></div>
-    <div class="burn b2"></div>
-    <div class="burn b3"></div>
+  <div class="lid">
+    <div class="grain"></div>
+    <div class="scratch s1"></div>
+    <div class="scratch s2"></div>
+    <div class="scratch s3"></div>
 
-    <p class="eyebrow">🩻🙊</p>
+    <div class="bracket tl"></div>
+    <div class="bracket tr"></div>
+    <div class="bracket bl"></div>
+    <div class="bracket br"></div>
+
+    <p class="eyebrow">entalhado na tampa do baú</p>
     <h1 class="title">O Sussurro Esquecido</h1>
     <div class="rule"></div>
 
@@ -212,14 +264,16 @@
       <p><span class="dropcap">M</span>urmúrios doces que me convencem</p>
     </div>
 
-    <p class="signature">— versos gravados na madeira do baú —</p>
+    <p class="signature">as letras parecem cravadas fundo, como se a faca tivesse hesitado</p>
 
-    <div class="seal">
-      <svg viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="22" cy="22" r="19" fill="none" stroke="#d8c9a3" stroke-width="1" opacity="0.6"/>
-        <path d="M22 6 L26 18 L38 18 L28 25 L32 37 L22 29 L12 37 L16 25 L6 18 L18 18 Z"
-              fill="#d8c9a3" opacity="0.75"/>
-        <circle cx="22" cy="22" r="4.5" fill="#4a1010" opacity="0.6"/>
+    <div class="medallion">
+      <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="20" cy="20" r="16" fill="none" stroke="#1c0f08" stroke-width="2.4" opacity="0.85"/>
+        <circle cx="20" cy="20" r="16" fill="none" stroke="#c9a969" stroke-width="1" opacity="0.5"/>
+        <path d="M20 6 L23 17 L34 17 L25 23 L28 34 L20 27 L12 34 L15 23 L6 17 L17 17 Z"
+              fill="none" stroke="#1c0f08" stroke-width="2" opacity="0.8"/>
+        <path d="M20 6 L23 17 L34 17 L25 23 L28 34 L20 27 L12 34 L15 23 L6 17 L17 17 Z"
+              fill="none" stroke="#c9a969" stroke-width="0.8" opacity="0.55"/>
       </svg>
     </div>
   </div>
