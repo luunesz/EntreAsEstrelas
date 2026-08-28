@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pista — O Sussurro Esquecido</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=UnifrakturMaguntia&family=EB+Garamond:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --parchment-1: #e6d5ac;
+    --parchment-2: #d9c48f;
+    --parchment-edge: #3a2413;
+    --ink: #3c2a16;
+    --ink-faint: #6b4f2c;
+    --gold: #a9782f;
+    --wax: #6d1c1c;
+    --wax-dark: #4a1010;
+  }
+
+  html,body{
+    margin:0;
+    padding:0;
+    background: transparent;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'EB Garamond', serif;
+  }
+
+  .stage{
+    width:100%;
+    padding: 48px 20px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+
+  /* ---------- pergaminho ---------- */
+  .scroll{
+    position:relative;
+    width:min(560px, 92vw);
+    padding: 64px 56px 52px;
+    background:
+      radial-gradient(120% 140% at 20% 10%, rgba(255,246,222,0.55), transparent 55%),
+      radial-gradient(120% 140% at 85% 90%, rgba(90,60,20,0.35), transparent 55%),
+      linear-gradient(160deg, var(--parchment-1), var(--parchment-2) 55%, #cdb277 100%);
+    box-shadow:
+      0 25px 60px -15px rgba(0,0,0,0.6),
+      0 8px 20px -8px rgba(0,0,0,0.5),
+      inset 0 0 40px rgba(90,60,20,0.35),
+      inset 0 0 120px rgba(60,40,15,0.25);
+    transform: rotate(-0.6deg);
+    filter: url(#roughen);
+  }
+
+  .scroll::before{
+    /* manchas / veludo do papel */
+    content:"";
+    position:absolute;
+    inset:0;
+    background-image:
+      radial-gradient(circle at 12% 22%, rgba(90,55,20,0.18) 0, transparent 6%),
+      radial-gradient(circle at 78% 15%, rgba(90,55,20,0.14) 0, transparent 8%),
+      radial-gradient(circle at 88% 70%, rgba(90,55,20,0.20) 0, transparent 10%),
+      radial-gradient(circle at 8% 82%, rgba(90,55,20,0.16) 0, transparent 9%),
+      radial-gradient(circle at 50% 92%, rgba(90,55,20,0.12) 0, transparent 12%);
+    pointer-events:none;
+    mix-blend-mode: multiply;
+  }
+
+  .burn{
+    position:absolute;
+    border-radius:50%;
+    background: radial-gradient(circle, rgba(40,20,5,0.55), rgba(40,20,5,0.15) 60%, transparent 75%);
+    filter: blur(1px);
+    pointer-events:none;
+  }
+  .burn.b1{ width:90px; height:70px; top:-18px; left:-22px; }
+  .burn.b2{ width:60px; height:60px; bottom:-16px; right:-14px; }
+  .burn.b3{ width:38px; height:34px; top:38%; right:-16px; }
+
+  .eyebrow{
+    text-align:center;
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    letter-spacing: 0.32em;
+    text-transform:uppercase;
+    font-size:12px;
+    color: var(--ink-faint);
+    margin: 0 0 6px;
+  }
+
+  .title{
+    text-align:center;
+    font-family:'UnifrakturMaguntia', cursive;
+    font-size: 34px;
+    color: var(--ink);
+    margin: 0 0 30px;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.25);
+    letter-spacing: 0.02em;
+  }
+
+  .rule{
+    width: 120px;
+    height: 1px;
+    margin: 0 auto 34px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    position:relative;
+  }
+  .rule::after{
+    content:"✦";
+    position:absolute;
+    left:50%; top:50%;
+    transform: translate(-50%,-50%);
+    color: var(--gold);
+    font-size: 13px;
+    background:
+      radial-gradient(circle, var(--parchment-1) 40%, transparent 70%);
+    padding: 0 8px;
+  }
+
+  .poem{
+    font-family:'Cormorant Garamond', serif;
+    font-size: 21px;
+    line-height: 1.9;
+    color: var(--ink);
+    text-align:center;
+  }
+
+  .poem p{ margin: 0 0 18px; }
+  .poem p:last-child{ margin-bottom:0; }
+
+  .dropcap{
+    font-family:'UnifrakturMaguntia', cursive;
+    font-size: 1.7em;
+    color: var(--wax-dark);
+    padding: 0 2px;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.3);
+  }
+
+  .signature{
+    margin-top: 40px;
+    text-align:center;
+    font-family:'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--ink-faint);
+    letter-spacing: 0.04em;
+  }
+
+  /* ---------- selo de cera ---------- */
+  .seal{
+    position:absolute;
+    left:50%;
+    bottom:-30px;
+    transform: translateX(-50%) rotate(-4deg);
+    width: 78px;
+    height: 78px;
+    border-radius: 50%;
+    background:
+      radial-gradient(circle at 32% 28%, #8a2929, var(--wax) 45%, var(--wax-dark) 85%);
+    box-shadow:
+      0 6px 14px rgba(0,0,0,0.55),
+      inset 0 2px 4px rgba(255,255,255,0.25),
+      inset 0 -6px 10px rgba(0,0,0,0.45);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .seal svg{ width: 44px; height:44px; opacity:0.9; }
+  .seal::before{
+    content:"";
+    position:absolute;
+    inset:-6px;
+    border-radius:50%;
+    background:
+      radial-gradient(circle, transparent 60%, rgba(0,0,0,0.15) 78%, transparent 82%);
+  }
+
+  @media (max-width: 480px){
+    .scroll{ padding: 52px 30px 60px; }
+    .poem{ font-size: 18px; }
+    .title{ font-size: 27px; }
+  }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute">
+  <filter id="roughen">
+    <feTurbulence type="fractalNoise" baseFrequency="0.012 0.018" numOctaves="2" seed="7" result="noise"/>
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="6"/>
+  </filter>
+</svg>
+
+<div class="stage">
+  <div class="scroll">
+    <div class="burn b1"></div>
+    <div class="burn b2"></div>
+    <div class="burn b3"></div>
+
+    <p class="eyebrow">encontrado na casa de cintia</p>
+    <h1 class="title">O Sussurro Esquecido</h1>
+    <div class="rule"></div>
+
+    <div class="poem">
+      <p><span class="dropcap">I</span>rresistível o olhar que tu me jura</p>
+      <p><span class="dropcap">C</span>autelosa é sua figura que se esconde na penumbra</p>
+      <p><span class="dropcap">A</span>o esquecimento daqueles que não pascem</p>
+      <p><span class="dropcap">M</span>urmúrios doces que me convencem</p>
+    </div>
+
+    <p class="signature">— versos gravados na madeira do baú —</p>
+
+    <div class="seal">
+      <svg viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="22" cy="22" r="19" fill="none" stroke="#d8c9a3" stroke-width="1" opacity="0.6"/>
+        <path d="M22 6 L26 18 L38 18 L28 25 L32 37 L22 29 L12 37 L16 25 L6 18 L18 18 Z"
+              fill="#d8c9a3" opacity="0.75"/>
+        <circle cx="22" cy="22" r="4.5" fill="#4a1010" opacity="0.6"/>
+      </svg>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
