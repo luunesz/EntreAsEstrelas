@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fichas — Moradores da Vila de Mica</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Noto+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --parchment: #fdf1dc;
+    --parchment-edge: #eee0c4;
+    --rule: #7a200d;
+    --rule-soft: #c9ad6a;
+    --name: #7a200d;
+    --ink: #1f1a12;
+    --label: #7a200d;
+    --divider-tan: #ddb96a;
+  }
+
+  *{ box-sizing: border-box; }
+
+  html,body{
+    margin:0; padding:0;
+    background: #201c16;
+    font-family:'Noto Sans', sans-serif;
+    color: var(--ink);
+  }
+
+  .page{
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 40px 22px 60px;
+  }
+
+  .page-title{
+    font-family:'Libre Caslon Text', serif;
+    font-size: 30px;
+    color: #f0e2c0;
+    text-align:center;
+    margin: 0 0 4px;
+    letter-spacing: 0.01em;
+  }
+  .page-sub{
+    text-align:center;
+    color: #b8a06a;
+    font-style: italic;
+    font-size: 14px;
+    margin: 0 0 34px;
+  }
+
+  .grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 26px;
+    align-items: start;
+  }
+
+  /* ---------- ficha ---------- */
+  .statblock{
+    background-color: var(--parchment);
+    border: 1px solid #d8c39a;
+    padding: 16px 18px 20px;
+    box-shadow:
+      0 0 1.5px rgba(0,0,0,0.6),
+      0 0 8px rgba(0,0,0,0.35);
+    position: relative;
+  }
+  .statblock::before{
+    content:"";
+    position:absolute; inset: 4px;
+    border: 1px solid rgba(122,32,13,0.15);
+    pointer-events:none;
+  }
+
+  .name{
+    font-family:'Libre Caslon Text', serif;
+    font-weight:700;
+    color: var(--name);
+    font-size: 23px;
+    margin: 0;
+    line-height:1.1;
+  }
+  .type{
+    font-style: italic;
+    font-size: 12.5px;
+    margin: 2px 0 6px;
+    color: #3a2f1f;
+  }
+
+  .tapered-rule{
+    height: 5px;
+    margin: 6px 0 6px;
+    background: linear-gradient(90deg, rgba(122,32,13,0) 0%, var(--rule) 8%, var(--rule) 92%, rgba(122,32,13,0) 100%);
+  }
+  .tapered-rule.thin{ height:2px; opacity:0.85; }
+
+  .property-line{
+    margin: 2px 0;
+    font-size: 13.5px;
+    line-height: 1.5;
+  }
+  .property-line b{ color: var(--label); }
+
+  /* ability score table */
+  .abilities{
+    width:100%;
+    border-collapse: collapse;
+    margin: 8px 0 6px;
+    table-layout: fixed;
+  }
+  .abilities th, .abilities td{
+    text-align:center;
+    font-size: 12.5px;
+    padding: 1px 0;
+  }
+  .abilities th{
+    color: var(--label);
+    font-weight:700;
+  }
+
+  .traits{ margin-top: 4px; }
+  .traits p{
+    margin: 5px 0;
+    font-size: 13.5px;
+    line-height: 1.5;
+  }
+  .traits p b, .actions p b{
+    font-style: italic;
+    color: var(--ink);
+  }
+
+  .section-title{
+    font-family:'Libre Caslon Text', serif;
+    color: var(--name);
+    font-size: 17px;
+    border-bottom: 1px solid var(--rule);
+    margin: 10px 0 4px;
+    padding-bottom: 1px;
+  }
+
+  .actions p{
+    margin: 5px 0;
+    font-size: 13.5px;
+    line-height: 1.5;
+  }
+
+  .flavor{
+    margin-top: 10px;
+    padding-top: 8px;
+    border-top: 1px dashed var(--divider-tan);
+    font-size: 12.5px;
+    font-style: italic;
+    color: #4a3d28;
+    line-height: 1.45;
+  }
+
+  @media (max-width: 480px){
+    .page{ padding: 28px 12px 40px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <h1 class="page-title">Moradores da Vila de Mica</h1>
+  <p class="page-sub">Fichas simplificadas · D&amp;D 5ª edição</p>
+
+  <div class="grid">
+
+    <!-- JIMIN -->
+    <div class="statblock">
+      <p class="name">Jimin</p>
+      <p class="type">Elfo médio, neutro e ordem</p>
+      <div class="tapered-rule"></div>
+      <p class="property-line"><b>Classe de Armadura</b> 13 (armadura de couro)</p>
+      <p class="property-line"><b>Pontos de Vida</b> 16 (3d8 + 3)</p>
+      <p class="property-line"><b>Deslocamento</b> 9 m</p>
+      <div class="tapered-rule thin"></div>
+      <table class="abilities">
+        <tr><th>FOR</th><th>DES</th><th>CON</th><th>INT</th><th>SAB</th><th>CAR</th></tr>
+        <tr><td>12 (+1)</td><td>16 (+3)</td><td>12 (+1)</td><td>10 (+0)</td><td>14 (+2)</td><td>8 (−1)</td></tr>
+      </table>
+      <div class="tapered-rule thin"></div>
+      <p class="property-line"><b>Perícias</b> Furtividade +5, Percepção +4, Sobrevivência +4</p>
+      <p class="property-line"><b>Sentidos</b> percepção passiva 14</p>
+      <p class="property-line"><b>Idiomas</b> Élfico, Comum</p>
+      <p class="property-line"><b>Nível de Desafio</b> 1/8 (25 XP)</p>
+      <div class="tapered-rule"></div>
+      <div class="traits">
+        <p><b>Emboscada.</b> Jimin tem vantagem na primeira jogada de ataque contra qualquer criatura que ainda não tenha agido no combate.</p>
+      </div>
+      <p class="section-title">Ações</p>
+      <div class="actions">
+        <p><b>Arco Curto.</b> Ataque com Arma à Distância: +5 para acertar, alcance 24/96 m, um alvo. Acerto: 6 (1d6 + 3) de dano perfurante.</p>
+        <p><b>Adaga.</b> Ataque com Arma Corpo a Corpo ou à Distância: +5 para acertar, alcance 1,5 m ou alcance 6/18 m, um alvo. Acerto: 5 (1d4 + 3) de dano perfurante.</p>
+      </div>
+      <p class="flavor">Curioso, mas desconfiado — não gosta de estranhos. Faz a ronda antes do amanhecer e treina de manhã.</p>
+    </div>
+
+    <!-- YOLEN -->
+    <div class="statblock">
+      <p class="name">Yolen</p>
+      <p class="type">Elfo médio, ordem e mal</p>
+      <div class="tapered-rule"></div>
+      <p class="property-line"><b>Classe de Armadura</b> 14 (couro batido)</p>
+      <p class="property-line"><b>Pontos de Vida</b> 22 (5d8)</p>
+      <p class="property-line"><b>Deslocamento</b> 9 m</p>
+      <div class="tapered-rule thin"></div>
+      <table class="abilities">
+        <tr><th>FOR</th><th>DES</th><th>CON</th><th>INT</th><th>SAB</th><th>CAR</th></tr>
+        <tr><td>13 (+1)</td><td>17 (+3)</td><td>11 (+0)</td><td>12 (+1)</td><td>15 (+2)</td><td>8 (−1)</td></tr>
+      </table>
+      <div class="tapered-rule thin"></div>
+      <p class="property-line"><b>Perícias</b> Furtividade +6, Percepção +5, Sobrevivência +5</p>
+      <p class="property-line"><b>Sentidos</b> percepção passiva 15</p>
+      <p class="property-line"><b>Idiomas</b> entende Élfico e Comum, mas não fala</p>
+      <p class="property-line"><b>Nível de Desafio</b> 1/2 (100 XP)</p>
+      <div class="tapered-rule"></div>
+      <div class="traits">
+        <p><b>Passos Silenciosos.</b> Yolen tem vantagem em testes de Destreza (Furtividade) feitos para se mover em silêncio.</p>
+        <p><b>Máscara de Dragão.</b> Enquanto usa a máscara, Yolen tem vantagem em testes de resistência contra ser assustado.</p>
+      </div>
+      <p class="section-title">Ações</p>
+      <div class="actions">
+        <p><b>Rede.</b> Ataque com Arma à Distância: alcance 1,5/4,5 m, uma criatura Média ou menor. Acerto: o alvo fica agarrado (CD para escapar 12) até ser libertado.</p>
+        <p><b>Faca Curva.</b> Ataque com Arma Corpo a Corpo: +5 para acertar, alcance 1,5 m, um alvo. Acerto: 6 (1d6 + 3) de dano cortante.</p>
+      </div>
+      <p class="flavor">Não fala; segue seus próprios princípios, desde que não seja expulso. Vai além do limite da ronda combinada — ninguém pergunta pra onde.</p>
+    </div>
+
+    <!-- CINTIA -->
+    <div class="statblock">
+      <p class="name">Cintia</p>
+      <p class="type">Elfa média, neutra e má</p>
+      <div class="tapered-rule"></div>
+      <p class="property-line"><b>Classe de Armadura</b> 11</p>
+      <p class="property-line"><b>Pontos de Vida</b> 18 (4d8)</p>
+      <p class="property-line"><b>Deslocamento</b> 9 m</p>
+      <div class="tapered-rule thin"></div>
+      <table class="abilities">
+        <tr><th>FOR</th><th>DES</th><th>CON</th><th>INT</th><th>SAB</th><th>CAR</th></tr>
+        <tr><td>8 (−1)</td><td>12 (+1)</td><td>11 (+0)</td><td>15 (+2)</td><td>13 (+1)</td><td>16 (+3)</td></tr>
+      </table>
+      <div class="tapered-rule thin"></div>
+      <p class="property-line"><b>Perícias</b> Enganação +5, Persuasão +5, Investigação (alquimia) +4</p>
+      <p class="property-line"><b>Sentidos</b> percepção passiva 11</p>
+      <p class="property-line"><b>Idiomas</b> Élfico, Comum</p>
+      <p class="property-line"><b>Nível de Desafio</b> 1/2 (100 XP)</p>
+      <div class="tapered-rule"></div>
+      <div class="traits">
+        <p><b>Mestra das Poções.</b> Cintia pode preparar venenos e elixires com materiais comuns, sem precisar de um kit especial.</p>
+        <p><b>Manipuladora.</b> Cintia tem vantagem em testes de Enganação e Persuasão contra qualquer criatura que já confie nela.</p>
+      </div>
+      <p class="section-title">Ações</p>
+      <div class="actions">
+        <p><b>Frasco Envenenado.</b> Ataque com Arma à Distância: +4 para acertar, alcance 6/18 m, um alvo. Acerto: 2 (1d4) de dano perfurante, e o alvo deve ser bem-sucedido em um teste de resistência de Constituição CD 13 ou fica Envenenado por 1 minuto.</p>
+      </div>
+      <p class="flavor">Mais nova do que aparenta ser. Coage Dora a fazer suas poções e ajuda-la em suas peripécias.</p>
+    </div>
+
+    <!-- DORA -->
+    <div class="statblock">
+      <p class="name">Dora</p>
+      <p class="type">Elfa média, boa e ordem</p>
+      <div class="tapered-rule"></div>
+      <p class="property-line"><b>Classe de Armadura</b> 12</p>
+      <p class="property-line"><b>Pontos de Vida</b> 27 (6d8)</p>
+      <p class="property-line"><b>Deslocamento</b> 9 m</p>
+      <div class="tapered-rule thin"></div>
+      <table class="abilities">
+        <tr><th>FOR</th><th>DES</th><th>CON</th><th>INT</th><th>SAB</th><th>CAR</th></tr>
+        <tr><td>9 (−1)</td><td>12 (+1)</td><td>12 (+1)</td><td>13 (+1)</td><td>17 (+3)</td><td>12 (+1)</td></tr>
+      </table>
+      <div class="tapered-rule thin"></div>
+      <p class="property-line"><b>Perícias</b> Intuição +5, Natureza +3, Religião +3</p>
+      <p class="property-line"><b>Sentidos</b> percepção passiva 13</p>
+      <p class="property-line"><b>Idiomas</b> Élfico, Comum, Silvestre</p>
+      <p class="property-line"><b>Nível de Desafio</b> 1 (200 XP)</p>
+      <div class="tapered-rule"></div>
+      <div class="traits">
+        <p><b>Conjuração.</b> Dora é uma conjuradora de nível 4 (CD de resistência de magia 13, +5 para acertar com ataques mágicos). Ela conhece os seguintes truques: Orientação, Taumaturgia. Ela tem os seguintes espaços de magia de 1º nível (3 espaços): Curar Ferimentos, Enfeitiçar Pessoa.</p>
+      </div>
+      <p class="section-title">Ações</p>
+      <div class="actions">
+        <p><b>Bordão.</b> Ataque com Arma Corpo a Corpo: +2 para acertar, alcance 1,5 m, um alvo. Acerto: 3 (1d6) de dano concussão.</p>
+      </div>
+      <p class="flavor">A mestre de rituais e feitiços da vila. Busca, com Mond, o perdão da Estrela Polar e de Icam.</p>
+    </div>
+
+    <!-- ELLAN -->
+    <div class="statblock">
+      <p class="name">Ellan</p>
+      <p class="type">Elfo médio, neutro</p>
+      <div class="tapered-rule"></div>
+      <p class="property-line"><b>Classe de Armadura</b> 13 (couro batido)</p>
+      <p class="property-line"><b>Pontos de Vida</b> 32 (5d8 + 10)</p>
+      <p class="property-line"><b>Deslocamento</b> 9 m</p>
+      <div class="tapered-rule thin"></div>
+      <table class="abilities">
+        <tr><th>FOR</th><th>DES</th><th>CON</th><th>INT</th><th>SAB</th><th>CAR</th></tr>
+        <tr><td>16 (+3)</td><td>10 (+0)</td><td>15 (+2)</td><td>10 (+0)</td><td>11 (+0)</td><td>10 (+0)</td></tr>
+      </table>
+      <div class="tapered-rule thin"></div>
+      <p class="property-line"><b>Perícias</b> Adestrar Ferramentas de Ferreiro +2, Intimidação +2, Percepção +2</p>
+      <p class="property-line"><b>Sentidos</b> percepção passiva 12</p>
+      <p class="property-line"><b>Idiomas</b> Élfico, Comum</p>
+      <p class="property-line"><b>Nível de Desafio</b> 1/2 (100 XP)</p>
+      <div class="tapered-rule"></div>
+      <p class="section-title">Ações</p>
+      <div class="actions">
+        <p><b>Machado Grande.</b> Ataque com Arma Corpo a Corpo: +5 para acertar, alcance 1,5 m, um alvo. Acerto: 9 (1d12 + 3) de dano cortante.</p>
+      </div>
+      <p class="flavor">Grandão, sempre carrega o machado e a bolsa de ferramentas. Era amigo próximo de Mica antes dela desaparecer.</p>
+    </div>
+
+    <!-- KANT -->
+    <div class="statblock">
+      <p class="name">Kant</p>
+      <p class="type">Elfo médio, caótico e mal</p>
+      <div class="tapered-rule"></div>
+      <p class="property-line"><b>Classe de Armadura</b> 12</p>
+      <p class="property-line"><b>Pontos de Vida</b> 13 (3d8)</p>
+      <p class="property-line"><b>Deslocamento</b> 9 m</p>
+      <div class="tapered-rule thin"></div>
+      <table class="abilities">
+        <tr><th>FOR</th><th>DES</th><th>CON</th><th>INT</th><th>SAB</th><th>CAR</th></tr>
+        <tr><td>10 (+0)</td><td>14 (+2)</td><td>10 (+0)</td><td>9 (−1)</td><td>10 (+0)</td><td>15 (+2)</td></tr>
+      </table>
+      <div class="tapered-rule thin"></div>
+      <p class="property-line"><b>Perícias</b> Adestrar Animais +2, Enganação +4, Intimidação +4</p>
+      <p class="property-line"><b>Sentidos</b> percepção passiva 10</p>
+      <p class="property-line"><b>Idiomas</b> Élfico, Comum</p>
+      <p class="property-line"><b>Nível de Desafio</b> 1/4 (50 XP)</p>
+      <div class="tapered-rule"></div>
+      <div class="traits">
+        <p><b>Charme Cruel.</b> Kant tem vantagem em testes de Persuasão ou Intimidação contra uma criatura que já se importe com ele.</p>
+      </div>
+      <p class="section-title">Ações</p>
+      <div class="actions">
+        <p><b>Chicote de Pastor.</b> Ataque com Arma Corpo a Corpo: +4 para acertar, alcance 3 m, um alvo. Acerto: 4 (1d4 + 2) de dano cortante.</p>
+        <p><b>Funda.</b> Ataque com Arma à Distância: +4 para acertar, alcance 9/36 m, um alvo. Acerto: 4 (1d4 + 2) de dano concussão.</p>
+      </div>
+      <p class="flavor">Preguiçoso e galanteador — menos com seus animais, pelos quais guarda muito carinho.</p>
+    </div>
+
+    <!-- ABAR -->
+    <div class="statblock">
+      <p class="name">Abar</p>
+      <p class="type">Elfo médio, neutro e bom</p>
+      <div class="tapered-rule"></div>
+      <p class="property-line"><b>Classe de Armadura</b> 10</p>
+      <p class="property-line"><b>Pontos de Vida</b> 9 (2d8)</p>
+      <p class="property-line"><b>Deslocamento</b> 9 m</p>
+      <div class="tapered-rule thin"></div>
+      <table class="abilities">
+        <tr><th>FOR</th><th>DES</th><th>CON</th><th>INT</th><th>SAB</th><th>CAR</th></tr>
+        <tr><td>14 (+2)</td><td>10 (+0)</td><td>12 (+1)</td><td>9 (−1)</td><td>12 (+1)</td><td>11 (+0)</td></tr>
+      </table>
+      <div class="tapered-rule thin"></div>
+      <p class="property-line"><b>Perícias</b> Natureza +1, Percepção +3</p>
+      <p class="property-line"><b>Sentidos</b> percepção passiva 13</p>
+      <p class="property-line"><b>Idiomas</b> Élfico, Comum</p>
+      <p class="property-line"><b>Nível de Desafio</b> 0 (10 XP)</p>
+      <div class="tapered-rule"></div>
+      <p class="section-title">Ações</p>
+      <div class="actions">
+        <p><b>Foice.</b> Ataque com Arma Corpo a Corpo: +4 para acertar, alcance 1,5 m, um alvo. Acerto: 4 (1d6 + 2) de dano cortante.</p>
+      </div>
+      <p class="flavor">Ajudante de Dora, cuida das plantações e da fermentação da Cerveja da Verdade. Reservado, mas bom em essencial.</p>
+    </div>
+
+    <!-- AHTOR -->
+    <div class="statblock">
+      <p class="name">Ahtor</p>
+      <p class="type">Elfa média, boa e ordem</p>
+      <div class="tapered-rule"></div>
+      <p class="property-line"><b>Classe de Armadura</b> 11</p>
+      <p class="property-line"><b>Pontos de Vida</b> 7 (2d6)</p>
+      <p class="property-line"><b>Deslocamento</b> 9 m</p>
+      <div class="tapered-rule thin"></div>
+      <table class="abilities">
+        <tr><th>FOR</th><th>DES</th><th>CON</th><th>INT</th><th>SAB</th><th>CAR</th></tr>
+        <tr><td>8 (−1)</td><td>12 (+1)</td><td>10 (+0)</td><td>12 (+1)</td><td>14 (+2)</td><td>15 (+2)</td></tr>
+      </table>
+      <div class="tapered-rule thin"></div>
+      <p class="property-line"><b>Perícias</b> Natureza +3, Percepção +4, Persuasão +4</p>
+      <p class="property-line"><b>Sentidos</b> percepção passiva 14</p>
+      <p class="property-line"><b>Idiomas</b> Élfico, Comum</p>
+      <p class="property-line"><b>Nível de Desafio</b> 0 (10 XP)</p>
+      <div class="tapered-rule"></div>
+      <div class="traits">
+        <p><b>Conhecimento das Ervas.</b> Ahtor tem vantagem em testes de Inteligência ou Sabedoria feitos para identificar plantas e flores.</p>
+      </div>
+      <p class="section-title">Ações</p>
+      <div class="actions">
+        <p><b>Tesoura de Jardim.</b> Ataque com Arma Corpo a Corpo: +1 para acertar, alcance 1,5 m, um alvo. Acerto: 1 (1d4 − 1) de dano cortante.</p>
+      </div>
+      <p class="flavor">Simpática e entediada com a vivência monótona do vilarejo; crê em Icam, mas tem suas dúvidas sobre os princípios.</p>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
