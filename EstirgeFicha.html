@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ficha — Estirge | Reino Polaris</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=IM+Fell+English:ital@0;1&family=Cinzel:wght@400;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="estiloPersonagens.css">
+  <link rel="stylesheet" href="protegido.css">
+  <link rel="icon" type="image/x-icon" href="iconSOL.jpeg">
+
+  <style>
+    /* Estilos de apoio para o bloco de ficha, caso as folhas de estilo do site
+       não definam classes específicas de stat-block. Seguem a mesma paleta
+       (serifada, dourado sobre fundo escuro) usada no restante do site. */
+    .ficha-wrap { max-width: 720px; margin: 0 auto; }
+    .ficha-subtitulo { font-family: 'Cormorant Garamond', serif; font-style: italic; opacity: .75; margin-top: -0.5rem; margin-bottom: 2rem; }
+    .ficha-card { border: 1px solid rgba(200,170,110,.4); border-radius: 6px; padding: 1.5rem 1.75rem; margin-bottom: 2.5rem; background: rgba(0,0,0,.15); }
+    .ficha-nome { font-family: 'Cinzel', serif; font-size: 1.6rem; letter-spacing: .02em; margin: 0; }
+    .ficha-linhagem { font-style: italic; opacity: .8; margin: .1rem 0 1rem 0; }
+    .ficha-stat-line { margin: .3rem 0; }
+    .ficha-stat-line strong { font-family: 'Cinzel', serif; font-weight: 600; }
+    .ficha-hr { border: none; border-top: 1px solid rgba(200,170,110,.35); margin: .9rem 0; }
+    .ficha-tabela { width: 100%; border-collapse: collapse; text-align: center; margin: 1rem 0; font-family: 'Cormorant Garamond', serif; }
+    .ficha-tabela th, .ficha-tabela td { border: 1px solid rgba(200,170,110,.3); padding: .35rem .2rem; }
+    .ficha-tabela th { font-family: 'Cinzel', serif; font-weight: 600; }
+    .ficha-secao-titulo { font-family: 'Cinzel', serif; font-size: 1.05rem; letter-spacing: .08em; text-transform: uppercase; margin: 1.3rem 0 .5rem 0; border-bottom: 1px solid rgba(200,170,110,.35); padding-bottom: .2rem; }
+    .ficha-traco p, .ficha-acao p { margin: .5rem 0; }
+    .ficha-flavor { font-style: italic; opacity: .85; margin-top: 1.2rem; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-home" href="Estirge.html">← Estirge</a>
+    <span class="nav-char">✦ FICHA · ESTIRGE</span>
+  </nav>
+
+  <article class="page-section" id="fichas">
+    <div class="ficha-wrap">
+      <p class="section-label">✦ ficha</p>
+      <h2 class="section-title">Fichas — <em>Estirges</em></h2>
+      <p class="ficha-subtitulo">Fichas simplificadas · D&amp;D 5ª edição</p>
+      <div class="divider">🦉</div>
+
+      <!-- ══ ESTIRGE SELVAGEM ══ -->
+      <div class="ficha-card">
+        <p class="ficha-nome">Estirge Selvagem</p>
+        <p class="ficha-linhagem">Humanoide monstruoso Médio, caótico e mau</p>
+
+        <p class="ficha-stat-line"><strong>Classe de Armadura</strong> 14 (couraça natural)</p>
+        <p class="ficha-stat-line"><strong>Pontos de Vida</strong> 45 (6d8 + 18)</p>
+        <p class="ficha-stat-line"><strong>Deslocamento</strong> 9 m, voo 18 m</p>
+
+        <table class="ficha-tabela">
+          <tr><th>FOR</th><th>DES</th><th>CON</th><th>INT</th><th>SAB</th><th>CAR</th></tr>
+          <tr>
+            <td>16 (+3)</td><td>15 (+2)</td><td>16 (+3)</td><td>7 (−2)</td><td>12 (+1)</td><td>8 (−1)</td>
+          </tr>
+        </table>
+
+        <p class="ficha-stat-line"><strong>Perícias</strong> Furtividade +4, Percepção +3, Sobrevivência +3</p>
+        <p class="ficha-stat-line"><strong>Sentidos</strong> visão no escuro 18 m, percepção passiva 13</p>
+        <p class="ficha-stat-line"><strong>Idiomas</strong> entende Comum, mas não fala</p>
+        <p class="ficha-stat-line"><strong>Nível de Desafio</strong> 2 (450 XP)</p>
+
+        <hr class="ficha-hr">
+
+        <div class="ficha-traco">
+          <p><strong>Sede Imaculada.</strong> O Estirge causa 1d6 de dano necrótico adicional com a Mordida Sanguessuga contra uma criatura que nunca tenha cometido um ato malévolo, a critério do mestre.</p>
+          <p><strong>Presas Cravadas.</strong> Uma criatura agarrada pela Mordida Sanguessuga do Estirge não pode ser libertada por nenhum meio enquanto o Estirge estiver vivo, exceto se o próprio Estirge soltar a presa.</p>
+          <p><strong>Sensibilidade à Luz do Sol.</strong> Enquanto estiver sob luz solar direta, o Estirge tem desvantagem em jogadas de ataque, além de testes de Sabedoria (Percepção) que dependam da visão.</p>
+          <p><strong>Voo Silencioso.</strong> O Estirge tem vantagem em testes de Destreza (Furtividade) feitos para se mover em silêncio enquanto voa.</p>
+        </div>
+
+        <p class="ficha-secao-titulo">Ações</p>
+        <div class="ficha-acao">
+          <p><strong>Multiataque.</strong> O Estirge faz dois ataques com as Garras.</p>
+          <p><strong>Garras.</strong> Ataque com Arma Corpo a Corpo: +5 para acertar, alcance 1,5 m, um alvo. Acerto: 7 (2d4 + 3) de dano cortante.</p>
+          <p><strong>Mordida Sanguessuga.</strong> Ataque com Arma Corpo a Corpo: +5 para acertar, alcance 1,5 m, uma criatura incapacitada ou agarrada. Acerto: 10 (2d6 + 3) de dano perfurante, e o alvo fica Agarrado (CD para escapar 13, veja Presas Cravadas). O Estirge recupera pontos de vida iguais ao dano perfurante causado.</p>
+        </div>
+
+        <p class="ficha-secao-titulo">Reação</p>
+        <div class="ficha-acao">
+          <p><strong>Sono da Fartura.</strong> Sempre que a Mordida Sanguessuga do Estirge reduzir uma criatura a 0 pontos de vida, ele deve ser bem-sucedido em um teste de resistência de Constituição (CD 15) ou cai em um sono profundo por 1d4 dias, durante os quais está incapacitado e sofre críticos automáticos de ataques corpo a corpo.</p>
+        </div>
+
+        <p class="ficha-flavor">Caça sozinho, longe do ninho, e só volta a ele pouco antes do amanhecer — se for impedido de retornar até o terceiro canto do galo, dizem que a fome que o prende à forma de fera se quebra, e por um instante ele volta a ser gente.</p>
+      </div>
+
+    </div>
+  </article>
+
+  <!-- FOOTER -->
+  <footer>
+    <a class="footer-back" href="Estirge.html">← VOLTAR PARA ESTIRGE</a>
+    <span class="footer-name">ESTIRGE · DEVORADORES SANGUINÁRIOS</span>
+    <p>Uma criatura de <em>Entre as Estrelas</em></p>
+  </footer>
+
+</body>
+</html>
