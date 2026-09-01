@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Dinastia Polar — Árvore Genealógica</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap');
+
+  * { box-sizing: border-box; }
+
+  html, body { margin: 0; padding: 0; overflow-x: hidden; }
+
+  body {
+    padding: 40px 16px 80px;
+    background:
+      radial-gradient(ellipse 60% 40% at 50% 6%, rgba(150,220,190,0.55), transparent 60%),
+      radial-gradient(ellipse 90% 70% at 50% 0%, rgba(70,120,120,0.45), transparent 65%),
+      linear-gradient(180deg, #16233b 0%, #1b2440 25%, #221b3a 55%, #1a1730 80%, #120f24 100%);
+    font-family: 'EB Garamond', serif;
+    color: #e9e2c8;
+    min-height: 100vh;
+  }
+
+  .poster {
+    max-width: 1500px;
+    margin: 0 auto;
+    border: 2px solid #cdae6b;
+    outline: 8px solid rgba(30,26,50,0.6);
+    outline-offset: -18px;
+    padding: 44px 30px 60px;
+    background: rgba(12,16,32,0.55);
+    backdrop-filter: blur(2px);
+    position: relative;
+    box-shadow: 0 0 0 3px rgba(205,174,107,0.4), 0 0 60px rgba(90,180,160,0.25), 0 20px 60px rgba(0,0,0,0.5);
+    border-radius: 6px;
+  }
+
+  .corner {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    border: 2px solid #cdae6b;
+    opacity: 0.85;
+  }
+  .corner.tl { top: 10px; left: 10px; border-right: none; border-bottom: none; }
+  .corner.tr { top: 10px; right: 10px; border-left: none; border-bottom: none; }
+  .corner.bl { bottom: 10px; left: 10px; border-right: none; border-top: none; }
+  .corner.br { bottom: 10px; right: 10px; border-left: none; border-top: none; }
+
+  header { text-align: center; margin-bottom: 6px; }
+
+  .kicker {
+    font-family: 'Cinzel', serif;
+    letter-spacing: 8px;
+    font-size: 14px;
+    color: #8fd4bf;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    font-family: 'Cinzel Decorative', serif;
+    font-weight: 900;
+    font-size: 46px;
+    margin: 8px 0 2px;
+    color: #f4e6b8;
+    text-shadow: 0 0 18px rgba(150,220,190,0.55), 0 0 40px rgba(120,190,220,0.3);
+    letter-spacing: 2px;
+  }
+
+  h2 {
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    font-size: 17px;
+    letter-spacing: 9px;
+    text-transform: uppercase;
+    color: #cfc7a8;
+    margin: 0 0 10px;
+  }
+
+  .divider {
+    width: 320px;
+    margin: 12px auto 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #cdae6b;
+  }
+  .divider .line { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, #8fd4bf, transparent); }
+  .divider .star { font-size: 16px; color: #f4e6b8; text-shadow: 0 0 8px rgba(150,220,190,0.7); }
+
+  .legend {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 22px;
+    margin: 4px 0 36px;
+    font-family: 'Cinzel', serif;
+    font-size: 11.5px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #cfc7a8;
+  }
+  .legend span { display: flex; align-items: center; gap: 8px; }
+  .swatch { width: 13px; height: 13px; border-radius: 3px; display: inline-block; border: 1.5px solid rgba(255,255,255,0.25); }
+
+  .controls {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+  .controls button {
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    letter-spacing: 1px;
+    background: rgba(143,212,191,0.12);
+    color: #e9e2c8;
+    border: 1px solid #8fd4bf;
+    border-radius: 6px;
+    padding: 6px 14px;
+    cursor: pointer;
+  }
+  .controls button:hover { background: rgba(143,212,191,0.25); }
+
+  /* ---- Fit-to-screen viewport ---- */
+  #tree-viewport {
+    width: 100%;
+    overflow: auto;
+    padding-bottom: 10px;
+  }
+  #tree-scale {
+    display: inline-block;
+    transform-origin: top center;
+  }
+
+  /* ---- Tree (classic CSS org-chart pattern) ---- */
+  .tree, .tree ul, .tree li { list-style: none; margin: 0; padding: 0; position: relative; }
+  .tree { text-align: center; display: flex; justify-content: center; padding-bottom: 10px; }
+  .tree ul { display: flex; padding-top: 30px; position: relative; }
+  .tree li { display: flex; flex-direction: column; align-items: center; padding: 30px 12px 0; }
+  .tree li::before, .tree li::after {
+    content: ''; position: absolute; top: 0; right: 50%; width: 50%; height: 30px;
+    border-top: 2px solid #6fb3a0;
+  }
+  .tree li::after { right: auto; left: 50%; border-left: 2px solid #6fb3a0; }
+  .tree li:only-child::before, .tree li:only-child::after { display: none; }
+  .tree li:only-child { padding-top: 0; }
+  .tree li:first-child::before, .tree li:last-child::after { border: 0 none; }
+  .tree li:last-child::before { border-right: 2px solid #6fb3a0; border-radius: 0 6px 0 0; }
+  .tree li:first-child::after { border-radius: 6px 0 0 0; }
+  .tree ul ul::before {
+    content: ''; position: absolute; top: 0; left: 50%; border-left: 2px solid #6fb3a0; width: 0; height: 30px;
+  }
+  .tree li > .node-wrap { position: relative; }
+
+  /* ---- Node card ---- */
+  .card {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 158px;
+    max-width: 176px;
+    padding: 11px 11px 9px;
+    border-radius: 8px;
+    background: rgba(24,30,54,0.72);
+    border: 1.5px solid #6fb3a0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+  }
+  .card .icon { font-size: 18px; margin-bottom: 3px; color: #f4e6b8; text-shadow: 0 0 6px rgba(150,220,190,0.6); }
+  .card .name {
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    font-size: 12.5px;
+    line-height: 1.25;
+    color: #f1ecd6;
+  }
+  .card .meta {
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+    font-size: 11px;
+    color: #b9c7c0;
+    margin-top: 4px;
+    line-height: 1.3;
+  }
+  .card .reign {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.4px;
+    color: #8fd4bf;
+    margin-top: 3px;
+  }
+
+  .card.origem { background: rgba(20,50,55,0.75); border-color: #4fb8a8; }
+  .card.polaris {
+    background: radial-gradient(circle at 50% 30%, rgba(244,230,184,0.22), rgba(20,24,44,0.85));
+    border-color: #f4e6b8;
+    min-width: 196px;
+    box-shadow: 0 0 30px rgba(150,220,190,0.35), 0 4px 14px rgba(0,0,0,0.5);
+  }
+  .card.polaris .icon { font-size: 26px; }
+  .card.polaris .name { font-size: 17px; letter-spacing: 1px; color: #f4e6b8; text-shadow: 0 0 10px rgba(150,220,190,0.6); }
+  .card.dinastia { background: rgba(38,26,58,0.78); border-color: #b79bdc; }
+  .card.dinastia .reign { color: #cbb6ea; }
+  .card.colateral { background: rgba(28,32,48,0.68); border-color: #7d8aa0; }
+  .card.viva {
+    background: radial-gradient(circle at 50% 20%, rgba(244,196,120,0.28), rgba(30,22,20,0.8));
+    border-color: #f0b95f;
+  }
+  .card.viva .name { color: #ffe3ad; }
+  .card.viva .reign { color: #f0b95f; }
+</style>
+</head>
+<body>
+<div class="poster">
+  <div class="corner tl"></div><div class="corner tr"></div>
+  <div class="corner bl"></div><div class="corner br"></div>
+
+  <header>
+    <div class="kicker">Crônicas do Firmamento</div>
+    <h1>Dinastia Polar</h1>
+    <h2>Árvore Genealógica</h2>
+    <div class="divider"><span class="line"></span><span class="star">✦</span><span class="line"></span></div>
+  </header>
+
+  <div class="legend">
+    <span><span class="swatch" style="background:rgba(20,50,55,0.9);border-color:#4fb8a8"></span> Deusas de origem</span>
+    <span><span class="swatch" style="background:rgba(20,24,44,0.9);border-color:#f4e6b8"></span> Polaris</span>
+    <span><span class="swatch" style="background:rgba(38,26,58,0.9);border-color:#b79bdc"></span> Linhagem principal (Estrela Cadente)</span>
+    <span><span class="swatch" style="background:rgba(28,32,48,0.9);border-color:#7d8aa0"></span> Ramos colaterais (Luz das Estrelas)</span>
+    <span><span class="swatch" style="background:rgba(30,22,20,0.9);border-color:#f0b95f"></span> Geração viva (Entardecida / Aurora)</span>
+  </div>
+
+  <div class="controls">
+    <button onclick="zoom(-0.1)">− Reduzir</button>
+    <button onclick="resetZoom()">Ajustar à tela</button>
+    <button onclick="zoom(0.1)">+ Ampliar</button>
+  </div>
+
+  <div id="tree-viewport">
+  <div id="tree-scale">
+  <ul class="tree">
+    <li>
+      <div class="node-wrap"><div class="card polaris"><div class="icon">☀</div><div class="name">Polaris</div><div class="meta">Origem do firmamento</div></div></div>
+      <ul>
+        <li><div class="card origem"><div class="icon">✧</div><div class="name">Deusa Demétria</div></div></li>
+        <li><div class="card origem"><div class="icon">✧</div><div class="name">Deusa Mond</div></div></li>
+        <li><div class="card origem"><div class="icon">✧</div><div class="name">Deusa Poemia</div></div></li>
+        <li><div class="card colateral"><div class="icon">✷</div><div class="name">Estrela Cadente Ronald</div><div class="meta">N: sem dados</div><div class="reign">F: aos 57 anos, em 0025</div></div></li>
+        <li>
+          <div class="node-wrap"><div class="card dinastia"><div class="icon">✶</div><div class="name">Estrela Cadente Polinae</div><div class="meta">N: ano 0 · F: ano 75</div><div class="reign">No poder: 25–47</div></div></div>
+          <ul>
+            <li>
+              <div class="node-wrap"><div class="card colateral"><div class="icon">✷</div><div class="name">Estrela Cadente Felicio</div></div></div>
+              <ul>
+                <li><div class="card colateral"><div class="icon">✧</div><div class="name">Luz das Estrelas Francis</div></div></li>
+                <li><div class="card colateral"><div class="icon">✧</div><div class="name">Luz das Estrelas Gerald</div></div></li>
+              </ul>
+            </li>
+            <li>
+              <div class="node-wrap"><div class="card dinastia"><div class="icon">✶</div><div class="name">Estrela Cadente Dileia</div><div class="meta">N: ano 27 · F: ano 87</div><div class="reign">No poder: 47–77</div></div></div>
+              <ul>
+                <li><div class="card colateral"><div class="icon">✷</div><div class="name">Estrela Cadente Hanslen</div></div></li>
+                <li>
+                  <div class="node-wrap"><div class="card dinastia"><div class="icon">✶</div><div class="name">Estrela Cadente Melia</div><div class="meta">N: ano 56 · F: ano 103</div><div class="reign">No poder: 77–103</div></div></div>
+                  <ul>
+                    <li><div class="card colateral"><div class="icon">✷</div><div class="name">Estrela Cadente Osvendos</div></div></li>
+                    <li><div class="card colateral"><div class="icon">✧</div><div class="name">Luz das Estrelas Maria</div></div></li>
+                    <li><div class="card colateral"><div class="icon">✧</div><div class="name">Luz das Estrelas Wally</div></div></li>
+                    <li><div class="card colateral"><div class="icon">✧</div><div class="name">Luz das Estrelas Beijamin</div></div></li>
+                    <li><div class="card colateral"><div class="icon">✧</div><div class="name">Luz das Estrelas John</div></div></li>
+                    <li>
+                      <div class="node-wrap"><div class="card dinastia"><div class="icon">✶</div><div class="name">Estrela Cadente Dalia</div><div class="meta">N: ano 100 · F: ano 128</div><div class="reign">No poder: 120–128</div></div></div>
+                      <ul>
+                        <li><div class="card colateral"><div class="icon">✷</div><div class="name">Estrela Cadente August</div></div></li>
+                        <li>
+                          <div class="node-wrap"><div class="card dinastia"><div class="icon">✶</div><div class="name">Estrela Cadente Aldmar</div><div class="meta">N: ano 119 · F: ano 170</div><div class="reign">No poder: 139–169</div></div></div>
+                          <ul>
+                            <li><div class="card colateral"><div class="icon">✷</div><div class="name">Estrela Cadente Trian</div></div></li>
+                            <li>
+                              <div class="node-wrap"><div class="card viva"><div class="icon">✹</div><div class="name">Estrela Entardecida Margarida</div><div class="meta">N: ano 149 · Viva</div><div class="reign">No poder: 169 – atual (191)</div></div></div>
+                              <ul>
+                                <li><div class="card viva"><div class="icon">✹</div><div class="name">Estrela Entardecida Nandic</div><div class="meta">Viva</div></div></li>
+                                <li><div class="card viva"><div class="icon">✸</div><div class="name">Estrela da Aurora Layla</div><div class="meta">N: 172 · Viva</div></div></li>
+                                <li><div class="card viva"><div class="icon">✧</div><div class="name">Luz das Estrela Prometeus</div><div class="meta">N: 177 · Vivo</div></div></li>
+                              </ul>
+                            </li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+  </div>
+  </div>
+</div>
+
+<script>
+  var currentScale = 1;
+
+  function applyScale(s) {
+    currentScale = Math.max(0.3, Math.min(1.5, s));
+    document.getElementById('tree-scale').style.transform = 'scale(' + currentScale + ')';
+  }
+
+  function fitToScreen() {
+    var viewport = document.getElementById('tree-viewport');
+    var scaleWrap = document.getElementById('tree-scale');
+    scaleWrap.style.transform = 'scale(1)';
+    var contentWidth = scaleWrap.scrollWidth;
+    var available = viewport.clientWidth;
+    var s = available / contentWidth;
+    if (s > 1) s = 1;
+    applyScale(s);
+  }
+
+  function resetZoom() { fitToScreen(); }
+  function zoom(delta) { applyScale(currentScale + delta); }
+
+  window.addEventListener('load', fitToScreen);
+  window.addEventListener('resize', fitToScreen);
+</script>
+</body>
+</html>
