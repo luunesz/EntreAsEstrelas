@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Entre As Estrelas</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=IM+Fell+English:ital@0;1&family=Cinzel:wght@400;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="estiloPersonagens.css">
+  <link rel="stylesheet" href="protegido.css">
+  <link rel="icon" type="image/x-icon" href="iconSOL.jpeg">
+  <style>
+    .gallery-cell img { cursor: zoom-in; }
+    .gallery-cell img:hover { opacity: 1; transform: scale(1.03); }
+  </style>
+
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-home" href="index.html#criaturas">← Casa</a>
+    <span class="nav-char">✦ DEVORADORES</span>
+  </nav>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox">
+    <button id="lightbox-close" onclick="closeLightbox()">✕ fechar</button>
+    <img id="lightbox-img" src="" alt="">
+  </div>
+
+  <!-- ══ HISTÓRIA ══ -->
+  <article class="page-section" id="historia">
+    <p class="section-label">✦ História</p>
+    <h2 class="section-title">A <em>Lenda</em> dos Cães Devoradores de Sóis</h2>
+    <div class="divider">🐺</div>
+
+    <div class="story-block">
+      <div class="story-text">
+        <p>...</p>
+      </div>
+    </div>
+  </article>
+
+
+  <article class="page-section" id="relato"> 
+    <p class="section-label">✦ relatos</p>
+    <h2 class="section-title">Documentações dos <em>Devoradores</em></h2>
+    <div class="divider">🐺</div>
+    <a class="relation-link" href="DevoradoresRelato.html">Leia um relato sobre →</a> 
+    &nbsp;
+    <a class="relation-link protegido" href="DevoradoresFicha.pdf" data-hash="27d86cbcb24fb7c4ed5450a1a51eda91e02647056658dada08644d56e70ff1e4">Ficha →</a>
+  </article>
+
+  <!-- ══ GALERIA ══ -->
+  <article class="page-section" id="galeria">
+    <p class="section-label">✦ arte</p>
+    <h2 class="section-title">Galeria de <em>Kelpies</em></h2>
+    <div class="divider">🐺</div>
+    <div class="gallery-masonry">
+      <div class="gallery-cell">
+        <div class="gallery-cell-placeholder">🫧<span>AS MARGENS DO RIO</span></div>
+        <img src="Kelpie1.jpg">
+      </div>
+      <div class="gallery-cell">
+        <div class="gallery-cell-placeholder">🌊<span>ADENTRE A ÁGUA</span></div>
+         <img src="Kelpie2.jpg">
+      </div>
+      <div class="gallery-cell">
+        <div class="gallery-cell-placeholder">🌕<span>A LUZ DO LUAR</span></div>
+        <img src="Kelpie3.jpg">
+      </div>
+      <div class="gallery-cell">
+        <div class="gallery-cell-placeholder">🪦<span>GESTOS VAZIOS</span></div>
+        <img src="Kelpie4.jpg">
+      </div>
+      <div class="gallery-cell">
+        <div class="gallery-cell-placeholder">⌛<span>SOBRE DOMÍNIO</span></div>
+        <img src="Kelpie5.jpg">
+      </div>
+    </div> 
+    </div>
+  </article>
+
+  <!-- FOOTER -->
+  <footer>
+    <a class="footer-back" href="index.html">← VOLTAR A CASA</a>
+    <span class="footer-name">DEVORADORES · OS CÃES DE CAÇA</span>
+    <p>Uma criatura de <em>Entre as Estrelas</em></p>
+  </footer>
+
+  <script src="protegido.js"></script>
+
+  <script>
+    // Lightbox
+    function openLightbox(src) {
+      document.getElementById('lightbox-img').src = src;
+      document.getElementById('lightbox').classList.add('open');
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('open');
+    }
+    document.getElementById('lightbox').addEventListener('click', e => {
+      if (e.target === e.currentTarget) closeLightbox();
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+
+    // Ativa lightbox nas imagens da galeria
+    document.querySelectorAll('.gallery-cell img').forEach(img => {
+      img.style.cursor = 'zoom-in';
+      img.addEventListener('click', () => openLightbox(img.src));
+    });
+  </script>
+</body>
+</html>
