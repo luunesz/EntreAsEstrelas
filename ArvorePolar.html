@@ -4,231 +4,253 @@
 <meta charset="UTF-8">
 <title>Dinastia Polar — Árvore Genealógica</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap');
 
   * { box-sizing: border-box; }
-
   html, body { margin: 0; padding: 0; overflow-x: hidden; }
 
   body {
-    padding: 40px 16px 80px;
-    background:
-      radial-gradient(ellipse 60% 40% at 50% 6%, rgba(150,220,190,0.55), transparent 60%),
-      radial-gradient(ellipse 90% 70% at 50% 0%, rgba(70,120,120,0.45), transparent 65%),
-      linear-gradient(180deg, #16233b 0%, #1b2440 25%, #221b3a 55%, #1a1730 80%, #120f24 100%);
-    font-family: 'EB Garamond', serif;
+    padding: 46px 16px 90px;
+    font-family: 'Cormorant Garamond', serif;
     color: #e9e2c8;
     min-height: 100vh;
+    background:
+      radial-gradient(1.5px 1.5px at 12% 14%, #dfe9df, transparent),
+      radial-gradient(1.5px 1.5px at 22% 8%, #dfe9df, transparent),
+      radial-gradient(1px 1px at 34% 20%, #cfe0d8, transparent),
+      radial-gradient(1.5px 1.5px at 68% 10%, #dfe9df, transparent),
+      radial-gradient(1px 1px at 78% 18%, #cfe0d8, transparent),
+      radial-gradient(1.5px 1.5px at 88% 7%, #dfe9df, transparent),
+      radial-gradient(1px 1px at 6% 30%, #cfe0d8, transparent),
+      radial-gradient(1px 1px at 95% 30%, #cfe0d8, transparent),
+      radial-gradient(ellipse 55% 30% at 50% 5%, rgba(160,225,195,0.55), transparent 65%),
+      radial-gradient(ellipse 90% 55% at 50% 0%, rgba(70,130,125,0.4), transparent 68%),
+      radial-gradient(ellipse 70% 40% at 15% 85%, rgba(90,70,140,0.35), transparent 70%),
+      radial-gradient(ellipse 70% 40% at 85% 90%, rgba(40,80,110,0.35), transparent 70%),
+      linear-gradient(180deg, #14203a 0%, #1a2542 22%, #221c3d 50%, #241a38 72%, #150f28 100%);
   }
 
   .poster {
-    max-width: 1500px;
+    max-width: 1520px;
     margin: 0 auto;
-    border: 2px solid #cdae6b;
-    outline: 8px solid rgba(30,26,50,0.6);
-    outline-offset: -18px;
-    padding: 44px 30px 60px;
-    background: rgba(12,16,32,0.55);
-    backdrop-filter: blur(2px);
     position: relative;
-    box-shadow: 0 0 0 3px rgba(205,174,107,0.4), 0 0 60px rgba(90,180,160,0.25), 0 20px 60px rgba(0,0,0,0.5);
-    border-radius: 6px;
+    padding: 56px 40px 70px;
+    background: rgba(10,14,28,0.5);
+    backdrop-filter: blur(1.5px);
+    border: 1px solid rgba(205,174,107,0.55);
+    border-radius: 4px;
+    box-shadow:
+      inset 0 0 0 1px rgba(205,174,107,0.15),
+      0 0 70px rgba(100,190,170,0.18),
+      0 25px 70px rgba(0,0,0,0.55);
   }
 
-  .corner {
-    position: absolute;
-    width: 60px;
-    height: 60px;
-    border: 2px solid #cdae6b;
-    opacity: 0.85;
-  }
-  .corner.tl { top: 10px; left: 10px; border-right: none; border-bottom: none; }
-  .corner.tr { top: 10px; right: 10px; border-left: none; border-bottom: none; }
-  .corner.bl { bottom: 10px; left: 10px; border-right: none; border-top: none; }
-  .corner.br { bottom: 10px; right: 10px; border-left: none; border-top: none; }
+  .flourish { position: absolute; width: 76px; height: 76px; opacity: 0.85; }
+  .flourish.tl { top: 10px; left: 10px; }
+  .flourish.tr { top: 10px; right: 10px; transform: scaleX(-1); }
+  .flourish.bl { bottom: 10px; left: 10px; transform: scaleY(-1); }
+  .flourish.br { bottom: 10px; right: 10px; transform: scale(-1,-1); }
 
-  header { text-align: center; margin-bottom: 6px; }
+  header { text-align: center; margin-bottom: 8px; position: relative; }
+
+  .starburst { margin: 0 auto 6px; display: block; }
 
   .kicker {
     font-family: 'Cinzel', serif;
-    letter-spacing: 8px;
-    font-size: 14px;
-    color: #8fd4bf;
+    letter-spacing: 9px;
+    font-size: 13px;
+    color: #93d8c2;
     text-transform: uppercase;
   }
 
   h1 {
     font-family: 'Cinzel Decorative', serif;
     font-weight: 900;
-    font-size: 46px;
-    margin: 8px 0 2px;
-    color: #f4e6b8;
-    text-shadow: 0 0 18px rgba(150,220,190,0.55), 0 0 40px rgba(120,190,220,0.3);
-    letter-spacing: 2px;
+    font-size: 50px;
+    margin: 10px 0 0;
+    color: #f6e9bd;
+    text-shadow: 0 0 20px rgba(160,225,195,0.5), 0 0 46px rgba(120,190,220,0.28);
+    letter-spacing: 3px;
   }
 
   h2 {
     font-family: 'Cinzel', serif;
     font-weight: 700;
-    font-size: 17px;
-    letter-spacing: 9px;
+    font-size: 16px;
+    letter-spacing: 10px;
     text-transform: uppercase;
     color: #cfc7a8;
-    margin: 0 0 10px;
+    margin: 6px 0 0;
   }
 
   .divider {
-    width: 320px;
-    margin: 12px auto 24px;
+    width: 300px;
+    margin: 18px auto 30px;
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
     color: #cdae6b;
   }
   .divider .line { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, #8fd4bf, transparent); }
-  .divider .star { font-size: 16px; color: #f4e6b8; text-shadow: 0 0 8px rgba(150,220,190,0.7); }
+  .divider svg { flex-shrink: 0; }
 
   .legend {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 22px;
-    margin: 4px 0 36px;
+    gap: 24px;
+    margin: 0 0 34px;
     font-family: 'Cinzel', serif;
-    font-size: 11.5px;
-    letter-spacing: 0.5px;
+    font-size: 11px;
+    letter-spacing: 0.6px;
     text-transform: uppercase;
     color: #cfc7a8;
   }
   .legend span { display: flex; align-items: center; gap: 8px; }
-  .swatch { width: 13px; height: 13px; border-radius: 3px; display: inline-block; border: 1.5px solid rgba(255,255,255,0.25); }
+  .swatch { width: 12px; height: 12px; border-radius: 50%; display: inline-block; box-shadow: 0 0 6px rgba(255,255,255,0.25) inset; }
 
-  .controls {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 18px;
-  }
+  .controls { display: flex; justify-content: center; gap: 10px; margin-bottom: 22px; }
   .controls button {
     font-family: 'Cinzel', serif;
-    font-size: 12px;
+    font-size: 11px;
     letter-spacing: 1px;
-    background: rgba(143,212,191,0.12);
+    background: rgba(143,212,191,0.1);
     color: #e9e2c8;
-    border: 1px solid #8fd4bf;
-    border-radius: 6px;
-    padding: 6px 14px;
+    border: 1px solid rgba(143,212,191,0.55);
+    border-radius: 20px;
+    padding: 7px 16px;
     cursor: pointer;
+    transition: background 0.15s;
   }
-  .controls button:hover { background: rgba(143,212,191,0.25); }
+  .controls button:hover { background: rgba(143,212,191,0.22); }
 
-  /* ---- Fit-to-screen viewport ---- */
-  #tree-viewport {
-    width: 100%;
-    overflow: auto;
-    padding-bottom: 10px;
-  }
-  #tree-scale {
-    display: inline-block;
-    transform-origin: top center;
-  }
+  #tree-viewport { width: 100%; overflow: auto; padding-bottom: 14px; }
+  #tree-scale { display: inline-block; transform-origin: top center; }
 
-  /* ---- Tree (classic CSS org-chart pattern) ---- */
   .tree, .tree ul, .tree li { list-style: none; margin: 0; padding: 0; position: relative; }
-  .tree { text-align: center; display: flex; justify-content: center; padding-bottom: 10px; }
-  .tree ul { display: flex; padding-top: 30px; position: relative; }
-  .tree li { display: flex; flex-direction: column; align-items: center; padding: 30px 12px 0; }
+  .tree { text-align: center; display: flex; justify-content: center; padding: 20px 10px 10px; }
+  .tree ul { display: flex; padding-top: 34px; position: relative; }
+  .tree li { display: flex; flex-direction: column; align-items: center; padding: 34px 13px 0; }
   .tree li::before, .tree li::after {
-    content: ''; position: absolute; top: 0; right: 50%; width: 50%; height: 30px;
-    border-top: 2px solid #6fb3a0;
+    content: ''; position: absolute; top: 0; right: 50%; width: 50%; height: 34px;
+    border-top: 1.5px solid rgba(143,196,181,0.55);
   }
-  .tree li::after { right: auto; left: 50%; border-left: 2px solid #6fb3a0; }
+  .tree li::after { right: auto; left: 50%; border-left: 1.5px solid rgba(143,196,181,0.55); }
   .tree li:only-child::before, .tree li:only-child::after { display: none; }
   .tree li:only-child { padding-top: 0; }
   .tree li:first-child::before, .tree li:last-child::after { border: 0 none; }
-  .tree li:last-child::before { border-right: 2px solid #6fb3a0; border-radius: 0 6px 0 0; }
-  .tree li:first-child::after { border-radius: 6px 0 0 0; }
+  .tree li:last-child::before { border-right: 1.5px solid rgba(143,196,181,0.55); border-radius: 0 10px 0 0; }
+  .tree li:first-child::after { border-radius: 10px 0 0 0; }
   .tree ul ul::before {
-    content: ''; position: absolute; top: 0; left: 50%; border-left: 2px solid #6fb3a0; width: 0; height: 30px;
+    content: ''; position: absolute; top: 0; left: 50%; border-left: 1.5px solid rgba(143,196,181,0.55); width: 0; height: 34px;
   }
   .tree li > .node-wrap { position: relative; }
 
-  /* ---- Node card ---- */
+  .couple { display: flex; align-items: center; gap: 12px; }
+  .spouse-link { display: flex; align-items: center; justify-content: center; width: 22px; height: 22px; }
+
   .card {
     display: inline-flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-width: 158px;
-    max-width: 176px;
-    padding: 11px 11px 9px;
-    border-radius: 8px;
-    background: rgba(24,30,54,0.72);
-    border: 1.5px solid #6fb3a0;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+    min-width: 154px;
+    max-width: 172px;
+    padding: 16px 12px 12px;
+    border-radius: 10px;
+    background: linear-gradient(180deg, rgba(30,36,58,0.85), rgba(16,20,36,0.85));
+    border: 1px solid var(--accent, #6fb3a0);
+    box-shadow: 0 4px 14px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.04);
+    position: relative;
   }
-  .card .icon { font-size: 18px; margin-bottom: 3px; color: #f4e6b8; text-shadow: 0 0 6px rgba(150,220,190,0.6); }
+  .badge {
+    width: 30px; height: 30px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    background: radial-gradient(circle, rgba(255,255,255,0.08), transparent 70%);
+    border: 1px solid var(--accent, #6fb3a0);
+    color: var(--accent, #6fb3a0);
+    font-size: 14px;
+    margin-bottom: 8px;
+    box-shadow: 0 0 10px color-mix(in srgb, var(--accent, #6fb3a0) 45%, transparent);
+  }
   .card .name {
     font-family: 'Cinzel', serif;
     font-weight: 700;
     font-size: 12.5px;
-    line-height: 1.25;
+    line-height: 1.3;
     color: #f1ecd6;
+    letter-spacing: 0.2px;
   }
+  .card .rule { width: 26px; height: 1px; background: var(--accent, #6fb3a0); opacity: 0.6; margin: 7px 0; }
   .card .meta {
-    font-family: 'EB Garamond', serif;
     font-style: italic;
-    font-size: 11px;
+    font-size: 12.5px;
     color: #b9c7c0;
-    margin-top: 4px;
     line-height: 1.3;
   }
   .card .reign {
     font-family: 'Cinzel', serif;
-    font-size: 10px;
-    letter-spacing: 0.4px;
-    color: #8fd4bf;
-    margin-top: 3px;
+    font-size: 9.5px;
+    letter-spacing: 0.5px;
+    color: var(--accent, #6fb3a0);
+    margin-top: 4px;
   }
 
-  .card.origem { background: rgba(20,50,55,0.75); border-color: #4fb8a8; }
+  .card.origem { --accent: #57c2ad; }
+  .card.consorte { --accent: #cdae6b; }
   .card.polaris {
-    background: radial-gradient(circle at 50% 30%, rgba(244,230,184,0.22), rgba(20,24,44,0.85));
-    border-color: #f4e6b8;
-    min-width: 196px;
-    box-shadow: 0 0 30px rgba(150,220,190,0.35), 0 4px 14px rgba(0,0,0,0.5);
+    --accent: #f6e9bd;
+    min-width: 188px;
+    background: radial-gradient(circle at 50% 25%, rgba(246,233,189,0.16), rgba(18,22,40,0.9));
+    box-shadow: 0 0 34px rgba(160,225,195,0.35), 0 6px 16px rgba(0,0,0,0.5);
   }
-  .card.polaris .icon { font-size: 26px; }
-  .card.polaris .name { font-size: 17px; letter-spacing: 1px; color: #f4e6b8; text-shadow: 0 0 10px rgba(150,220,190,0.6); }
-  .card.dinastia { background: rgba(38,26,58,0.78); border-color: #b79bdc; }
-  .card.dinastia .reign { color: #cbb6ea; }
-  .card.colateral { background: rgba(28,32,48,0.68); border-color: #7d8aa0; }
+  .card.polaris .badge { width: 38px; height: 38px; font-size: 18px; }
+  .card.polaris .name { font-size: 16.5px; letter-spacing: 1px; }
+  .card.dinastia { --accent: #b79bdc; }
+  .card.colateral { --accent: #8493a8; }
   .card.viva {
-    background: radial-gradient(circle at 50% 20%, rgba(244,196,120,0.28), rgba(30,22,20,0.8));
-    border-color: #f0b95f;
+    --accent: #f0b95f;
+    background: radial-gradient(circle at 50% 20%, rgba(240,185,95,0.18), rgba(28,20,18,0.88));
   }
   .card.viva .name { color: #ffe3ad; }
-  .card.viva .reign { color: #f0b95f; }
 </style>
 </head>
 <body>
 <div class="poster">
-  <div class="corner tl"></div><div class="corner tr"></div>
-  <div class="corner bl"></div><div class="corner br"></div>
+
+  <svg class="flourish tl" viewBox="0 0 100 100"><path d="M8 92 L8 26 Q8 8 26 8 L92 8" fill="none" stroke="#cdae6b" stroke-width="1.6"/><circle cx="26" cy="8" r="2.5" fill="#cdae6b"/><circle cx="8" cy="26" r="2.5" fill="#cdae6b"/><path d="M8 50 Q26 50 26 32" fill="none" stroke="#cdae6b" stroke-width="1.2"/><circle cx="26" cy="32" r="2" fill="#cdae6b"/></svg>
+  <svg class="flourish tr" viewBox="0 0 100 100"><path d="M8 92 L8 26 Q8 8 26 8 L92 8" fill="none" stroke="#cdae6b" stroke-width="1.6"/><circle cx="26" cy="8" r="2.5" fill="#cdae6b"/><circle cx="8" cy="26" r="2.5" fill="#cdae6b"/><path d="M8 50 Q26 50 26 32" fill="none" stroke="#cdae6b" stroke-width="1.2"/><circle cx="26" cy="32" r="2" fill="#cdae6b"/></svg>
+  <svg class="flourish bl" viewBox="0 0 100 100"><path d="M8 92 L8 26 Q8 8 26 8 L92 8" fill="none" stroke="#cdae6b" stroke-width="1.6"/><circle cx="26" cy="8" r="2.5" fill="#cdae6b"/><circle cx="8" cy="26" r="2.5" fill="#cdae6b"/><path d="M8 50 Q26 50 26 32" fill="none" stroke="#cdae6b" stroke-width="1.2"/><circle cx="26" cy="32" r="2" fill="#cdae6b"/></svg>
+  <svg class="flourish br" viewBox="0 0 100 100"><path d="M8 92 L8 26 Q8 8 26 8 L92 8" fill="none" stroke="#cdae6b" stroke-width="1.6"/><circle cx="26" cy="8" r="2.5" fill="#cdae6b"/><circle cx="8" cy="26" r="2.5" fill="#cdae6b"/><path d="M8 50 Q26 50 26 32" fill="none" stroke="#cdae6b" stroke-width="1.2"/><circle cx="26" cy="32" r="2" fill="#cdae6b"/></svg>
 
   <header>
+    <svg class="starburst" width="64" height="64" viewBox="0 0 64 64">
+      <g stroke="#f6e9bd" stroke-width="1.4" stroke-linecap="round" opacity="0.9">
+        <line x1="32" y1="2" x2="32" y2="62"/>
+        <line x1="2" y1="32" x2="62" y2="32"/>
+        <line x1="10" y1="10" x2="54" y2="54"/>
+        <line x1="54" y1="10" x2="10" y2="54"/>
+      </g>
+      <circle cx="32" cy="32" r="7" fill="#f6e9bd" opacity="0.95"/>
+      <circle cx="32" cy="32" r="13" fill="none" stroke="#8fd4bf" stroke-width="0.8" opacity="0.6"/>
+    </svg>
     <div class="kicker">Crônicas do Firmamento</div>
     <h1>Dinastia Polar</h1>
     <h2>Árvore Genealógica</h2>
-    <div class="divider"><span class="line"></span><span class="star">✦</span><span class="line"></span></div>
+    <div class="divider">
+      <span class="line"></span>
+      <svg width="18" height="18" viewBox="0 0 18 18"><path d="M9 0 L11 7 L18 9 L11 11 L9 18 L7 11 L0 9 L7 7 Z" fill="#f6e9bd"/></svg>
+      <span class="line"></span>
+    </div>
   </header>
 
   <div class="legend">
-    <span><span class="swatch" style="background:rgba(20,50,55,0.9);border-color:#4fb8a8"></span> Deusas de origem</span>
-    <span><span class="swatch" style="background:rgba(20,24,44,0.9);border-color:#f4e6b8"></span> Polaris</span>
-    <span><span class="swatch" style="background:rgba(38,26,58,0.9);border-color:#b79bdc"></span> Linhagem principal (Estrela Cadente)</span>
-    <span><span class="swatch" style="background:rgba(28,32,48,0.9);border-color:#7d8aa0"></span> Ramos colaterais (Luz das Estrelas)</span>
-    <span><span class="swatch" style="background:rgba(30,22,20,0.9);border-color:#f0b95f"></span> Geração viva (Entardecida / Aurora)</span>
+    <span><span class="swatch" style="background:#57c2ad"></span> Deusas de origem</span>
+    <span><span class="swatch" style="background:#f6e9bd"></span> Polaris</span>
+    <span><span class="swatch" style="background:#cdae6b"></span> Consortes</span>
+    <span><span class="swatch" style="background:#b79bdc"></span> Linhagem principal</span>
+    <span><span class="swatch" style="background:#8493a8"></span> Ramos colaterais</span>
+    <span><span class="swatch" style="background:#f0b95f"></span> Geração viva</span>
   </div>
 
   <div class="controls">
@@ -241,53 +263,97 @@
   <div id="tree-scale">
   <ul class="tree">
     <li>
-      <div class="node-wrap"><div class="card polaris"><div class="icon">☀</div><div class="name">Polaris</div><div class="meta">Origem do firmamento</div></div></div>
+      <div class="node-wrap">
+        <div class="couple">
+          <div class="card polaris"><div class="badge">☀</div><div class="name">Polaris</div><div class="rule"></div><div class="meta">Origem do firmamento</div></div>
+          <svg class="spouse-link" viewBox="0 0 24 24"><circle cx="8" cy="12" r="6" fill="none" stroke="#cdae6b" stroke-width="1.4"/><circle cx="16" cy="12" r="6" fill="none" stroke="#cdae6b" stroke-width="1.4"/></svg>
+          <div class="card consorte"><div class="badge">✷</div><div class="name">Estrela Cadente Ronald</div><div class="rule"></div><div class="meta">N: sem dados</div><div class="reign">F: aos 57 anos, em 0025</div></div>
+        </div>
+      </div>
       <ul>
-        <li><div class="card origem"><div class="icon">✧</div><div class="name">Deusa Demétria</div></div></li>
-        <li><div class="card origem"><div class="icon">✧</div><div class="name">Deusa Mond</div></div></li>
-        <li><div class="card origem"><div class="icon">✧</div><div class="name">Deusa Poemia</div></div></li>
-        <li><div class="card colateral"><div class="icon">✷</div><div class="name">Estrela Cadente Ronald</div><div class="meta">N: sem dados</div><div class="reign">F: aos 57 anos, em 0025</div></div></li>
+        <li><div class="card origem"><div class="badge">✧</div><div class="name">Deusa Demétria</div></div></li>
+        <li><div class="card origem"><div class="badge">✧</div><div class="name">Deusa Mond</div></div></li>
+        <li><div class="card origem"><div class="badge">✧</div><div class="name">Deusa Poemia</div></div></li>
         <li>
-          <div class="node-wrap"><div class="card dinastia"><div class="icon">✶</div><div class="name">Estrela Cadente Polinae</div><div class="meta">N: ano 0 · F: ano 75</div><div class="reign">No poder: 25–47</div></div></div>
+          <div class="node-wrap">
+            <div class="couple">
+              <div class="card dinastia"><div class="badge">✶</div><div class="name">Estrela Cadente Polinae</div><div class="rule"></div><div class="meta">N: ano 0 · F: ano 75</div><div class="reign">No poder: 25–47</div></div>
+              <svg class="spouse-link" viewBox="0 0 24 24"><circle cx="8" cy="12" r="6" fill="none" stroke="#cdae6b" stroke-width="1.4"/><circle cx="16" cy="12" r="6" fill="none" stroke="#cdae6b" stroke-width="1.4"/></svg>
+              <div class="card consorte"><div class="badge">✷</div><div class="name">Estrela Cadente Felicio</div></div>
+            </div>
+          </div>
           <ul>
+            <li><div class="card colateral"><div class="badge">✧</div><div class="name">Luz das Estrelas Francis</div></div></li>
             <li>
-              <div class="node-wrap"><div class="card colateral"><div class="icon">✷</div><div class="name">Estrela Cadente Felicio</div></div></div>
+              <div class="node-wrap">
+                <div class="couple">
+                  <div class="card dinastia"><div class="badge">✶</div><div class="name">Estrela Cadente Dileia</div><div class="rule"></div><div class="meta">N: ano 27 · F: ano 87</div><div class="reign">No poder: 47–77</div></div>
+                  <svg class="spouse-link" viewBox="0 0 24 24"><circle cx="8" cy="12" r="6" fill="none" stroke="#cdae6b" stroke-width="1.4"/><circle cx="16" cy="12" r="6" fill="none" stroke="#cdae6b" stroke-width="1.4"/></svg>
+                  <div class="card consorte"><div class="badge">✷</div><div class="name">Estrela Cadente Hanslen</div></div>
+                </div>
+              </div>
               <ul>
-                <li><div class="card colateral"><div class="icon">✧</div><div class="name">Luz das Estrelas Francis</div></div></li>
-                <li><div class="card colateral"><div class="icon">✧</div><div class="name">Luz das Estrelas Gerald</div></div></li>
-              </ul>
-            </li>
-            <li>
-              <div class="node-wrap"><div class="card dinastia"><div class="icon">✶</div><div class="name">Estrela Cadente Dileia</div><div class="meta">N: ano 27 · F: ano 87</div><div class="reign">No poder: 47–77</div></div></div>
-              <ul>
-                <li><div class="card colateral"><div class="icon">✷</div><div class="name">Estrela Cadente Hanslen</div></div></li>
                 <li>
-                  <div class="node-wrap"><div class="card dinastia"><div class="icon">✶</div><div class="name">Estrela Cadente Melia</div><div class="meta">N: ano 56 · F: ano 103</div><div class="reign">No poder: 77–103</div></div></div>
+                  <div class="node-wrap">
+                    <div class="couple">
+                      <div class="card dinastia"><div class="badge">✶</div><div class="name">Estrela Cadente Melia</div><div class="rule"></div><div class="meta">N: ano 56 · F: ano 103</div><div class="reign">No poder: 77–103</div></div>
+                      <svg class="spouse-link" viewBox="0 0 24 24"><circle cx="8" cy="12" r="6" fill="none" stroke="#cdae6b" stroke-width="1.4"/><circle cx="16" cy="12" r="6" fill="none" stroke="#cdae6b" stroke-width="1.4"/></svg>
+                      <div class="card consorte"><div class="badge">✷</div><div class="name">Estrela Cadente Osvendos</div></div>
+                    </div>
+                  </div>
                   <ul>
-                    <li><div class="card colateral"><div class="icon">✷</div><div class="name">Estrela Cadente Osvendos</div></div></li>
-                    <li><div class="card colateral"><div class="icon">✧</div><div class="name">Luz das Estrelas Maria</div></div></li>
-                    <li><div class="card colateral"><div class="icon">✧</div><div class="name">Luz das Estrelas Wally</div></div></li>
-                    <li><div class="card colateral"><div class="icon">✧</div><div class="name">Luz das Estrelas Beijamin</div></div></li>
-                    <li><div class="card colateral"><div class="icon">✧</div><div class="name">Luz das Estrelas John</div></div></li>
                     <li>
-                      <div class="node-wrap"><div class="card dinastia"><div class="icon">✶</div><div class="name">Estrela Cadente Dalia</div><div class="meta">N: ano 100 · F: ano 128</div><div class="reign">No poder: 120–128</div></div></div>
+                      <div class="node-wrap">
+                        <div class="couple">
+                          <div class="card colateral"><div class="badge">✧</div><div class="name">Luz das Estrelas Wally</div></div>
+                          <svg class="spouse-link" viewBox="0 0 24 24"><circle cx="8" cy="12" r="6" fill="none" stroke="#8493a8" stroke-width="1.4"/><circle cx="16" cy="12" r="6" fill="none" stroke="#8493a8" stroke-width="1.4"/></svg>
+                          <div class="card colateral"><div class="badge">✧</div><div class="name">Luz das Estrelas Maria</div></div>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="node-wrap">
+                        <div class="couple">
+                          <div class="card dinastia"><div class="badge">✶</div><div class="name">Estrela Cadente Dalia</div><div class="rule"></div><div class="meta">N: ano 100 · F: ano 128</div><div class="reign">No poder: 120–128</div></div>
+                          <svg class="spouse-link" viewBox="0 0 24 24"><circle cx="8" cy="12" r="6" fill="none" stroke="#cdae6b" stroke-width="1.4"/><circle cx="16" cy="12" r="6" fill="none" stroke="#cdae6b" stroke-width="1.4"/></svg>
+                          <div class="card consorte"><div class="badge">✷</div><div class="name">Estrela Cadente August</div></div>
+                        </div>
+                      </div>
                       <ul>
-                        <li><div class="card colateral"><div class="icon">✷</div><div class="name">Estrela Cadente August</div></div></li>
                         <li>
-                          <div class="node-wrap"><div class="card dinastia"><div class="icon">✶</div><div class="name">Estrela Cadente Aldmar</div><div class="meta">N: ano 119 · F: ano 170</div><div class="reign">No poder: 139–169</div></div></div>
+                          <div class="node-wrap">
+                            <div class="couple">
+                              <div class="card dinastia"><div class="badge">✶</div><div class="name">Estrela Cadente Aldmar</div><div class="rule"></div><div class="meta">N: ano 119 · F: ano 170</div><div class="reign">No poder: 139–169</div></div>
+                              <svg class="spouse-link" viewBox="0 0 24 24"><circle cx="8" cy="12" r="6" fill="none" stroke="#cdae6b" stroke-width="1.4"/><circle cx="16" cy="12" r="6" fill="none" stroke="#cdae6b" stroke-width="1.4"/></svg>
+                              <div class="card consorte"><div class="badge">✷</div><div class="name">Estrela Cadente Trian</div></div>
+                            </div>
+                          </div>
                           <ul>
-                            <li><div class="card colateral"><div class="icon">✷</div><div class="name">Estrela Cadente Trian</div></div></li>
                             <li>
-                              <div class="node-wrap"><div class="card viva"><div class="icon">✹</div><div class="name">Estrela Entardecida Margarida</div><div class="meta">N: ano 149 · Viva</div><div class="reign">No poder: 169 – atual (191)</div></div></div>
+                              <div class="node-wrap">
+                                <div class="couple">
+                                  <div class="card viva"><div class="badge">✹</div><div class="name">Estrela Entardecida Margarida</div><div class="rule"></div><div class="meta">N: ano 149 · Viva</div><div class="reign">No poder: 169 – atual (191)</div></div>
+                                  <svg class="spouse-link" viewBox="0 0 24 24"><circle cx="8" cy="12" r="6" fill="none" stroke="#f0b95f" stroke-width="1.4"/><circle cx="16" cy="12" r="6" fill="none" stroke="#f0b95f" stroke-width="1.4"/></svg>
+                                  <div class="card viva"><div class="badge">✹</div><div class="name">Estrela Entardecida Nandic</div><div class="meta">Viva</div></div>
+                                </div>
+                              </div>
                               <ul>
-                                <li><div class="card viva"><div class="icon">✹</div><div class="name">Estrela Entardecida Nandic</div><div class="meta">Viva</div></div></li>
-                                <li><div class="card viva"><div class="icon">✸</div><div class="name">Estrela da Aurora Layla</div><div class="meta">N: 172 · Viva</div></div></li>
-                                <li><div class="card viva"><div class="icon">✧</div><div class="name">Luz das Estrela Prometeus</div><div class="meta">N: 177 · Vivo</div></div></li>
+                                <li><div class="card viva"><div class="badge">✸</div><div class="name">Estrela da Aurora Layla</div><div class="meta">N: 172 · Viva</div></div></li>
+                                <li><div class="card viva"><div class="badge">✧</div><div class="name">Luz das Estrela Prometeus</div><div class="meta">N: 177 · Vivo</div></div></li>
                               </ul>
                             </li>
                           </ul>
                         </li>
                       </ul>
+                    </li>
+                    <li>
+                      <div class="node-wrap">
+                        <div class="couple">
+                          <div class="card colateral"><div class="badge">✧</div><div class="name">Luz das Estrelas Beijamin</div></div>
+                          <svg class="spouse-link" viewBox="0 0 24 24"><circle cx="8" cy="12" r="6" fill="none" stroke="#8493a8" stroke-width="1.4"/><circle cx="16" cy="12" r="6" fill="none" stroke="#8493a8" stroke-width="1.4"/></svg>
+                          <div class="card colateral"><div class="badge">✧</div><div class="name">Luz das Estrelas John</div></div>
+                        </div>
+                      </div>
                     </li>
                   </ul>
                 </li>
@@ -304,12 +370,10 @@
 
 <script>
   var currentScale = 1;
-
   function applyScale(s) {
     currentScale = Math.max(0.3, Math.min(1.5, s));
     document.getElementById('tree-scale').style.transform = 'scale(' + currentScale + ')';
   }
-
   function fitToScreen() {
     var viewport = document.getElementById('tree-viewport');
     var scaleWrap = document.getElementById('tree-scale');
@@ -320,10 +384,8 @@
     if (s > 1) s = 1;
     applyScale(s);
   }
-
   function resetZoom() { fitToScreen(); }
   function zoom(delta) { applyScale(currentScale + delta); }
-
   window.addEventListener('load', fitToScreen);
   window.addEventListener('resize', fitToScreen);
 </script>
