@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ficha — Devoradores de Sóis | Reino Polaris</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Noto+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="iconSOL.jpeg">
+  <style>
+  :root{
+    --parchment: #eef2f6;
+    --parchment-edge: #d9e2ea;
+    --rule: #1f3a5f;
+    --rule-soft: #6a8caf;
+    --name: #1f3a5f;
+    --ink: #161c22;
+    --label: #1f3a5f;
+    --divider-tan: #6a8caf;
+  }
+
+  *{ box-sizing: border-box; }
+
+  html,body{
+    margin:0; padding:0;
+    background: #10151c;
+    font-family:'Noto Sans', sans-serif;
+    color: var(--ink);
+  }
+
+  .page{
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 40px 22px 60px;
+  }
+
+  .page-title{
+    font-family:'Libre Caslon Text', serif;
+    font-size: 30px;
+    color: #dce6f0;
+    text-align:center;
+    margin: 0 0 4px;
+    letter-spacing: 0.01em;
+  }
+  .page-sub{
+    text-align:center;
+    color: #7f9bb8;
+    font-style: italic;
+    font-size: 14px;
+    margin: 0 0 34px;
+  }
+
+  .grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 26px;
+    align-items: start;
+  }
+
+  /* ---------- ficha ---------- */
+  .statblock{
+    background-color: var(--parchment);
+    border: 1px solid #c3d0dc;
+    padding: 16px 18px 20px;
+    box-shadow:
+      0 0 1.5px rgba(0,0,0,0.6),
+      0 0 8px rgba(0,0,0,0.35);
+    position: relative;
+  }
+  .statblock::before{
+    content:"";
+    position:absolute; inset: 4px;
+    border: 1px solid rgba(31,58,95,0.15);
+    pointer-events:none;
+  }
+
+  .name{
+    font-family:'Libre Caslon Text', serif;
+    font-weight:700;
+    color: var(--name);
+    font-size: 23px;
+    margin: 0;
+    line-height:1.1;
+  }
+  .type{
+    font-style: italic;
+    font-size: 12.5px;
+    margin: 2px 0 6px;
+    color: #2a3542;
+  }
+
+  .tapered-rule{
+    height: 5px;
+    margin: 6px 0 6px;
+    background: linear-gradient(90deg, rgba(31,58,95,0) 0%, var(--rule) 8%, var(--rule) 92%, rgba(31,58,95,0) 100%);
+  }
+  .tapered-rule.thin{ height:2px; opacity:0.85; }
+
+  .property-line{
+    margin: 2px 0;
+    font-size: 13.5px;
+    line-height: 1.5;
+  }
+  .property-line b{ color: var(--label); }
+
+  /* ability score table */
+  .abilities{
+    width:100%;
+    border-collapse: collapse;
+    margin: 8px 0 6px;
+    table-layout: fixed;
+  }
+  .abilities th, .abilities td{
+    text-align:center;
+    font-size: 12.5px;
+    padding: 1px 0;
+  }
+  .abilities th{
+    color: var(--label);
+    font-weight:700;
+  }
+
+  .traits{ margin-top: 4px; }
+  .traits p{
+    margin: 5px 0;
+    font-size: 13.5px;
+    line-height: 1.5;
+  }
+  .traits p b, .actions p b{
+    font-style: italic;
+    color: var(--ink);
+  }
+
+  .section-title{
+    font-family:'Libre Caslon Text', serif;
+    color: var(--name);
+    font-size: 17px;
+    border-bottom: 1px solid var(--rule);
+    margin: 10px 0 4px;
+    padding-bottom: 1px;
+  }
+
+  .actions p{
+    margin: 5px 0;
+    font-size: 13.5px;
+    line-height: 1.5;
+  }
+
+  .flavor{
+    margin-top: 10px;
+    padding-top: 8px;
+    border-top: 1px dashed var(--divider-tan);
+    font-size: 12.5px;
+    font-style: italic;
+    color: #33465a;
+    line-height: 1.45;
+  }
+
+  @media (max-width: 480px){
+    .page{ padding: 28px 12px 40px; }
+  }
+
+  /* ---------- nav / footer do site (mantidos do restante do site) ---------- */
+  nav{
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 18px 22px 0;
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+    font-family:'Noto Sans', sans-serif;
+  }
+  nav a{ color: #7f9bb8; text-decoration:none; font-size: 13px; }
+  nav a:hover{ color:#dce6f0; }
+  .nav-char{ color:#dce6f0; font-size:13px; letter-spacing:.06em; }
+
+  footer{
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 30px 22px 40px;
+    text-align:center;
+    border-top: 1px solid rgba(106,140,175,.25);
+    margin-top: 20px;
+  }
+  .footer-back{ color:#7f9bb8; text-decoration:none; font-size:13px; }
+  .footer-back:hover{ color:#dce6f0; }
+  .footer-name{ display:block; margin-top:8px; color:#dce6f0; font-size:12px; letter-spacing:.08em; }
+  footer p{ color:#5c728a; font-style: italic; font-size:12px; margin-top: 4px; }
+</style>
+</head>
+<body>
+
+  <nav>
+    <a href="CaesSois.html">← Devoradores</a>
+    <span class="nav-char">✦ FICHA · DEVORADORES</span>
+  </nav>
+
+<div class="page">
+  <h1 class="page-title">Fichas — Cães Devoradores de Sóis</h1>
+  <p class="page-sub">Fichas simplificadas · D&amp;D 5ª edição</p>
+
+  <div class="grid">
+
+    <!-- DEVORADOR DE SÓIS -->
+    <div class="statblock">
+      <p class="name">Devorador de Sóis</p>
+      <p class="type">Fera Grande, caótico e neutro</p>
+      <div class="tapered-rule"></div>
+      <p class="property-line"><b>Classe de Armadura</b> 15 (couro natural amaldiçoado)</p>
+      <p class="property-line"><b>Pontos de Vida</b> 97 (13d10 + 26)</p>
+      <p class="property-line"><b>Deslocamento</b> 18 m</p>
+      <div class="tapered-rule thin"></div>
+      <table class="abilities">
+        <tr><th>FOR</th><th>DES</th><th>CON</th><th>INT</th><th>SAB</th><th>CAR</th></tr>
+        <tr><td>19 (+4)</td><td>16 (+3)</td><td>15 (+2)</td><td>6 (−2)</td><td>15 (+2)</td><td>9 (−1)</td></tr>
+      </table>
+      <div class="tapered-rule thin"></div>
+      <p class="property-line"><b>Resistências a Dano</b> frio; contundente, cortante e perfurante de ataques não mágicos</p>
+      <p class="property-line"><b>Perícias</b> Percepção +6, Sobrevivência +6, Furtividade +7</p>
+      <p class="property-line"><b>Sentidos</b> visão no escuro 27 m, percepção passiva 16</p>
+      <p class="property-line"><b>Idiomas</b> entende Celestial, mas não fala</p>
+      <p class="property-line"><b>Nível de Desafio</b> 6 (2.300 XP)</p>
+      <div class="tapered-rule"></div>
+      <div class="traits">
+        <p><b>Sede da Deusa.</b> Os ataques do Devorador são considerados mágicos para fins de superar resistência e imunidade a dano. Contra uma criatura Celestial, ou qualquer criatura que carregue sangue de Polaris, a Mordida do Devorador causa 2d6 de dano radiante adicional.</p>
+        <p><b>Faro de Estrela.</b> O Devorador pode usar uma ação para localizar automaticamente a direção da fonte mais próxima de sangue de Polaris (ou de um de seus descendentes) a até 6 km de distância; apenas magia de nível 6 ou superior consegue esconder esse rastro.</p>
+        <p><b>Tática de Matilha.</b> O Devorador tem vantagem em uma jogada de ataque contra uma criatura se pelo menos um aliado do Devorador estiver a 1,5 m da criatura e esse aliado não estiver incapacitado.</p>
+        <p><b>Perseguição Implacável.</b> Se o Devorador se mover pelo menos 6 m em linha reta diretamente em direção a um alvo em fuga antes de atacá-lo, o ataque causa 2d6 de dano adicional.</p>
+      </div>
+      <p class="section-title">Ações</p>
+      <div class="actions">
+        <p><b>Multiataque.</b> O Devorador faz dois ataques: um com a Mordida e um com as Garras.</p>
+        <p><b>Mordida.</b> Ataque com Arma Corpo a Corpo: +7 para acertar, alcance 1,5 m, um alvo. Acerto: 13 (2d8 + 4) de dano perfurante (veja Sede da Deusa).</p>
+        <p><b>Garras.</b> Ataque com Arma Corpo a Corpo: +7 para acertar, alcance 1,5 m, um alvo. Acerto: 11 (2d6 + 4) de dano cortante. Se o alvo for uma criatura Grande ou menor, ela deve ser bem-sucedida em um teste de resistência de Força (CD 15) ou cai Caída.</p>
+      </div>
+      <p class="section-title">Reação</p>
+      <div class="actions">
+        <p><b>Uivo do Cerco.</b> Quando uma criatura indefesa ou incapacitada, sem sangue de Polaris, entra em uma área controlada pela matilha, o Devorador pode uivar em vez de atacar. Todos os Devoradores a até 90 m que ouçam o uivo se movem para formar um perímetro ao redor da criatura, sem atacá-la, até que ela se recupere ou tente fugir da área.</p>
+      </div>
+      <p class="flavor">Sozinho, já basta para acuar uma patrulha inteira; em bando, é o instrumento mais próximo que Skadi tem de tocar um deus. Ainda assim, quando o sangue que encontram não é o que caçam, mas apenas o de um azarado qualquer — dizem que preferem cercar a morder.</p>
+    </div>
+
+    <!-- MATRIARCA DA MATILHA -->
+    <div class="statblock">
+      <p class="name">Matriarca da Matilha</p>
+      <p class="type">Fera Enorme, caótica e neutra</p>
+      <div class="tapered-rule"></div>
+      <p class="property-line"><b>Classe de Armadura</b> 17 (couro amaldiçoado espesso)</p>
+      <p class="property-line"><b>Pontos de Vida</b> 178 (17d12 + 68)</p>
+      <p class="property-line"><b>Deslocamento</b> 18 m</p>
+      <div class="tapered-rule thin"></div>
+      <table class="abilities">
+        <tr><th>FOR</th><th>DES</th><th>CON</th><th>INT</th><th>SAB</th><th>CAR</th></tr>
+        <tr><td>22 (+6)</td><td>15 (+2)</td><td>19 (+4)</td><td>8 (−1)</td><td>16 (+3)</td><td>12 (+1)</td></tr>
+      </table>
+      <div class="tapered-rule thin"></div>
+      <p class="property-line"><b>Testes de Resistência</b> Constituição +8, Sabedoria +7</p>
+      <p class="property-line"><b>Resistências a Dano</b> frio; contundente, cortante e perfurante de ataques não mágicos</p>
+      <p class="property-line"><b>Perícias</b> Percepção +7, Sobrevivência +7, Furtividade +6</p>
+      <p class="property-line"><b>Sentidos</b> visão no escuro 36 m, percepção passiva 17</p>
+      <p class="property-line"><b>Idiomas</b> entende Celestial e Silvestre, mas não fala</p>
+      <p class="property-line"><b>Nível de Desafio</b> 10 (5.900 XP)</p>
+      <div class="tapered-rule"></div>
+      <div class="traits">
+        <p><b>Sede da Deusa (Maior).</b> Os ataques da Matriarca são considerados mágicos. Contra uma criatura Celestial, ou qualquer criatura que carregue sangue de Polaris, a Mordida da Matriarca causa 3d6 de dano radiante adicional.</p>
+        <p><b>Faro de Estrela Absoluto.</b> A Matriarca sempre sabe a direção e a distância aproximada de qualquer vestígio de Polaris em Aucrib, não importa quão longe. Apenas magia divina consegue esconder esse rastro dela.</p>
+        <p><b>Liderança de Matilha.</b> Enquanto a Matriarca estiver viva e consciente, cada Devorador a até 18 m dela pode usar a Tática de Matilha independentemente de estar adjacente a um aliado, e tem vantagem em testes de resistência contra ser amedrontado.</p>
+        <p><b>Perseguição Implacável (Maior).</b> Se a Matriarca se mover pelo menos 6 m em linha reta diretamente em direção a um alvo em fuga antes de atacá-lo, o ataque causa 3d6 de dano adicional.</p>
+        <p><b>Regeneração da Maldição.</b> A Matriarca recupera 10 pontos de vida no início de seu turno se tiver pelo menos 1 ponto de vida e não tiver sofrido dano radiante desde o fim de seu último turno.</p>
+      </div>
+      <p class="section-title">Ações</p>
+      <div class="actions">
+        <p><b>Multiataque.</b> A Matriarca faz três ataques: um com a Mordida e dois com as Garras.</p>
+        <p><b>Mordida.</b> Ataque com Arma Corpo a Corpo: +10 para acertar, alcance 3 m, um alvo. Acerto: 21 (4d6 + 6) de dano perfurante (veja Sede da Deusa).</p>
+        <p><b>Garras.</b> Ataque com Arma Corpo a Corpo: +10 para acertar, alcance 3 m, um alvo. Acerto: 15 (2d8 + 6) de dano cortante. Se o alvo for uma criatura Enorme ou menor, ela deve ser bem-sucedida em um teste de resistência de Força (CD 17) ou cai Caída.</p>
+      </div>
+      <p class="section-title">Reação</p>
+      <div class="actions">
+        <p><b>Uivo do Cerco.</b> Quando uma criatura indefesa ou incapacitada, sem sangue de Polaris, entra em uma área controlada pela matilha, a Matriarca pode uivar em vez de atacar. Todos os Devoradores a até 90 m que ouçam o uivo se movem para formar um perímetro ao redor da criatura, sem atacá-la, até que ela se recupere ou tente fugir da área.</p>
+      </div>
+      <p class="section-title">Ações Lendárias</p>
+      <div class="actions">
+        <p>A Matriarca pode realizar 3 ações lendárias, escolhidas entre as opções abaixo, no fim do turno de outra criatura. Ela só pode realizar uma ação lendária de cada vez, e apenas no fim do turno de outra criatura. A Matriarca recupera as ações lendárias gastas no início do seu turno.</p>
+        <p><b>Investida.</b> A Matriarca se move até seu deslocamento sem provocar ataques de oportunidade.</p>
+        <p><b>Garra.</b> A Matriarca faz um ataque com as Garras.</p>
+        <p><b>Uivo Ancestral (custa 2 ações).</b> A Matriarca uiva com a voz da própria maldição de Skadi. Cada criatura hostil a até 9 m que a ouça deve ser bem-sucedida em um teste de resistência de Sabedoria (CD 16) ou fica Amedrontada até o fim do seu próximo turno.</p>
+      </div>
+      <p class="flavor">Foi a primeira a farejar a partida de Polaris, e é a única da matilha que ainda lembra, em sonhos, do calor que a estrela deixou para trás. Dizem que é por isso que ainda caça — não por ordem de Skadi, mas por uma saudade que virou fome.</p>
+    </div>
+
+  </div>
+</div>
+
+  <footer>
+    <a class="footer-back" href="CaesSois.html">← VOLTAR PARA DEVORADORES</a>
+    <span class="footer-name">DEVORADORES · OS CÃES DE CAÇA</span>
+    <p>Uma criatura de <em>Entre as Estrelas</em></p>
+  </footer>
+
+</body>
+</html>
