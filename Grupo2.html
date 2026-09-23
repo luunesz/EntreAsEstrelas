@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Entre as Estrelas — Grupo II</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=IM+Fell+English:ital@0;1&family=Cinzel:wght@400;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="estilo.css">
+  <link rel="stylesheet" href="estiloPersonagens.css">
+  <link rel="stylesheet" href="estiloDivindades.css">
+  <link rel="stylesheet" href="estiloPersonagensPrincipais.css">
+  <link rel="stylesheet" href="protegido.css">
+  <link rel="icon" type="image/x-icon" href="iconSOL.jpeg">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-title" href="index.html#personagens">✦ ENTRE AS ESTRELAS</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Casa</a></li>
+      <li><a href="index.html#lore">Reinos</a></li>
+      <li><a href="#hero-personagens" style="color:var(--star)">Elenco Principal</a></li>
+      <li><a href="divindades.html">Divindades</a></li>
+      <li><a href="index.html#faq">FAQ</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <header id="hero-personagens">
+    <div class="hero-content">
+      <p class="hero-eyebrow">✦ grupo pqp &nbsp;  &nbsp; ✦</p>
+      <span class="hero-star-icon">✦</span>
+      <h1 class="hero-title">O Grupo <em>II</em></h1>
+    </div>
+  </header>
+
+  <!-- LAYOUT PRINCIPAL -->
+  <div class="pantheon-layout">
+
+    <!-- SIDEBAR / ÍNDICE -->
+    <aside class="pantheon-sidebar">
+      <span class="sidebar-label">✦ ÍNDICE</span>
+
+      <div class="sidebar-group">
+        <span class="sidebar-group-label">COMPOSIÇÃO</span>
+        <a class="sidebar-link" href="#I">
+          <span class="god-dot"></span> Personagem
+        </a>
+        <a class="sidebar-link" href="#II">
+          <span class="god-dot"></span> Personagem
+        </a>
+        <a class="sidebar-link" href="#III">
+          <span class="god-dot"></span> Personagem
+        </a>
+        <a class="sidebar-link" href="#IV">
+          <span class="god-dot"></span> Personagem
+        </a>
+      </div>
+
+      <a class="back-top" href="#hero-personagens">↑ topo</a>
+    </aside>
+
+    <!-- CONTEÚDO -->
+    <main class="pantheon-content">
+
+      <p class="pantheon-intro">
+        Descrição do Grupo 
+      </p>
+
+      <!-- ══ AMARANTHA ══ -->
+      <div class="char-main-card" id="I">
+        <div class="char-main-portrait">
+          <img src="Personagem.jpeg" alt="Personagem">
+          <div class="char-main-portrait-placeholder">
+            <span class="char-main-portrait-icon">Icon</span>
+            <span class="char-main-portrait-label">Icon</span>
+          </div>
+          <div class="char-main-badge">Jogadora: Jogador</div>
+        </div>
+        <div class="char-main-body">
+          <div>
+            <div class="char-main-header">
+              <p class="char-main-eyebrow">✦ Título</p>
+              <h2 class="char-main-name">Nome</h2>
+            </div>
+            <div class="char-main-stats">
+              <div class="char-main-stat">
+                <span class="char-main-stat-label">IDADE</span>
+                <span class="char-main-stat-value">X anos</span>
+              </div>
+              <div class="char-main-stat">
+                <span class="char-main-stat-label">GÊNERO</span>
+                <span class="char-main-stat-value"> X </span>
+              </div>
+              <div class="char-main-stat">
+                <span class="char-main-stat-label">RAÇA</span>
+                <span class="char-main-stat-value"><em>X</em></span>
+              </div>
+              <div class="char-main-stat">
+                <span class="char-main-stat-label">CLASSE</span>
+                <span class="char-main-stat-value"><em>X</em></span>
+              </div>
+              <div class="char-main-stat">
+                <span class="char-main-stat-label">NÍVEL</span>
+                <span class="char-main-stat-value">X</span>
+              </div>
+              <div class="char-main-stat">
+                <span class="char-main-stat-label">ESTADO ATUAL</span>
+                <span class="char-main-stat-value">X</span>
+              </div>
+            </div>
+            <p class="char-main-desc">Descrição</p>
+          </div>
+          <a class="char-main-link protegido" href="PersonagemFicha.pdf" data-hash="27d86cbcb24fb7c4ed5450a1a51eda91e02647056658dada08644d56e70ff1e4">VER FICHA </a>
+        </div>
+      </div>
+
+      <a class="back-top" href="#hero-personagens">↑ voltar ao topo</a>
+    </main>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <a class="footer-back" href="index.html">← VOLTAR A CASA</a>
+    <span class="footer-name">✦ GRUPO II ✦</span>
+    <p>um grupo de <em>Entre as Estrelas</em></p>
+  </footer>
+
+  <script src="protegido.js"></script>
+
+  <script>
+    // Highlight sidebar ao rolar
+    const links = document.querySelectorAll('.sidebar-link');
+    const cards = document.querySelectorAll('.char-main-card[id]');
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          links.forEach(l => l.classList.remove('active'));
+          const active = document.querySelector(`.sidebar-link[href="#${entry.target.id}"]`);
+          if (active) active.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-30% 0px -60% 0px' });
+
+    cards.forEach(c => observer.observe(c));
+  </script>
+</body>
+</html>
