@@ -1,23 +1,6 @@
-/**
- * MINI PLAYER FLUTUANTE - script reutilizável
- * ---------------------------------------------
- * Inclua este arquivo em qualquer página com:
- *
- * <script src="mini-player.js"
- *   data-song="musicas/minha-musica.mp3"
- *   data-title="Nome da Música"
- *   data-artist="Nome do Artista"
- *   data-cover="capas/capa.jpg">
- * </script>
- *
- * Cada página pode ter uma música/capa/título diferentes,
- * sem precisar duplicar HTML, CSS ou JS.
- */
-
 (function () {
-  // Pega o próprio <script> que carregou este arquivo, para ler os atributos data-*
   const scriptTag = document.currentScript;
-
+ 
   const config = {
     song: scriptTag.dataset.song || '',
     title: scriptTag.dataset.title || 'Música sem título',
@@ -25,14 +8,12 @@
     cover: scriptTag.dataset.cover || 'https://placehold.co/80x80/1db954/ffffff?text=%E2%99%AA',
     autoplay: scriptTag.dataset.autoplay === 'true'
   };
-
-  // ====== injeta o CSS uma única vez ======
+ 
+  // ====== CSS ======
   const style = document.createElement('style');
   style.textContent = `
     .mini-player {
       position: fixed;
-      bottom: 20px;
-      right: 20px;
       display: flex;
       align-items: center;
       gap: 12px;
@@ -44,6 +25,13 @@
       font-family: -apple-system, "Segoe UI", Roboto, sans-serif;
       z-index: 9999;
       user-select: none;
+      cursor: grab;
+      touch-action: none;
+    }
+    .mini-player.dragging {
+      cursor: grabbing;
+      box-shadow: 0 10px 28px rgba(0,0,0,0.5);
+      transition: none;
     }
     .mini-player .cover {
       width: 40px;
@@ -92,8 +80,8 @@
     @keyframes mp-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
   `;
   document.head.appendChild(style);
-
-  // ====== cria o HTML do player ======
+ 
+  // ====== HTML do player ======
   const player = document.createElement('div');
   player.className = 'mini-player';
   player.innerHTML = `
@@ -107,20 +95,93 @@
       <svg class="pause-icon" viewBox="0 0 24 24" style="display:none"><path d="M6 5h4v14H6zm8 0h4v14h-4z"/></svg>
     </button>
   `;
-
+ 
   const audio = document.createElement('audio');
   audio.src = config.song;
   audio.loop = true;
-
+ 
   document.body.appendChild(player);
   document.body.appendChild(audio);
-
-  // ====== lógica de play/pause ======
+ 
+  // Use left/top em vez de bottom/right para poder mover livremente depois
+  const initialRect = player.getBoundingClientRect();
+  player.style.left = (window.innerWidth - initialRect.width - 20) + 'px';
+  player.style.top = (window.innerHeight - initialRect.height - 20) + 'px';
+ 
+  // ====== arrastar ======
+  let isDragging = false;
+  let hasMoved = false;
+  let offsetX = 0;
+  let offsetY = 0;
+ 
+  function startDrag(clientX, clientY) {
+    isDragging = true;
+    hasMoved = false;
+    const rect = player.getBoundingClientRect();
+    offsetX = clientX - rect.left;
+    offsetY = clientY - rect.top;
+    player.classList.add('dragging');
+  }
+ 
+  function moveDrag(clientX, clientY) {
+    if (!isDragging) return;
+    hasMoved = true;
+    let newLeft = clientX - offsetX;
+    let newTop = clientY - offsetY;
+ 
+    // manter o player dentro da tela
+    const rect = player.getBoundingClientRect();
+    newLeft = Math.max(0, Math.min(window.innerWidth - rect.width, newLeft));
+    newTop = Math.max(0, Math.min(window.innerHeight - rect.height, newTop));
+ 
+    player.style.left = newLeft + 'px';
+    player.style.top = newTop + 'px';
+  }
+ 
+  function endDrag() {
+    isDragging = false;
+    player.classList.remove('dragging');
+  }
+ 
+  // Mouse
+  player.addEventListener('mousedown', (e) => {
+    startDrag(e.clientX, e.clientY);
+    e.preventDefault();
+  });
+  document.addEventListener('mousemove', (e) => moveDrag(e.clientX, e.clientY));
+  document.addEventListener('mouseup', endDrag);
+ 
+  // Touch 
+  player.addEventListener('touchstart', (e) => {
+    const t = e.touches[0];
+    startDrag(t.clientX, t.clientY);
+  }, { passive: true });
+  document.addEventListener('touchmove', (e) => {
+    if (!isDragging) return;
+    const t = e.touches[0];
+    moveDrag(t.clientX, t.clientY);
+  }, { passive: true });
+  document.addEventListener('touchend', endDrag);
+ 
+  // Reposiciona se a janela for redimensionada, para não sair da tela
+  window.addEventListener('resize', () => {
+    const rect = player.getBoundingClientRect();
+    const maxLeft = window.innerWidth - rect.width;
+    const maxTop = window.innerHeight - rect.height;
+    player.style.left = Math.min(parseFloat(player.style.left), maxLeft) + 'px';
+    player.style.top = Math.min(parseFloat(player.style.top), maxTop) + 'px';
+  });
+ 
+  // ====== play/pause ======
   const btn = player.querySelector('button');
   const playIcon = player.querySelector('.play-icon');
   const pauseIcon = player.querySelector('.pause-icon');
-
-  btn.addEventListener('click', () => {
+ 
+  btn.addEventListener('click', (e) => {
+    if (hasMoved) {
+      e.stopPropagation();
+      return;
+    }
     if (audio.paused) {
       audio.play().catch(err => {
         console.error('Não foi possível tocar o áudio:', err);
@@ -130,26 +191,25 @@
       audio.pause();
     }
   });
-
+ 
   audio.addEventListener('play', () => {
     player.classList.add('playing');
     playIcon.style.display = 'none';
     pauseIcon.style.display = 'block';
   });
-
+ 
   audio.addEventListener('pause', () => {
     player.classList.remove('playing');
     playIcon.style.display = 'block';
     pauseIcon.style.display = 'none';
   });
-
+ 
   audio.addEventListener('error', () => {
     console.error('Erro ao carregar o áudio. Verifique o caminho em data-song="..."');
   });
-
+ 
   if (config.autoplay) {
     audio.play().catch(() => {
-      // navegadores bloqueiam autoplay com som sem interação do usuário; ignora silenciosamente
     });
   }
 })();
