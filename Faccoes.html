@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Entre as Estrelas — As Facções</title>
+<link rel="stylesheet" href="BuffDiv.css">
+<link rel="icon" type="image/x-icon" href="iconSOL.jpeg">
+<style>
+  /* --- extras só desta página: cor do reino Desconhecido + pequenos ajustes de facção --- */
+  :root{
+    --c-desconhecido:#6b6478;
+  }
+  .status-tag{
+    display:inline-block; font-family:'Cinzel',serif; font-size:10.5px; letter-spacing:.12em; text-transform:uppercase;
+    padding:2px 10px; border-radius:20px; border:1px solid currentColor; margin-left:8px; vertical-align:middle;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand"><a href="index.html#faq">✦ ENTRE AS ESTRELAS</a></div>
+    <div class="navlinks">
+      <a href="index.html">Casa</a>
+      <a href="divindades.html">Divindades</a>
+      <a href="BuffDiv.html">Bênçãos</a>
+      <a href="#hero-faccoes">Facções</a>
+      <a href="#indice">Índice</a>
+    </div>
+  </div>
+</nav>
+
+<div id="top"></div>
+
+<header class="hero" id="hero-faccoes">
+  <div class="wrap">
+    <div class="eyebrow">✦ quem move os fios ✦</div>
+    <h1 class="title">As <em>Facções</em></h1>
+    <p class="lede">Além dos deuses, há quem organize o mundo com as próprias mãos. Guildas, ordens, cultos e conselhos — cada facção tem seu território, seus interesses e um preço para quem quer vestir suas cores.</p>
+
+    <div class="index" id="indice">
+      <div class="index-label">✦ ÍNDICE ✦</div>
+
+      <div class="index-row">
+        <span class="reino-tag" style="color:var(--d-polaris); border-color:var(--d-polaris)">Reino de Polaris</span>
+        <a href="#ordem-do-alvorecer">Ordem do Alvorecer</a>
+        <!-- adicione mais organizações deste reino aqui, separadas por <span class="sep">·</span> -->
+      </div>
+
+      <div class="index-row">
+        <span class="reino-tag" style="color:var(--c-flutuante); border-color:var(--c-flutuante)">Reino Flutuante</span>
+        <a href="#frota-errante">A Frota Errante</a>
+      </div>
+
+      <div class="index-row">
+        <span class="reino-tag" style="color:var(--c-leskie); border-color:var(--c-leskie)">Reino de Leskie</span>
+        <a href="#circulo-das-raizes">Círculo das Raízes Verdes</a>
+      </div>
+
+      <div class="index-row">
+        <span class="reino-tag" style="color:var(--c-aucrib); border-color:var(--c-aucrib)">Reino de Aucrib</span>
+        <a href="#companhia-do-ambar">Companhia do Âmbar</a>
+      </div>
+
+      <div class="index-row">
+        <span class="reino-tag" style="color:var(--c-chama); border-color:var(--c-chama)">Reino da Chama Eterna</span>
+        <a href="#legiao-incandescente">Legião Incandescente</a>
+      </div>
+
+      <div class="index-row">
+        <span class="reino-tag" style="color:var(--c-desconhecido); border-color:var(--c-desconhecido)">Desconhecido</span>
+        <a href="#mao-sem-rosto">A Mão Sem Rosto</a>
+      </div>
+
+      <div class="index-row" style="justify-content:center; margin-top:14px;">
+        <a href="#top" style="font-family:'Cinzel',serif; font-size:11px; letter-spacing:.15em; text-transform:uppercase;">↑ topo</a>
+      </div>
+    </div>
+
+    <p class="intro-text">Nem toda aliança é feita com um deus. <strong>Entrar</strong> para uma facção é jurar lealdade a interesses terrenos — proteção, poder, conhecimento ou riqueza — e cada uma cobra à sua maneira, seja em tempo, em serviços ou em silêncio. <em>Subir na hierarquia é ganhar mais, mas também dever mais.</em></p>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ===================================================== -->
+  <!-- REINO DE POLARIS -->
+  <div class="reino-header">
+    <div class="divider">✦</div>
+    <div class="reino-name" style="color:var(--d-polaris)">Reino de Polaris</div>
+    <div class="reino-sub">sob a luz que não se esconde</div>
+  </div>
+
+  <section class="card" id="ordem-do-alvorecer" style="--accent:var(--d-polaris)">
+    <div class="card-top">
+      <div class="symbol-frame"><span class="symbol-emoji">🕊️</span></div>
+      <div class="card-top-text">
+        <div class="card-eyebrow">✦ reino de polaris</div>
+        <h2>Ordem do Alvorecer</h2>
+        <div class="epiteto">"Nada cresce na sombra que não possa crescer na luz"</div>
+      </div>
+    </div>
+    <div class="traits">
+      <span class="trait">Militar</span>
+      <span class="trait">Devota</span>
+      <span class="trait">Pública</span>
+    </div>
+    <p class="desc">Uma ordem de cavaleiros e clérigos que atua abertamente, sem disfarces — julgam, protegem e punem à vista de todos, convencidos de que segredo é a raiz de toda corrupção. Respeitada por uns, temida por outros que preferem operar na sombra.</p>
+
+    <div class="attrs">
+      <div><div class="attr-label">Líder</div><div class="attr-value">Alta Cavaleira <em>Seren Vhal</em></div></div>
+      <div><div class="attr-label">Território</div><div class="attr-value">Cidadela do Alvorecer</div></div>
+      <div><div class="attr-label">Fundação</div><div class="attr-value">há três gerações</div></div>
+      <div><div class="attr-label">Status</div><div class="attr-value">Ativa <span class="status-tag" style="color:var(--d-polaris)">em expansão</span></div></div>
+    </div>
+
+    <div class="tiers">
+      <div class="tier-row">
+        <div><div class="tier-name">Postulante</div><div class="tier-req">jurar o Juramento da Luz</div></div>
+        <div class="tier-effect">Acesso aos quartéis e treinamento básico; usa o símbolo da Ordem em público.</div>
+      </div>
+      <div class="tier-row">
+        <div><div class="tier-name">Cavaleiro(a)</div><div class="tier-req">completar três missões sob supervisão</div></div>
+        <div class="tier-effect">Autoridade para julgar pequenas disputas em nome da Ordem; acesso a equipamento consagrado.</div>
+      </div>
+      <div class="tier-row">
+        <div><div class="tier-name">Alto Cavaleiro(a)</div><div class="tier-req">indicação do conselho e um feito reconhecido publicamente</div></div>
+        <div class="tier-effect">Assento no conselho da Ordem; comanda destacamentos e representa a Ordem perante outros poderes.</div>
+      </div>
+    </div>
+    <div class="preco"><strong>O Preço</strong> Todo membro deve agir à luz do dia — planos, julgamentos e punições da Ordem nunca são feitos em segredo. Quem for flagrado conspirando na sombra é expulso sem chance de retorno.</div>
+  </section>
+
+  <!-- Para adicionar outra organização do Reino de Polaris, copie o <section class="card">...</section> acima,
+       troque o id, o --accent continua var(--d-polaris), e ajuste o conteúdo. -->
+
+  <!-- ===================================================== -->
+  <!-- REINO FLUTUANTE -->
+  <div class="reino-header">
+    <div class="divider">✦</div>
+    <div class="reino-name" style="color:var(--c-flutuante)">Reino Flutuante</div>
+    <div class="reino-sub">onde a terra firme é só um rumor</div>
+  </div>
+
+  <section class="card" id="frota-errante" style="--accent:var(--c-flutuante)">
+    <div class="card-top">
+      <div class="symbol-frame"><span class="symbol-emoji">⛵</span></div>
+      <div class="card-top-text">
+        <div class="card-eyebrow">✦ reino flutuante</div>
+        <h2>A Frota Errante</h2>
+        <div class="epiteto">A Casa que Nunca Ancora</div>
+      </div>
+    </div>
+    <div class="traits">
+      <span class="trait">Nômade</span>
+      <span class="trait">Mercante</span>
+      <span class="trait">Neutra</span>
+    </div>
+    <p class="desc">Uma confederação solta de navios e ilhas flutuantes que comercia com quem paga bem, sem tomar partido em guerras alheias. Sua força está em nunca estar onde os inimigos esperam.</p>
+
+    <div class="attrs">
+      <div><div class="attr-label">Líder</div><div class="attr-value">Conselho dos Sete Timoneiros</div></div>
+      <div><div class="attr-label">Território</div><div class="attr-value">móvel — sem porto fixo</div></div>
+      <div><div class="attr-label">Fundação</div><div class="attr-value">incerta</div></div>
+      <div><div class="attr-label">Status</div><div class="attr-value">Ativa</div></div>
+    </div>
+
+    <div class="tiers">
+      <div class="tier-row">
+        <div><div class="tier-name">Passageiro(a)</div><div class="tier-req">pagar passagem ou prestar um serviço</div></div>
+        <div class="tier-effect">Direito de embarcar e comerciar com a frota; nenhuma obrigação além do combinado.</div>
+      </div>
+      <div class="tier-row">
+        <div><div class="tier-name">Tripulante</div><div class="tier-req">um ano de serviço em um dos navios</div></div>
+        <div class="tier-effect">Parte nos lucros da frota; acesso a rotas e portos guardados a sete chaves.</div>
+      </div>
+      <div class="tier-row">
+        <div><div class="tier-name">Timoneiro(a)</div><div class="tier-req">eleito pela tripulação de um navio</div></div>
+        <div class="tier-effect">Comando de um navio e voz no Conselho dos Sete.</div>
+      </div>
+    </div>
+    <div class="preco"><strong>O Preço</strong> A Frota não guarda rancor nem lealdade eterna — mas também não perdoa dívida. Quem deve à Frota, paga, de um jeito ou de outro; quem trai, nunca mais encontra porto entre eles.</div>
+  </section>
+
+  <!-- ===================================================== -->
+  <!-- REINO DE LESKIE -->
+  <div class="reino-header">
+    <div class="divider">✦</div>
+    <div class="reino-name" style="color:var(--c-leskie)">Reino de Leskie</div>
+    <div class="reino-sub">onde a terra ainda respira</div>
+  </div>
+
+  <section class="card" id="circulo-das-raizes" style="--accent:var(--c-leskie)">
+    <div class="card-top">
+      <div class="symbol-frame"><span class="symbol-emoji">🌿</span></div>
+      <div class="card-top-text">
+        <div class="card-eyebrow">✦ reino de leskie</div>
+        <h2>Círculo das Raízes Verdes</h2>
+        <div class="epiteto">Guardiões do que Cresce</div>
+      </div>
+    </div>
+    <div class="traits">
+      <span class="trait">Curandeira</span>
+      <span class="trait">Reservada</span>
+      <span class="trait">Territorial</span>
+    </div>
+    <p class="desc">Um círculo de curandeiros e guardiões florestais que protege as terras de Leskie de exploração excessiva. Compartilham conhecimento de cura com quem respeita a mata — e negam ajuda a quem não respeita.</p>
+
+    <div class="attrs">
+      <div><div class="attr-label">Líder</div><div class="attr-value">Anciã <em>Roh Sylwen</em></div></div>
+      <div><div class="attr-label">Território</div><div class="attr-value">Floresta de Sylwen</div></div>
+      <div><div class="attr-label">Fundação</div><div class="attr-value">tempos imemoriais</div></div>
+      <div><div class="attr-label">Status</div><div class="attr-value">Ativa <span class="status-tag" style="color:var(--c-leskie)">fechada a forasteiros</span></div></div>
+    </div>
+
+    <div class="tiers">
+      <div class="tier-row">
+        <div><div class="tier-name">Amigo(a) da Mata</div><div class="tier-req">um favor comprovado à floresta</div></div>
+        <div class="tier-effect">Passagem segura pelas terras do Círculo; acesso a remédios simples.</div>
+      </div>
+      <div class="tier-row">
+        <div><div class="tier-name">Guardião(ã)</div><div class="tier-req">um ano vivendo entre eles</div></div>
+        <div class="tier-effect">Ensinamentos de cura avançada; direito de portar o símbolo do Círculo.</div>
+      </div>
+      <div class="tier-row">
+        <div><div class="tier-name">Anciã(o)</div><div class="tier-req">indicação unânime do círculo atual</div></div>
+        <div class="tier-effect">Voz de peso nas decisões do Círculo; guarda os segredos mais antigos da floresta.</div>
+      </div>
+    </div>
+    <div class="preco"><strong>O Preço</strong> Quem recebe do Círculo, devolve à terra — cada favor concedido vem com uma tarefa de proteção à floresta. Negá-la fecha as portas do Círculo para sempre.</div>
+  </section>
+
+  <!-- ===================================================== -->
+  <!-- REINO DE AUCRIB -->
+  <div class="reino-header">
+    <div class="divider">✦</div>
+    <div class="reino-name" style="color:var(--c-aucrib)">Reino de Aucrib</div>
+    <div class="reino-sub">onde tudo tem um preço, e um comprador</div>
+  </div>
+
+  <section class="card" id="companhia-do-ambar" style="--accent:var(--c-aucrib)">
+    <div class="card-top">
+      <div class="symbol-frame"><span class="symbol-emoji">⚒️</span></div>
+      <div class="card-top-text">
+        <div class="card-eyebrow">✦ reino de aucrib</div>
+        <h2>Companhia do Âmbar</h2>
+        <div class="epiteto">Onde Há Fogo, Há Lucro</div>
+      </div>
+    </div>
+    <div class="traits">
+      <span class="trait">Mercante</span>
+      <span class="trait">Artesã</span>
+      <span class="trait">Ambiciosa</span>
+    </div>
+    <p class="desc">A maior guilda de ferreiros e comerciantes de Aucrib, controlando boa parte do comércio de metal e fogo da região. Recompensa competência sem se importar muito com os métodos usados para chegar lá.</p>
+
+    <div class="attrs">
+      <div><div class="attr-label">Líder</div><div class="attr-value">Mestre-Guildeiro <em>Bram Aucrib</em></div></div>
+      <div><div class="attr-label">Território</div><div class="attr-value">Distrito da Forja, Porto de Aucrib</div></div>
+      <div><div class="attr-label">Fundação</div><div class="attr-value">cinco gerações</div></div>
+      <div><div class="attr-label">Status</div><div class="attr-value">Ativa</div></div>
+    </div>
+
+    <div class="tiers">
+      <div class="tier-row">
+        <div><div class="tier-name">Aprendiz</div><div class="tier-req">pagar taxa de entrada ou ser indicado</div></div>
+        <div class="tier-effect">Acesso às oficinas da Companhia e a preços de atacado.</div>
+      </div>
+      <div class="tier-row">
+        <div><div class="tier-name">Artesão(ã)</div><div class="tier-req">entregar uma obra-prima ao conselho</div></div>
+        <div class="tier-effect">Direito de vender sob a marca da Companhia; parte nos lucros das rotas comerciais.</div>
+      </div>
+      <div class="tier-row">
+        <div><div class="tier-name">Guildeiro(a)</div><div class="tier-req">eleito por voto dos artesãos</div></div>
+        <div class="tier-effect">Assento no conselho da Companhia; poder de decidir rotas, preços e alianças.</div>
+      </div>
+    </div>
+    <div class="preco"><strong>O Preço</strong> Nada é de graça na Companhia — todo favor vira dívida registrada, e dívida com a Companhia rende juros. Quem não paga, perde mais que ouro.</div>
+  </section>
+
+  <!-- ===================================================== -->
+  <!-- REINO DA CHAMA ETERNA -->
+  <div class="reino-header">
+    <div class="divider">✦</div>
+    <div class="reino-name" style="color:var(--c-chama)">Reino da Chama Eterna</div>
+    <div class="reino-sub">onde a fé queima e nunca se apaga</div>
+  </div>
+
+  <section class="card" id="legiao-incandescente" style="--accent:var(--c-chama)">
+    <div class="card-top">
+      <div class="symbol-frame"><span class="symbol-emoji">🔥</span></div>
+      <div class="card-top-text">
+        <div class="card-eyebrow">✦ reino da chama eterna</div>
+        <h2>Legião Incandescente</h2>
+        <div class="epiteto">Cinzas Não Mentem</div>
+      </div>
+    </div>
+    <div class="traits">
+      <span class="trait">Fanática</span>
+      <span class="trait">Militar</span>
+      <span class="trait">Implacável</span>
+    </div>
+    <p class="desc">Uma legião de zelotes que acredita que só o fogo purifica de verdade — mentiras, corrupção e fraqueza incluídas. Aliados poderosos em uma guerra justa, inimigos aterrorizantes em qualquer outra.</p>
+
+    <div class="attrs">
+      <div><div class="attr-label">Líder</div><div class="attr-value">Comandante-Chama <em>Ysolde Pyrrhan</em></div></div>
+      <div><div class="attr-label">Território</div><div class="attr-value">Fortaleza da Chama Eterna</div></div>
+      <div><div class="attr-label">Fundação</div><div class="attr-value">após a Grande Queimada</div></div>
+      <div><div class="attr-label">Status</div><div class="attr-value">Ativa <span class="status-tag" style="color:var(--c-chama)">em guerra</span></div></div>
+    </div>
+
+    <div class="tiers">
+      <div class="tier-row">
+        <div><div class="tier-name">Cinza</div><div class="tier-req">sobreviver ao Rito da Fogueira</div></div>
+        <div class="tier-effect">Aceito nas fileiras; recebe treinamento e equipamento básico da Legião.</div>
+      </div>
+      <div class="tier-row">
+        <div><div class="tier-name">Chama</div><div class="tier-req">liderar uma purificação com sucesso</div></div>
+        <div class="tier-effect">Comando de um pelotão; acesso a armamento consagrado ao fogo.</div>
+      </div>
+      <div class="tier-row">
+        <div><div class="tier-name">Comandante-Chama</div><div class="tier-req">indicação da atual comandante</div></div>
+        <div class="tier-effect">Autoridade para declarar novas purificações em nome da Legião.</div>
+      </div>
+    </div>
+    <div class="preco"><strong>O Preço</strong> A Legião não aceita meias-medidas nem deserção. Uma vez Cinza, sempre Cinza — abandonar as fileiras é ser marcado como alvo de purificação.</div>
+  </section>
+
+  <!-- ===================================================== -->
+  <!-- DESCONHECIDO -->
+  <div class="reino-header">
+    <div class="divider">✦</div>
+    <div class="reino-name" style="color:var(--c-desconhecido)">Desconhecido</div>
+    <div class="reino-sub">o que ninguém consegue confirmar</div>
+  </div>
+
+  <section class="card" id="mao-sem-rosto" style="--accent:var(--c-desconhecido)">
+    <div class="card-top">
+      <div class="symbol-frame"><span class="symbol-emoji">🎭</span></div>
+      <div class="card-top-text">
+        <div class="card-eyebrow">✦ desconhecido</div>
+        <h2>A Mão Sem Rosto</h2>
+        <div class="epiteto">Se Você Souber o Nome, Já É Tarde</div>
+      </div>
+    </div>
+    <div class="traits">
+      <span class="trait">Secreta</span>
+      <span class="trait">Onipresente?</span>
+      <span class="trait">Boato</span>
+    </div>
+    <p class="desc">Ninguém sabe ao certo se a Mão Sem Rosto é uma organização, uma lenda urbana ou só o nome que se dá a coincidências convenientes demais. Alguns juram já ter sido "ajudados" por ela; nenhum consegue provar.</p>
+
+    <div class="attrs">
+      <div><div class="attr-label">Líder</div><div class="attr-value">desconhecido</div></div>
+      <div><div class="attr-label">Território</div><div class="attr-value">desconhecido</div></div>
+      <div><div class="attr-label">Fundação</div><div class="attr-value">desconhecida</div></div>
+      <div><div class="attr-label">Status</div><div class="attr-value">Não confirmada</div></div>
+    </div>
+
+    <div class="tiers">
+      <div class="tier-row">
+        <div><div class="tier-name">???</div><div class="tier-req">ninguém sabe como se entra</div></div>
+        <div class="tier-effect">Fica a critério do mestre revelar aos poucos, conforme a história exigir.</div>
+      </div>
+    </div>
+    <div class="preco"><strong>O Preço</strong> Se existir, provavelmente já sabe algo sobre você que você não contou a ninguém.</div>
+  </section>
+
+  <a class="top-link" href="#top">↑ voltar ao topo</a>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="back" href="#top">← VOLTAR A CASA ✦ AS FACÇÕES ✦</a>
+    <p class="credit">quem move os fios em <em>Entre as Estrelas</em></p>
+  </div>
+</footer>
+
+</body>
+</html>
