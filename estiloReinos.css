@@ -1,16 +1,4 @@
-/*
-    ══════════════════════════════════════════
-      GUIA DE CORES POR REINO
-      (troque as variáveis --accent e --accent-dim
-       ao duplicar esse arquivo para outro reino)
 
-      Reino Polaris       → #c9a030 / #7a5c10  (dourado)
-      Reino Flutuante     → #3a9e6e / #1f5c3e  (verde-esmeralda)
-      Reino Chama Eterna  → #c47a2a / #7a4510  (âmbar/cobre)
-      Reino de Aucrib     → #6a9ec4 / #2a4f6e  (azul-gelo)
-      Reino de Leskie     → #3a6ea8 / #1a3a60  (azul-oceano)
-    ══════════════════════════════════════════
-    */
     :root {
       --accent:      #c9a030;
       --accent-dim:  #7a5c10;
