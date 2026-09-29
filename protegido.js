@@ -19,6 +19,20 @@
 
     el.classList.add('bloqueado');
 
+    // Se for um link, guarda o destino de verdade e remove o href
+    // enquanto estiver bloqueado — sem href real, não existe "abrir
+    // em nova aba" / "copiar link" pra aparecer no botão direito
+    if (el.tagName === 'A' && el.href) {
+      el.dataset.realHref = el.href;
+      el.removeAttribute('href');
+    }
+
+    // Bloqueia o menu de contexto (botão direito / segurar) enquanto
+    // o elemento estiver travado, como reforço extra
+    el.addEventListener('contextmenu', e => {
+      if (el.classList.contains('bloqueado')) e.preventDefault();
+    });
+
     const overlay = document.createElement('div');
     overlay.className = 'cadeado-overlay';
     overlay.textContent = '🔒';
@@ -39,9 +53,10 @@
         el.classList.remove('bloqueado');
         overlay.remove();
 
-        // Se o elemento protegido for um link, navega direto
-        // pro destino assim que a senha for confirmada
-        if (el.tagName === 'A' && el.href) {
+        // Se o elemento protegido for um link, devolve o href de
+        // verdade e navega pro destino assim que a senha for confirmada
+        if (el.tagName === 'A' && el.dataset.realHref) {
+          el.href = el.dataset.realHref;
           window.location.href = el.href;
         }
       } else {
