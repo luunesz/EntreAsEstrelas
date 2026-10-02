@@ -1,0 +1,50 @@
+/* Caçadores das Quatro Bestas — carregar DEPOIS de estiloDPolar.css */
+:root {
+  --bg:#150f0e; --bg2:#1e1614; --bg3:#2b1d19;
+  --teal:#4f8a6b; --teal-light:#78a88d;
+  --star:#e8a36f; --star-dim:#8a5a35; --shimmer:#f0d9c4;
+  --text:#e6d8cc; --text-dim:#a28f82;
+  --border:rgba(162,143,130,.22);
+  --accent:#e0703a; --accent-dim:#7a3a18; --accent-glow:rgba(224,112,58,.14);
+}
+#hero-dinastia { background: radial-gradient(ellipse 55% 55% at 50% 40%, var(--accent-glow), transparent 65%), linear-gradient(#0a0605, #150f0e); }
+.dynasty-crest { animation: pulse-ember 3.5s ease-in-out infinite alternate; }
+@keyframes pulse-ember { from{filter:drop-shadow(0 0 10px rgba(224,112,58,.4))} to{filter:drop-shadow(0 0 28px rgba(224,112,58,.95))} }
+
+/* As Quatro Bestas */
+.beast-sym { font-size:1.7rem; display:block; margin-bottom:.4rem; }
+.b-dragao { box-shadow: inset 0 3px 0 #5aa7c9; }
+.b-tigre  { box-shadow: inset 0 3px 0 #e8e4da; }
+.b-passaro{ box-shadow: inset 0 3px 0 #e0583a; }
+.b-tartaruga{ box-shadow: inset 0 3px 0 #6a7fb0; }
+.beast-meta { margin-top:.6rem; padding-top:.6rem; border-top:1px solid var(--border); font-size:.9rem; color:var(--text-dim); }
+.beast-meta b { font-family:var(--ff-title); font-size:.55rem; letter-spacing:.2em; color:var(--teal-light); font-weight:400; display:block; }
+
+/* Quinta besta */
+.quinta { border:1px solid var(--accent-dim); background:var(--accent-glow); padding:1.5rem 1.75rem; margin-bottom:3.5rem; }
+.quinta p { color:var(--text-dim); }
+.quinta strong { color:var(--shimmer); }
+.quinta .nomen-en { margin-bottom:.5rem; }
+
+/* Código */
+.doutrina { list-style:none; counter-reset:d; border:1px solid var(--border); margin-bottom:3.5rem; }
+.doutrina li { counter-increment:d; padding:1rem 1.25rem 1rem 3.5rem; position:relative; background:var(--bg2); border-bottom:1px solid var(--border); color:var(--text-dim); }
+.doutrina li:last-child { border-bottom:none; }
+.doutrina li::before { content:counter(d,upper-roman); position:absolute; left:1.1rem; top:1.15rem; font-family:var(--ff-title); color:var(--accent); font-size:.8rem; }
+.doutrina strong { color:var(--text); }
+
+/* Registro de caçadas */
+.prof-wrap { overflow-x:auto; border:1px solid var(--border); margin-bottom:3.5rem; }
+.prof-table { width:100%; border-collapse:collapse; min-width:560px; background:var(--bg2); }
+.prof-table th { font-family:var(--ff-title); font-size:.58rem; letter-spacing:.25em; color:var(--teal-light); text-align:left; padding:.8rem 1rem; border-bottom:1px solid var(--border); }
+.prof-table td { padding:.8rem 1rem; font-size:.98rem; color:var(--text-dim); border-bottom:1px solid var(--border); vertical-align:top; }
+.prof-table tr:last-child td { border-bottom:none; }
+.prof-table td:first-child { color:var(--text); }
+.status { font-family:var(--ff-title); font-size:.58rem; letter-spacing:.2em; white-space:nowrap; }
+.st-abatida{color:#7fb899} .st-foragida{color:#c97070} .st-capturada{color:var(--accent)} .st-avistada{color:#7aa6d6}
+
+/* Extras da ficha */
+.member-extra { display:grid; grid-template-columns:1fr 1fr; gap:.75rem 1.5rem; margin-top:1rem; padding-top:.9rem; border-top:1px solid var(--border); }
+.extra-label { font-family:var(--ff-title); font-size:.55rem; letter-spacing:.2em; color:var(--teal-light); display:block; }
+.extra-value { font-size:.95rem; color:var(--text-dim); }
+@media (max-width:560px){ .member-extra{grid-template-columns:1fr} }
