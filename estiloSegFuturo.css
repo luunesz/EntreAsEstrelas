@@ -1,0 +1,36 @@
+/* Seguidores do Futuro — carregar DEPOIS de estiloDPolar.css */
+:root {
+  --bg:#0f0e24; --bg2:#16152f; --bg3:#201e3d;
+  --teal:#5b5aa8; --teal-light:#8a88c4;
+  --star:#b9a6e8; --star-dim:#6a5c96; --shimmer:#d9cff2;
+  --text:#d4d2ee; --text-dim:#8c8aae;
+  --border:rgba(138,136,196,.22);
+  --accent:#a98be0; --accent-dim:#5e4a94; --accent-glow:rgba(169,139,224,.14);
+}
+#hero-dinastia { background: radial-gradient(ellipse 55% 55% at 50% 40%, var(--accent-glow), transparent 65%), linear-gradient(#070618, #0f0e24); }
+.dynasty-crest { filter: drop-shadow(0 0 16px rgba(169,139,224,.7)); animation: pulse-violet 3.5s ease-in-out infinite alternate; }
+@keyframes pulse-violet { from{filter:drop-shadow(0 0 10px rgba(169,139,224,.4))} to{filter:drop-shadow(0 0 28px rgba(169,139,224,.95))} }
+
+/* Doutrina */
+.doutrina { list-style:none; counter-reset:d; border:1px solid var(--border); margin-bottom:3.5rem; }
+.doutrina li { counter-increment:d; padding:1rem 1.25rem 1rem 3.5rem; position:relative; background:var(--bg2); border-bottom:1px solid var(--border); color:var(--text-dim); }
+.doutrina li:last-child { border-bottom:none; }
+.doutrina li::before { content:counter(d,upper-roman); position:absolute; left:1.1rem; font-family:var(--ff-title); color:var(--accent); font-size:.8rem; top:1.15rem; }
+.doutrina strong { color:var(--text); }
+
+/* Registro de profecias */
+.prof-wrap { overflow-x:auto; border:1px solid var(--border); margin-bottom:3.5rem; }
+.prof-table { width:100%; border-collapse:collapse; min-width:560px; background:var(--bg2); }
+.prof-table th { font-family:var(--ff-title); font-size:.58rem; letter-spacing:.25em; color:var(--teal-light); text-align:left; padding:.8rem 1rem; border-bottom:1px solid var(--border); }
+.prof-table td { padding:.8rem 1rem; font-size:.98rem; color:var(--text-dim); border-bottom:1px solid var(--border); vertical-align:top; }
+.prof-table tr:last-child td { border-bottom:none; }
+.prof-table td:first-child { color:var(--text); }
+.status { font-family:var(--ff-title); font-size:.58rem; letter-spacing:.2em; white-space:nowrap; }
+.st-cumprida{color:#7fb899} .st-falhou{color:#c97070} .st-ambigua{color:var(--accent)} .st-aguardando{color:#7aa6d6}
+
+/* Extras da ficha */
+.member-extra { display:grid; grid-template-columns:1fr 1fr; gap:.75rem 1.5rem; margin-top:1rem; padding-top:.9rem; border-top:1px solid var(--border); }
+.extra-label { font-family:var(--ff-title); font-size:.55rem; letter-spacing:.2em; color:var(--teal-light); display:block; }
+.extra-value { font-size:.95rem; color:var(--text-dim); }
+.estado-recluso { color:#7aa6d6; }
+@media (max-width:560px){ .member-extra{grid-template-columns:1fr} }
