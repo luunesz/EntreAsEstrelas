@@ -11,12 +11,18 @@
 .dynasty-crest { animation: pulse-ember 3.5s ease-in-out infinite alternate; }
 @keyframes pulse-ember { from{filter:drop-shadow(0 0 10px rgba(224,112,58,.4))} to{filter:drop-shadow(0 0 28px rgba(224,112,58,.95))} }
 
+/* Nav sem azul */
+nav { background: linear-gradient(to bottom, rgba(21,15,14,.97) 70%, transparent); }
+
 /* As Quatro Bestas */
+.bestas-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:var(--border); border:1px solid var(--border); margin-bottom:3.5rem; }
+.bestas-grid .nomen-card { border:none; }
+@media (max-width:560px){ .bestas-grid{grid-template-columns:1fr} }
 .beast-sym { font-size:1.7rem; display:block; margin-bottom:.4rem; }
-.b-dragao { box-shadow: inset 0 3px 0 #5aa7c9; }
-.b-tigre  { box-shadow: inset 0 3px 0 #e8e4da; }
-.b-passaro{ box-shadow: inset 0 3px 0 #e0583a; }
-.b-tartaruga{ box-shadow: inset 0 3px 0 #6a7fb0; }
+.b-dragao   { box-shadow: inset 0 3px 0 #d98b3a; }
+.b-tigre    { box-shadow: inset 0 3px 0 #e8d9c4; }
+.b-passaro  { box-shadow: inset 0 3px 0 #e0583a; }
+.b-tartaruga{ box-shadow: inset 0 3px 0 #8a5a35; }
 .beast-meta { margin-top:.6rem; padding-top:.6rem; border-top:1px solid var(--border); font-size:.9rem; color:var(--text-dim); }
 .beast-meta b { font-family:var(--ff-title); font-size:.55rem; letter-spacing:.2em; color:var(--teal-light); font-weight:400; display:block; }
 
@@ -32,16 +38,6 @@
 .doutrina li:last-child { border-bottom:none; }
 .doutrina li::before { content:counter(d,upper-roman); position:absolute; left:1.1rem; top:1.15rem; font-family:var(--ff-title); color:var(--accent); font-size:.8rem; }
 .doutrina strong { color:var(--text); }
-
-/* Registro de caçadas */
-.prof-wrap { overflow-x:auto; border:1px solid var(--border); margin-bottom:3.5rem; }
-.prof-table { width:100%; border-collapse:collapse; min-width:560px; background:var(--bg2); }
-.prof-table th { font-family:var(--ff-title); font-size:.58rem; letter-spacing:.25em; color:var(--teal-light); text-align:left; padding:.8rem 1rem; border-bottom:1px solid var(--border); }
-.prof-table td { padding:.8rem 1rem; font-size:.98rem; color:var(--text-dim); border-bottom:1px solid var(--border); vertical-align:top; }
-.prof-table tr:last-child td { border-bottom:none; }
-.prof-table td:first-child { color:var(--text); }
-.status { font-family:var(--ff-title); font-size:.58rem; letter-spacing:.2em; white-space:nowrap; }
-.st-abatida{color:#7fb899} .st-foragida{color:#c97070} .st-capturada{color:var(--accent)} .st-avistada{color:#7aa6d6}
 
 /* Extras da ficha */
 .member-extra { display:grid; grid-template-columns:1fr 1fr; gap:.75rem 1.5rem; margin-top:1rem; padding-top:.9rem; border-top:1px solid var(--border); }
