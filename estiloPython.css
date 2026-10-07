@@ -32,15 +32,6 @@ nav { background: linear-gradient(to bottom, rgba(10,18,14,.97) 70%, transparent
 .lista li::before { content:'✦'; position:absolute; left:0; color:var(--accent); font-size:.65rem; top:.3rem; }
 @media (max-width:560px){ .duo-grid{grid-template-columns:1fr} }
 
-/* Linha do tempo */
-.timeline { border-left:1px solid var(--accent-dim); margin:0 0 3.5rem .5rem; padding-left:1.75rem; }
-.tl-item { position:relative; margin-bottom:1.75rem; }
-.tl-item::before { content:''; position:absolute; left:-2.17rem; top:.45rem; width:9px; height:9px; border-radius:50%; background:var(--accent); box-shadow:0 0 10px var(--accent); }
-.tl-quando { font-family:var(--ff-title); font-size:.58rem; letter-spacing:.3em; color:var(--teal-light); display:block; margin-bottom:.15rem; }
-.tl-titulo { font-family:var(--ff-display); font-size:1.2rem; color:var(--shimmer); }
-.tl-desc { color:var(--text-dim); font-size:1rem; max-width:620px; }
-.tl-desc strong { color:var(--text); }
-
 /* Documentos */
 .doc-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:var(--border); border:1px solid var(--border); margin-bottom:3.5rem; }
 .doc-card { background:var(--bg2); padding:1.5rem; text-decoration:none; transition:background .3s; display:block; }
@@ -55,3 +46,9 @@ nav { background: linear-gradient(to bottom, rgba(10,18,14,.97) 70%, transparent
 .extra-label { font-family:var(--ff-title); font-size:.55rem; letter-spacing:.2em; color:var(--teal-light); display:block; }
 .extra-value { font-size:.95rem; color:var(--text-dim); }
 @media (max-width:560px){ .member-extra{grid-template-columns:1fr} }
+
+/* Hierarquia */
+.cl-1 { box-shadow: inset 0 3px 0 #9bc46a; }
+.cl-2 { box-shadow: inset 0 3px 0 #6f9a4a; }
+.cl-3 { box-shadow: inset 0 3px 0 #4a6a2a; }
+.cl-4 { box-shadow: inset 0 3px 0 #2c3f1d; }
