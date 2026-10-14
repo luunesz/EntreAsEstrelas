@@ -15,16 +15,19 @@
     .gallery-cell img:hover { opacity: 1; transform: scale(1.03); }
 
     /* Galeria de criaturas */
-    .galeria { display:flex; gap:1.25rem; overflow-x:auto; padding:.25rem .25rem 1rem; scroll-snap-type:x proximity; scrollbar-width:thin; scrollbar-color:var(--accent-dim) transparent; }
+    .bestiario { max-width:1100px; margin:0 auto; padding:4rem 1.5rem 2rem; }
+    .galeria { display:flex; justify-content:safe center; gap:1.5rem; overflow-x:auto; padding:.5rem .5rem 1.25rem; scroll-snap-type:x proximity; scrollbar-width:thin; scrollbar-color:var(--accent-dim) transparent; }
+    .galeria:focus-visible { outline:1px solid var(--accent-dim); outline-offset:4px; }
     .galeria::-webkit-scrollbar { height:6px; }
     .galeria::-webkit-scrollbar-track { background:transparent; }
     .galeria::-webkit-scrollbar-thumb { background:var(--accent-dim); border-radius:3px; }
     .criatura { flex:0 0 210px; scroll-snap-align:start; margin:0; }
-    .criatura img { display:block; width:100%; aspect-ratio:3/4; object-fit:cover; background:var(--bg3); border:1px solid var(--border); opacity:.9; transition:opacity .3s, border-color .3s, transform .3s; }
+    .criatura img { display:block; width:100%; aspect-ratio:3/4; object-fit:cover; background:var(--bg3); border:1px solid var(--border); opacity:.9; cursor:zoom-in; transition:opacity .3s, border-color .3s, transform .3s; }
     .criatura:hover img { opacity:1; border-color:var(--accent-dim); transform:translateY(-3px); }
-    .criatura figcaption { margin-top:.6rem; text-align:center; font-family:var(--ff-display); font-size:1.05rem; color:var(--shimmer); }
-    .galeria-dica { text-align:center; font-family:var(--ff-title); font-size:.55rem; letter-spacing:.3em; color:var(--text-dim); margin-bottom:3.5rem; }
-    @media (max-width:560px){ .criatura{flex-basis:70%} }
+    .criatura figcaption { margin-top:.7rem; text-align:center; font-family:var(--ff-display); font-size:1.15rem; line-height:1.3; color:var(--shimmer); }
+    .criatura figcaption span { display:block; margin-top:.2rem; font-family:var(--ff-title); font-size:.55rem; letter-spacing:.25em; text-transform:uppercase; color:var(--text-dim); }
+    .galeria-dica { display:none; text-align:center; font-family:var(--ff-title); font-size:.55rem; letter-spacing:.3em; color:var(--text-dim); margin-bottom:3.5rem; }
+    @media (max-width:560px){ .criatura{flex-basis:70%} .galeria-dica{display:block} .bestiario{padding:3rem 1rem 1.5rem} }
   </style>
   
 </head>
@@ -754,22 +757,25 @@
   </article>
 
   <!-- GALERIA DE CRIATURAS -->
-      <div class="nomen-header" id="criaturas">
-        <p class="nomen-label">✦ bestiário</p>
-        <h3 class="nomen-title">Criaturas na <em>Caravana dos Céus</em></h3>
-        <div class="nomen-divider">🎪</div>
-      </div>
- 
-      <div class="galeria" tabindex="0" aria-label="Galeria de criaturas caçadas">
-        <figure class="criatura">
-          <img src="CarpelCC.jpg" alt="Carpel | Leão Floral" loading="lazy">
-          <figcaption>Carpel | Leão Floral</figcaption>
-        </figure>
-        <figure class="criatura">
-          <img src="DiasCC.jpg" alt="Dias | Cãojaré" loading="lazy">
-          <figcaption>Dias | Cãojaré</figcaption>
-        </figure>
-      </div>
+  <section class="bestiario" id="criaturas">
+    <div class="nomen-header">
+      <p class="nomen-label">✦ bestiário</p>
+      <h3 class="nomen-title">Criaturas na <em>Caravana dos Céus</em></h3>
+      <div class="nomen-divider">🎪</div>
+    </div>
+
+    <div class="galeria" tabindex="0" aria-label="Galeria de criaturas da Caravana dos Céus">
+      <figure class="criatura">
+        <img src="CarpelCC.jpg" alt="Carpel, o Leão Floral" loading="lazy">
+        <figcaption>Carpel<span>Leão Floral</span></figcaption>
+      </figure>
+      <figure class="criatura">
+        <img src="DiasCC.jpg" alt="Dias, o Cãojaré" loading="lazy">
+        <figcaption>Dias<span>Cãojaré</span></figcaption>
+      </figure>
+    </div>
+    <p class="galeria-dica">← DESLIZE →</p>
+  </section>
 
   <!-- FOOTER -->
   <footer>
@@ -797,7 +803,7 @@
     });
 
     // Ativa lightbox nas imagens da galeria
-    document.querySelectorAll('.gallery-cell img').forEach(img => {
+    document.querySelectorAll('.gallery-cell img, .criatura img').forEach(img => {
       img.style.cursor = 'zoom-in';
       img.addEventListener('click', () => openLightbox(img.src));
     });
