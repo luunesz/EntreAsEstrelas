@@ -25,6 +25,7 @@
       <li><a href="grupoPQP.html">Elenco Principal</a></li>
       <li><a href="#hero-postodevigia" style="color:var(--star)">Caravana Dos Céus</a></li>
       <li><a href="#galeria">Galeria</a></li>
+      <li><a href="#criaturas">Bestiário</a></li>
     </ul>
   </nav>
 
@@ -740,12 +741,44 @@
     </div>
   </article>
 
+  <!-- GALERIA DE CRIATURAS -->
+      <div class="nomen-header" id="criaturas">
+        <p class="nomen-label">✦ bestiário</p>
+        <h3 class="nomen-title">Criaturas na <em>Caravana dos Céus</em></h3>
+        <div class="nomen-divider">🎪</div>
+      </div>
+ 
+      <div class="galeria" tabindex="0" aria-label="Galeria de criaturas caçadas">
+        <figure class="criatura">
+          <img src="CarpelCC.jpg" alt="Carpel | Leão Floral" loading="lazy">
+          <figcaption>Carpel | Leão Floral</figcaption>
+        </figure>
+        <figure class="criatura">
+          <img src="DiasCC.jpg" alt="Dias | Cãojaré" loading="lazy">
+          <figcaption>Dias | Cãojaré</figcaption>
+        </figure>
+      </div>
+
   <!-- FOOTER -->
   <footer>
     <a class="footer-back" href="index.html">← VOLTAR A CASA</a>
     <span class="footer-name">✦ CARAVANA DOS CÉUS ✦</span>
     <p>personagens encontrados em <em>Entre as Estrelas</em></p>
   </footer>
+
+  <style>
+    /* Galeria de criaturas */
+.galeria { display:flex; gap:1.25rem; overflow-x:auto; padding:.25rem .25rem 1rem; scroll-snap-type:x proximity; scrollbar-width:thin; scrollbar-color:var(--accent-dim) transparent; }
+.galeria::-webkit-scrollbar { height:6px; }
+.galeria::-webkit-scrollbar-track { background:transparent; }
+.galeria::-webkit-scrollbar-thumb { background:var(--accent-dim); border-radius:3px; }
+.criatura { flex:0 0 210px; scroll-snap-align:start; margin:0; }
+.criatura img { display:block; width:100%; aspect-ratio:3/4; object-fit:cover; background:var(--bg3); border:1px solid var(--border); opacity:.9; transition:opacity .3s, border-color .3s, transform .3s; }
+.criatura:hover img { opacity:1; border-color:var(--accent-dim); transform:translateY(-3px); }
+.criatura figcaption { margin-top:.6rem; text-align:center; font-family:var(--ff-display); font-size:1.05rem; color:var(--shimmer); }
+.galeria-dica { text-align:center; font-family:var(--ff-title); font-size:.55rem; letter-spacing:.3em; color:var(--text-dim); margin-bottom:3.5rem; }
+@media (max-width:560px){ .criatura{flex-basis:70%} }
+  </style>
 
   <script src="protegido.js"></script>
 
