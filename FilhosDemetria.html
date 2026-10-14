@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Entre As Estrelas</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=IM+Fell+English:ital@0;1&family=Cinzel:wght@400;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="estiloPersonagens.css">
+  <link rel="icon" type="image/x-icon" href="iconSOL.jpeg">
+  <style>
+    /* acento verde-musgo para os Filhos de Demétria */
+    :root {
+      --accent:      #86a872;
+      --accent-dim:  #3f5e35;
+      --accent-glow: rgba(134,168,114,0.12);
+    }
+    .gallery-cell img { cursor: zoom-in; }
+    .gallery-cell img:hover { opacity: 1; transform: scale(1.03); }
+  </style>
+</head>
+<body>
+ 
+  <!-- NAV -->
+  <nav>
+    <a class="nav-home" href="index.html#criaturas">← Casa</a>
+    <span class="nav-char">✦ FILHOS DE DEMÉTRIA</span>
+  </nav>
+ 
+  <!-- LIGHTBOX -->
+  <div id="lightbox">
+    <button id="lightbox-close" onclick="closeLightbox()">✕ fechar</button>
+    <img id="lightbox-img" src="" alt="">
+  </div>
+ 
+  <!-- ══ HISTÓRIA ══ -->
+  <article class="page-section" id="historia">
+    <p class="section-label">✦ História</p>
+    <h2 class="section-title">A <em>Lenda</em> dos Filhos de Demétria</h2>
+    <div class="divider">🌾</div>
+ 
+    <div class="story-block">
+      <div class="story-text">
+        <p>Chamam-nos <em>Filhos de Demétria</em> porque nenhum deles nasceu de ventre: brotam. Onde a Mentora cravou o <strong>báculo</strong> para ensinar a terra a ser terra, algo ficou escutando. Anos depois, entre raízes, pedras e lama, o chão se abre e um deles se levanta, já sabendo o que protege e de quem.</p>
+        <p>Diz a lenda que, quando <strong>Polaris</strong> deixou os mortais à mercê de si mesmos, <strong>Demétria</strong>, a mais velha de suas filhas, foi encarregada de ensiná-los a viver em harmonia. Mas ensinar cansa, e nem todo aluno escuta. Cada vez que um bosque era queimado sem necessidade, um rio envenenado ou uma colheita tomada de quem a plantou, a deusa sentia — e a terra respondia por ela. Os filhos são essa resposta: a firmeza da Mentora com corpo de folha, casca e pedra.</p>
+        <p>Não existem dois iguais. Nos bosques fechados, aparecem como criaturas magras de asas de vidro e olhos de vaga-lume, que espiam do alto das árvores. Nos campos e clareiras, como rostos de folhagem costurados à copa de um carvalho. Nas matas antigas, como gigantes de casca e musgo, tão lentos que passam por árvores até o dia em que se movem. Todos carregam, em algum lugar, um traço da mãe: um galho torto como báculo, uma pena, um canto de <em>grua</em> ao longe.</p>
+        <p>Por isso nenhum é inteiramente bom ou mau. Para quem planta com respeito, caça só o que come e deixa algo para a estação seguinte, eles guiam: afastam o predador, mostram a água, entortam o caminho de quem vem com más intenções. Para quem toma mais do que precisa, são o castigo: perdem o viajante em trilhas que se repetem, esvaziam a armadilha, fecham o poço. Os antigos dizem: <em>"não pergunte o que o Filho de Demétria é; pergunte o que você fez no chão dele."</em></p>
+        <p>Ninguém sabe dizer se eles ainda obedecem à deusa ou se já aprenderam sozinhos o que ela ensinou. Contam que, quando uma grua pousa perto de um deles, ele fica imóvel o dia inteiro, como um aluno diante da mestra.</p>
+      </div>
+ 
+      <aside class="story-aside">
+        <div class="aside-item">
+          <p class="aside-label">ORIGEM</p>
+          <p class="aside-value">Brotados do chão tocado pelo <em>báculo</em> de Demétria</p>
+        </div>
+        <div class="aside-item">
+          <p class="aside-label">TEMPERAMENTO</p>
+          <p class="aside-value">Ambíguo: <em>guardiões</em> ou <em>castigo</em>, conforme quem entra</p>
+        </div>
+        <div class="aside-item">
+          <p class="aside-label">HABITAT</p>
+          <p class="aside-value">Qualquer natureza que tenha um <em>dono</em> a proteger</p>
+        </div>
+        <div class="aside-item">
+          <p class="aside-label">COMO PEDIR PAZ</p>
+          <p class="aside-value">Uma oferenda de colheita ou uma <em>muda plantada</em> no lugar</p>
+        </div>
+        <div class="aside-item">
+          <p class="aside-label">DEUSA</p>
+          <p class="aside-value"><em>Demétria</em>, a Mentora</p>
+        </div>
+      </aside>
+    </div>
+  </article>
+ 
+  <!-- ══ RELATOS ══ -->
+  <article class="page-section" id="relato">
+    <p class="section-label">✦ relatos</p>
+    <h2 class="section-title">Documentações dos <em>Filhos de Demétria</em></h2>
+    <div class="divider">🌾</div>
+    <a class="relation-link" href="FilhosDemetriaRelato.html">Leia alguns relatos sobre →</a>
+    &nbsp;&nbsp;&nbsp;
+    <a class="relation-link" href="FilhosDemetriaFicha.html">Ficha →</a>
+  </article>
+ 
+  <!-- ══ GALERIA ══ -->
+  <article class="page-section" id="galeria">
+    <p class="section-label">✦ arte</p>
+    <h2 class="section-title">Galeria dos <em>Filhos de Demétria</em></h2>
+    <div class="divider">🌾</div>
+    <div class="gallery-masonry">
+      <div class="gallery-cell">
+        <div class="gallery-cell-placeholder">🪽<span>Vigília no Bosque</span></div>
+        <img src="filho1.jpg">
+      </div>
+      <div class="gallery-cell">
+        <div class="gallery-cell-placeholder">🦋<span>Valsa de Aprendizes</span></div>
+        <img src="filho2.jpg">
+      </div>
+      <div class="gallery-cell">
+        <div class="gallery-cell-placeholder">✨<span>Olhos de Vaga-lume</span></div>
+        <img src="filho3.jpg">
+      </div>
+      <div class="gallery-cell">
+        <div class="gallery-cell-placeholder">🍃<span>O Rosto da Folhagem</span></div>
+        <img src="filho4.jpg">
+      </div>
+      <div class="gallery-cell">
+        <div class="gallery-cell-placeholder">🌳<span>O Velho Cultivo</span></div>
+        <img src="filho5.jpg">
+      </div>
+    </div>
+  </article>
+ 
+  <!-- FOOTER -->
+  <footer>
+    <a class="footer-back" href="index.html">← VOLTAR A CASA</a>
+    <span class="footer-name">FILHOS DE DEMÉTRIA · OS BROTADOS</span>
+    <p>Uma criatura de <em>Entre as Estrelas</em></p>
+  </footer>
+ 
+  <script>
+    // Lightbox
+    function openLightbox(src) {
+      document.getElementById('lightbox-img').src = src;
+      document.getElementById('lightbox').classList.add('open');
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('open');
+    }
+    document.getElementById('lightbox').addEventListener('click', e => {
+      if (e.target === e.currentTarget) closeLightbox();
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+ 
+    // Ativa lightbox nas imagens da galeria
+    document.querySelectorAll('.gallery-cell img').forEach(img => {
+      img.style.cursor = 'zoom-in';
+      img.addEventListener('click', () => openLightbox(img.src));
+    });
+  </script>
+</body>
+</html>
