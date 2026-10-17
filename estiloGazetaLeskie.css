@@ -19,3 +19,12 @@ body { background-image:radial-gradient(ellipse 60% 40% at 50% 0%, rgba(111,179,
 .frente dd { font-size:1rem; color:#26343b; margin:0; line-height:1.5; }
 .frentes-titulo { text-align:center; font-family:var(--ff-title); font-size:.62rem; letter-spacing:.4em; color:#8f2a2a; margin-top:2rem; }
 @media (max-width:760px){ .frentes{grid-template-columns:1fr} .frente + .frente{border-left:none; border-top:2px solid var(--ink)} }
+
+/* Segunda matéria e cadeiras */
+.secao-divisor { text-align:center; font-family:var(--ff-title); letter-spacing:.6em; color:var(--ink-soft); margin:2.5rem 0 1.5rem; padding-top:1.5rem; border-top:4px double var(--ink); }
+.headline-2 { font-size:clamp(1.6rem,3.8vw,2.4rem); }
+.cadeiras { display:grid; grid-template-columns:repeat(5,1fr); border:2px solid var(--ink); margin-top:.8rem; }
+.cadeira { padding:.9rem .8rem; font-size:.95rem; line-height:1.4; color:#26343b; text-align:center; }
+.cadeira + .cadeira { border-left:1px solid var(--ink); }
+.cadeira b { display:block; font-family:var(--ff-title); font-size:.55rem; letter-spacing:.2em; color:#8f2a2a; font-weight:400; margin-bottom:.3rem; }
+@media (max-width:760px){ .cadeiras{grid-template-columns:1fr 1fr} .cadeira + .cadeira{border-left:none} .cadeira{border-top:1px solid var(--ink)} }
