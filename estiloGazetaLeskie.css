@@ -1,0 +1,21 @@
+/* Gazeta de Leskie — carregar DEPOIS de estiloGazetaPolaris.css */
+:root {
+  --bg:#0a1620; --border:rgba(110,160,170,.25);
+  --gold:#6fb3bd; --gold-dim:#2f5a63; --shimmer:#cfe3e6; --teal-light:#7fa3ab; --text-dim:#7f9aa6;
+  --paper:#dfe5e1; --paper-dark:#c9d3cf; --ink:#18232a; --ink-soft:#4a5c63;
+}
+body { background-image:radial-gradient(ellipse 60% 40% at 50% 0%, rgba(111,179,189,.1), transparent 70%); }
+.paper { box-shadow:0 20px 60px rgba(0,0,0,.6), inset 0 0 90px rgba(60,90,100,.25); }
+.section-tag, .extra-title, .article p:first-child::first-letter { color:#8f2a2a; }
+
+/* Frentes do conflito */
+.frentes { display:grid; grid-template-columns:1fr 1fr; gap:0; margin-top:2rem; border:2px solid var(--ink); }
+.frente { padding:1.2rem 1.4rem; }
+.frente + .frente { border-left:2px solid var(--ink); }
+.frente-sym { font-size:1.5rem; display:block; margin-bottom:.2rem; }
+.frente-nome { font-family:var(--ff-display); font-size:1.5rem; line-height:1.1; margin-bottom:.6rem; }
+.frente dl { margin:0; }
+.frente dt { font-family:var(--ff-title); font-size:.55rem; letter-spacing:.3em; color:#8f2a2a; margin-top:.6rem; }
+.frente dd { font-size:1rem; color:#26343b; margin:0; line-height:1.5; }
+.frentes-titulo { text-align:center; font-family:var(--ff-title); font-size:.62rem; letter-spacing:.4em; color:#8f2a2a; margin-top:2rem; }
+@media (max-width:760px){ .frentes{grid-template-columns:1fr} .frente + .frente{border-left:none; border-top:2px solid var(--ink)} }
