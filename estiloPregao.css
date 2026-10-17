@@ -1,0 +1,24 @@
+/* O Pregão de Rostrum — carregar DEPOIS de estiloGazetaPolaris.css */
+:root {
+  --bg:#0b1a14; --border:rgba(110,170,130,.25);
+  --gold:#d6a83a; --gold-dim:#6a5418; --shimmer:#e6d9a8; --teal-light:#6fa987; --text-dim:#7fa090;
+  --paper:#ece2c6; --paper-dark:#d9cca6; --ink:#2a2414; --ink-soft:#5a4f3a;
+}
+body { background-image:radial-gradient(ellipse 60% 40% at 50% 0%, rgba(214,168,58,.09), transparent 70%); }
+.paper { box-shadow:0 20px 60px rgba(0,0,0,.6), inset 0 0 90px rgba(130,100,40,.25); }
+.section-tag, .extra-title, .article p:first-child::first-letter { color:#8a4a14; }
+
+/* Princípios */
+.principios-titulo { text-align:center; font-family:var(--ff-title); font-size:.62rem; letter-spacing:.4em; color:#8a4a14; margin-top:2rem; }
+.principios { display:grid; grid-template-columns:repeat(3,1fr); border:2px solid var(--ink); margin-top:.8rem; }
+.principio { padding:1.1rem 1.2rem; }
+.principio + .principio { border-left:2px solid var(--ink); }
+.principio b { display:block; font-family:var(--ff-title); font-size:.55rem; letter-spacing:.3em; color:#8a4a14; font-weight:400; }
+.principio-nome { font-family:var(--ff-display); font-size:1.35rem; line-height:1.1; margin:.2rem 0 .4rem; }
+.principio p { font-size:.98rem; color:#3a3222; line-height:1.5; }
+
+/* Convocação */
+.convoca { border:2px solid var(--ink); padding:1rem 1.2rem; background:rgba(42,36,20,.06); }
+.convoca-nome { font-family:var(--ff-display); font-size:1.4rem; line-height:1.15; margin-bottom:.4rem; }
+.convoca p { font-size:1.02rem; color:#3a3222; }
+@media (max-width:760px){ .principios{grid-template-columns:1fr} .principio + .principio{border-left:none; border-top:2px solid var(--ink)} }
