@@ -4,16 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Entre as Estrelas — Registros Históricos</title>
-<link rel="icon" type="image/x-icon" href="iconSOL.jpeg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 <style>
-  /* ============================================================
-     RASCUNHO — cores e fontes são um palpite com base no tema
-     dourado/estrelado do site. Troque as variáveis abaixo (ou
-     cole o seu CSS) para casar com as outras páginas.
-     ============================================================ */
   :root {
     --bg: #0b0e1f;
     --bg-card: #121733;
@@ -46,19 +40,19 @@
   a { color: var(--gold); text-decoration: none; }
   a:hover { text-decoration: underline; }
   .wrap { max-width: 860px; margin: 0 auto; padding: 0 20px; }
-
+ 
   /* topo */
   .topbar { padding: 22px 0 0; font-family: 'Cinzel', serif; font-size: .8rem; letter-spacing: .12em; }
   .topbar a { color: var(--muted); }
   .topbar a:hover { color: var(--gold); text-decoration: none; }
-
+ 
   header.hero { text-align: center; padding: 56px 0 30px; }
   .eyebrow { font-family: 'Cinzel', serif; font-size: .78rem; letter-spacing: .35em; color: var(--gold-soft); text-transform: uppercase; }
   h1 { font-family: 'Cinzel', serif; font-weight: 400; font-size: clamp(2rem, 6vw, 3.2rem); letter-spacing: .06em; margin: 14px 0 6px; }
   h1 em { color: var(--gold); font-style: normal; }
   .subtitle { font-style: italic; color: var(--muted); max-width: 560px; margin: 0 auto; }
   .ornament { color: var(--gold); margin: 22px 0 0; letter-spacing: .6em; font-size: .9rem; }
-
+ 
   /* navegação entre monarcas */
   nav.jump { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; padding: 18px 0 40px; }
   nav.jump a {
@@ -67,7 +61,7 @@
     background: rgba(18,23,51,.6);
   }
   nav.jump a:hover { border-color: var(--gold); color: var(--gold); text-decoration: none; }
-
+ 
   /* linha do tempo */
   .timeline { position: relative; padding-left: 34px; }
   .timeline::before {
@@ -80,16 +74,18 @@
     color: var(--gold); background: var(--bg); font-size: .95rem; line-height: 1.2;
   }
   .reign.pending::before { color: var(--gold-soft); opacity: .7; }
-
+  .reign.regent::before { content: '✧'; }
+  .portrait.placeholder { display: flex; align-items: center; justify-content: center; font-size: 2rem; color: var(--gold); }
+ 
   .era-label { font-family: 'Cinzel', serif; font-size: .75rem; letter-spacing: .25em; color: var(--gold-soft); text-transform: uppercase; }
   .reign h2 { font-family: 'Cinzel', serif; font-weight: 400; font-size: 1.7rem; letter-spacing: .05em; margin: 2px 0 14px; }
   .reign h2 em { color: var(--gold); font-style: normal; }
-
+ 
   .card {
     background: linear-gradient(160deg, var(--bg-card), var(--bg-card-2));
     border: 1px solid var(--line); border-radius: var(--radius); padding: 24px 26px;
   }
-
+ 
   .profile { display: flex; gap: 20px; align-items: center; margin-bottom: 22px; }
   .portrait {
     flex: 0 0 96px; width: 96px; height: 96px; border-radius: 50%; object-fit: cover;
@@ -98,14 +94,14 @@
   .facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px 24px; flex: 1; }
   .fact dt { font-family: 'Cinzel', serif; font-size: .66rem; letter-spacing: .2em; color: var(--gold-soft); text-transform: uppercase; }
   .fact dd { font-size: 1.05rem; line-height: 1.35; }
-
+ 
   .story h3 {
     font-family: 'Cinzel', serif; font-weight: 400; font-size: 1.02rem; letter-spacing: .1em;
     color: var(--gold); margin: 26px 0 8px;
   }
   .story p { margin-bottom: 14px; }
   .story em { color: var(--gold); font-style: italic; }
-
+ 
   /* as três filhas */
   .daughters { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin: 16px 0 6px; }
   .daughter { border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; background: rgba(255,255,255,.02); }
@@ -113,12 +109,12 @@
   .daughter h4 { font-family: 'Cinzel', serif; font-weight: 400; font-size: 1.15rem; margin: 2px 0 2px; color: var(--text); }
   .daughter .epithet { font-style: italic; color: var(--gold); font-size: .98rem; margin-bottom: 8px; }
   .daughter p { font-size: 1.02rem; line-height: 1.55; margin: 0; color: #d6d0c0; }
-
+ 
   .callout {
     margin-top: 20px; padding: 14px 18px; border-left: 2px solid var(--gold);
     background: rgba(217,180,90,.06); border-radius: 0 10px 10px 0; font-size: 1.05rem;
   }
-
+ 
   /* monarcas ainda sem texto */
   .pending .card { opacity: .88; }
   .placeholder { font-style: italic; color: var(--muted); margin-top: 14px; }
@@ -128,13 +124,13 @@
     color: var(--gold-soft); text-transform: uppercase; vertical-align: middle; margin-left: 8px;
   }
   .badge.live { border-style: solid; color: var(--gold); border-color: var(--gold); }
-
+ 
   footer { text-align: center; padding: 30px 0 56px; border-top: 1px solid var(--line); margin-top: 20px;
     font-family: 'Cinzel', serif; font-size: .78rem; letter-spacing: .14em; color: var(--muted); }
   footer a { color: var(--muted); }
   footer a:hover { color: var(--gold); text-decoration: none; }
   footer em { display: block; margin-top: 8px; font-family: 'Cormorant Garamond', serif; font-style: italic; letter-spacing: 0; }
-
+ 
   @media (max-width: 560px) {
     body { font-size: 1.08rem; }
     .card { padding: 20px 18px; }
@@ -145,19 +141,20 @@
 </head>
 <body>
 <div class="wrap">
-
+ 
   <div class="topbar"><a href="ReinoPolaris.html#folclore">← REINO POLARIS</a></div>
-
+ 
   <header class="hero">
     <div class="eyebrow">✦ Registros Históricos ✦</div>
     <h1>Oxidação <em>do Ouro</em></h1>
     <p class="subtitle">Como foi cada período da monarquia polariana, governo a governo — da Estrela que desceu dos céus aos dias de hoje.</p>
     <div class="ornament">✦ ✦ ✦</div>
   </header>
-
+ 
   <!-- Navegação rápida -->
   <nav class="jump" aria-label="Monarcas">
     <a href="#polaris">Polaris</a>
+    <a href="#calebe">Calebe</a>
     <a href="#polinae">Polinae</a>
     <a href="#dileia">Dileia</a>
     <a href="#melia">Melia</a>
@@ -165,14 +162,14 @@
     <a href="#aldmar">Aldmar</a>
     <a href="#margarida">Margarida</a>
   </nav>
-
+ 
   <main class="timeline">
-
+ 
     <!-- ===================== POLARIS ===================== -->
     <section class="reign" id="polaris">
       <div class="era-label">Ano −369 ao 25 polariano <span class="badge live">Registro completo</span></div>
       <h2>Polaris, <em>a Estrela Polar</em></h2>
-
+ 
       <div class="card">
         <div class="profile">
           <img class="portrait" src="https://luunesz.github.io/EntreAsEstrelas/Polaris.jpg" alt="Polaris" onerror="this.style.visibility='hidden'">
@@ -180,15 +177,16 @@
             <div class="fact"><dt>Título</dt><dd>Divindade Primordial</dd></div>
             <div class="fact"><dt>Governo</dt><dd>Ano −369 ao 25</dd></div>
             <div class="fact"><dt>Consorte</dt><dd>Ronald Saduj</dd></div>
-            <div class="fact"><dt>Herdeira Polar</dt><dd>Polinae Polar</dd></div>
+            <div class="fact"><dt>Herdeira</dt><dd>Polinae Polar</dd></div>
+            <div class="fact"><dt>Regente (ano 0 ao 25)</dt><dd><a href="#calebe">Calebe Drax</a></dd></div>
           </dl>
         </div>
-
+ 
         <div class="story">
           <h3>A Estrela que Desceu</h3>
           <p>Antes, o Reinado de Polaris não possuía esse nome: era uma terra pagã, desgovernada e esquecida pelos deuses… pelo menos até o surgimento do que os relatos chamam de <em>um ponto luminoso no céu</em>. Era como se o sol tivesse se duplicado e agora rondasse a terra ao lado da lua, até o dia em que essa estrela aterrissou nos solos da atual Kochab.</p>
-          <p>As descrições falam de longos cabelos avermelhados, uma máscara dourada redonda de linhas onduladas, uma longa manta branca que não fora danificada pela queda, um corpo robusto de quadris largos e uma expressão suave sobre aquela face fria. Polaris havia chegado à terra, e nela mostrou seu milagre aos que viviam: foi guia, curandeiro e fonte de esperança daquele lugar abandonado pelos Sidéreos.</p>
-
+          <p>As descrições falam de longos cabelos avermelhados, uma máscara dourada redonda de linhas onduladas, uma longa manta branca que não fora danificada pela queda, um corpo robusto de quadris largos e uma expressão suave sobre aquela face fria. Polaris havia chegado à terra, e nela mostrou seu milagre aos que viviam: foi guia, cura e fonte de esperança daquele lugar abandonado pelos Sidéreos.</p>
+ 
           <h3>As Três Filhas Sidérias</h3>
           <p>As eras marcantes do seu governo podem ser medidas pelos nascimentos das três filhas sidérias de Polaris.</p>
           <div class="daughters">
@@ -211,36 +209,93 @@
               <p>Nasceu quando a conquista global havia chegado e a paz reinava. Por ser oposta a quem a gestou, Polaris, recebeu a lua para se refugiar — mas nunca sem presentear os que buscam felicidade e inspiração.</p>
             </article>
           </div>
-
+ 
           <h3>O Tecelão e a Herdeira</h3>
           <p>Por último, Polaris se apaixonou por Ronald Saduj, um tecelão qualquer. Desse amor surgiu <em>Polinae Polar</em>, a primeira herdeira da Divindade Primordial.</p>
-          <p>Nesse meio-tempo, após o nascimento da primogênita, houve a traição de Ronald com uma elfa, que resultou na perseguição de diversos elfos e no exílio de Ronald nas terras de Kochab — entre outras histórias que estão enroladas em pergaminhos e na boca dos mais velhos.</p>
-
+          <p>Nesse meio-tempo, após o nascimento da primogênita, houve a traição de Ronald com uma elfa, que resultou na perseguição de diversos elfos e no exílio de Ronald para longe do Reinado, em um lugar que a Estrela jamais revelou — entre outras histórias que estão enroladas em pergaminhos e na boca dos mais velhos.</p>
+ 
           <div class="callout">
-            <strong>Fim do governo:</strong> no ano 25, o poder passa às mãos de Polinae Polar, inaugurando a linhagem de monarcas da Dinastia Polar.
+            <strong>Fim do governo:</strong> Polaris deixou o Reinado levando Polinae ao Sidéreo, e <a href="#calebe">Calebe Drax</a> governou em seu lugar do ano 0 ao 25. Nesse ano, com o retorno da herdeira, o poder passa às mãos de Polinae Polar, inaugurando a linhagem de monarcas da Dinastia Polar.
           </div>
         </div>
       </div>
     </section>
-
+ 
+    <!-- ===================== CALEBE MAGNOS (REGENTE) ===================== -->
+    <section class="reign regent" id="calebe">
+      <div class="era-label">Anos 0 ao 25 e 31 ao 47 <span class="badge">Regente · rascunho</span></div>
+      <h2>Calebe <em>Drax Magnos</em></h2>
+      <div class="card">
+        <div class="profile">
+          <img class="portrait" src="CalebeMagnos.jpg" alt="Calebe Magnos">
+          <div class="portrait placeholder" aria-hidden="true">✦</div>
+          <dl class="facts">
+            <div class="fact"><dt>Título</dt><dd>Regente do Reino · Confidente Real</dd></div>
+            <div class="fact"><dt>Regência</dt><dd>Anos 0–25 (por Polaris) e 31–47 (por Polinae)</dd></div>
+            <div class="fact"><dt>Consorte</dt><dd>Marechal Ortécias Magnos</dd></div>
+            <div class="fact"><dt>Sobrenome</dt><dd>Drax, depois Magnos</dd></div>
+          </dl>
+        </div>
+ 
+        <div class="story">
+          <h3>O Regente de Polaris</h3>
+          <p>Quando Polaris partiu para o <em>Sidéreo</em> levando Polinae consigo, foi Calebe Drax quem ficou com o Reinado nas mãos, até que a herdeira polariana retornasse. Em seus 25 anos de governo, tentou criar projetos sociais de ressocialização após o genocídio dos elfos, criou as <em>Leis Polarianas</em>, as <em>Cidades-Estados do Reino de Polaris</em> e o ouro como moeda universal, e viajou ao Reino de Aucrib para homenagear a herdeira da deusa, Clarisse Caribu.</p>
+          <p>Nesse período, casou-se com a Marechal Ortécias Magnos e passou a carregar o sobrenome da esposa.</p>
+ 
+          <h3>O Confidente Real</h3>
+          <p>Com o retorno de Polinae, no ano 25, Calebe foi mantido ao seu lado como Confidente Real, principalmente por conta do surgimento do Reino Flutuante.</p>
+ 
+          <h3>O Regente de Polinae</h3>
+          <p>A partir do ano 31, quando Polinae deixou de governar diretamente, Calebe voltou a ocupar o lugar da monarca. Governou até que Dileia, a herdeira, pudesse ser a nova monarca, no ano 47.</p>
+ 
+          <p class="placeholder">Os detalhes dos governos de Calebe ainda podem ser escritos aqui…</p>
+        </div>
+      </div>
+    </section>
+ 
     <!-- ===================== POLINAE ===================== -->
-    <section class="reign pending" id="polinae">
-      <div class="era-label">Ano 25 ao 47 <span class="badge">Em escrita</span></div>
+    <section class="reign" id="polinae">
+      <div class="era-label">Ano 25 ao 47 <span class="badge live">Registro completo</span></div>
       <h2>Polinae <em>Polar</em></h2>
       <div class="card">
         <div class="profile">
           <img class="portrait" src="https://luunesz.github.io/EntreAsEstrelas/Polinae.jpg" alt="Polinae Polar" onerror="this.style.visibility='hidden'">
           <dl class="facts">
-          <div class="fact"><dt>Nascimento</dt><dd>Ano 0</dd></div>
-          <div class="fact"><dt>Falecimento</dt><dd>Ano 75</dd></div>
-          <div class="fact"><dt>Tempo de governo</dt><dd>22 anos</dd></div>
-          <div class="fact"><dt>Consorte</dt><dd>Felicio</dd></div>
-        </dl>
+            <div class="fact"><dt>Nascimento</dt><dd>Ano 0</dd></div>
+            <div class="fact"><dt>Falecimento</dt><dd>Ano 75</dd></div>
+            <div class="fact"><dt>Tempo de governo</dt><dd>22 anos</dd></div>
+            <div class="fact"><dt>Consorte</dt><dd>Felicio Arapuã</dd></div>
+            <div class="fact"><dt>Confidente Real</dt><dd><a href="#calebe">Calebe Magnos</a></dd></div>
+            <div class="fact"><dt>Herdeira</dt><dd>Dileia Polar</dd></div>
+          </dl>
         </div>
-        <p class="placeholder">O registro deste governo ainda está sendo escrito…</p>
+ 
+        <div class="story">
+          <h3>O Governo Antecedente</h3>
+          <p>Antes disso, é importante contextualizar o governo antecedente. A traição foi descoberta após o nascimento da filha do casal, revelando que Ronald, então a <em>Estrela Entardecida</em>, estava se relacionando com uma elfa apenas alguns meses após o casamento real. Polaris exilou Ronald para longe do próprio Reinado — infelizmente, a Estrela nunca respondeu onde seria esse lugar. Outra ação tomada após a exposição foi a caça aos elfos, realizada tanto pela divindade quanto pela população comovida. Os cálculos apontam que 2/3 da população élfica foi exterminada.</p>
+          <p>Nesse meio-tempo, Polaris levou Polinae consigo para o que chamamos de <em>Sidéreo</em>, deixando o Reinado nas mãos de Calebe Drax, que futuramente se casou com a Marechal Ortécias Magnos, até que a herdeira polariana retornasse.</p>
+ 
+          <h3>A Regência de Calebe Drax</h3>
+          <p>Durante o governo de Calebe Drax, do ano 0 ao 25° ano polariano, ele tentou criar projetos sociais para a ressocialização após o genocídio dos elfos, criou as Leis Polarianas, as Cidades-Estados do Reino de Polaris e o ouro como moeda universal, viajou ao Reino de Aucrib para homenagear a herdeira da deusa, Clarisse Caribu, e também se casou com Ortécias Magnos, passando a carregar o sobrenome da esposa.</p>
+ 
+          <h3>A Herdeira Retorna</h3>
+          <p>No 25° ano polariano, no mesmo dia do seu nascimento, Polinae voltou — sem Polaris, mas carregando a máscara e uma coroa na cabeça.</p>
+ 
+          <h3>O Reino Flutuante</h3>
+          <p>Ela manteve Calebe Magnos como seu Confidente Real, principalmente por conta do surgimento do <em>Reino Flutuante</em>, do qual foi a responsável pela imigração em massa e pela propaganda de povoamento das quatro ilhas formadas do corpo de <em>Kaambal</em>. Viveu ali por alguns meses, e foi lá que conheceu Felicio Arapuã, um dos médicos militares que realizavam os exames de rotina nos tripulantes. Foi uma paixão ardente: o primeiro amor de Polinae, e também o último.</p>
+ 
+          <h3>Perdas</h3>
+          <p>A história deles não foi longe: Felicio voltou aos campos quando a <a href="Not-OrigemPython.html"><em>Guerra Civil-Flutuante</em></a> estava no auge e faleceu. Polinae, grávida do segundo filho, sofreu um aborto.</p>
+ 
+          <h3>O Apoio à Bico de Ferro</h3>
+          <p>Fragilizada, tendo perdido o marido e o filho em meio à guerra, e pressionada politicamente, Polinae cedeu à <a href="Not-BicoFerro.html"><em>Bico de Ferro</em></a> e passou a apoiá-la. O apoio se traduziu em financiamento e em recursos gastos na guerra. A origem da Guerra Civil-Flutuante não soava bem para o povo — mas, ainda assim, ele seguiu Polinae.</p>
+ 
+          <h3>A Coroa Cedida</h3>
+          <p>Polinae deixou de governar diretamente: a partir do ano 31, Calebe ocupou seu lugar até que Dileia, a herdeira, pudesse ser a nova monarca. Ela se dedicou a cuidar da filha, em memória do marido.</p>
+        </div>
       </div>
     </section>
-
+ 
     <!-- ===================== DILEIA ===================== -->
     <section class="reign pending" id="dileia">
       <div class="era-label">Ano 47 ao 77 <span class="badge">Em escrita</span></div>
@@ -258,7 +313,7 @@
         <p class="placeholder">O registro deste governo ainda está sendo escrito…</p>
       </div>
     </section>
-
+ 
     <!-- ===================== MELIA ===================== -->
     <section class="reign pending" id="melia">
       <div class="era-label">Ano 77 ao 103 <span class="badge">Em escrita</span></div>
@@ -276,10 +331,10 @@
         <p class="placeholder">O registro deste governo ainda está sendo escrito…</p>
       </div>
     </section>
-
+ 
     <!-- LACUNA 1: entre Melia (até 103) e Dalia (desde 120) — decidir o que colocar aqui
     <section class="reign pending" id="interregno-1"> ... </section> -->
-
+ 
     <!-- ===================== DALIA ===================== -->
     <section class="reign pending" id="dalia">
       <div class="era-label">Ano 120 ao 128 <span class="badge">Em escrita</span></div>
@@ -297,10 +352,10 @@
         <p class="placeholder">O registro deste governo ainda está sendo escrito…</p>
       </div>
     </section>
-
+ 
     <!-- LACUNA 2: entre Dalia (até 128) e Aldmar (desde 139) — decidir o que colocar aqui
     <section class="reign pending" id="interregno-2"> ... </section> -->
-
+ 
     <!-- ===================== ALDMAR ===================== -->
     <section class="reign pending" id="aldmar">
       <div class="era-label">Ano 139 ao 169 <span class="badge">Em escrita</span></div>
@@ -318,7 +373,7 @@
         <p class="placeholder">O registro deste governo ainda está sendo escrito…</p>
       </div>
     </section>
-
+ 
     <!-- ===================== MARGARIDA ===================== -->
     <section class="reign pending" id="margarida">
       <div class="era-label">Ano 169 ao presente (191) <span class="badge">Em escrita</span></div>
@@ -336,14 +391,14 @@
         <p class="placeholder">O registro deste governo ainda está sendo escrito…</p>
       </div>
     </section>
-
+ 
   </main>
-
+ 
   <footer>
     <a href="ArvorePolar.html">VER ÁRVORE GENEALÓGICA</a> &nbsp;✦&nbsp; <a href="ReinoPolaris.html#folclore">← VOLTAR AO REINO POLARIS</a>
     <em>um reino de Entre as Estrelas</em>
   </footer>
-
+ 
 </div>
 </body>
 </html>
